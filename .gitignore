@@ -1,0 +1,40 @@
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# Visual Studio files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Rider IDE
+.idea/
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+appsettings.Development.json
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+*.trx
+
+# NuGet packages
+*.nupkg
