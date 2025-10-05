@@ -15,4 +15,8 @@
     <ProjectReference Include="..\RealERP.Domain\RealERP.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstraction\Features\Query\" />
+  </ItemGroup>
+
 </Project>
