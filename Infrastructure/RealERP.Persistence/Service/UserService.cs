@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using RealERP.Application.Abstraction.Service;
-using RealERP.Application.DefaultRole;
 using RealERP.Application.DTOs;
 using RealERP.Application.Roles;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Text;
 
@@ -18,16 +16,19 @@ namespace RealERP.Persistence.Service
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
+        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager, ILogger<UserService> logger)
         {
             _userManager = userManager;
             _configuration = configuration;
             _roleManager = roleManager;
+            _logger = logger;
         }
 
         public async Task<Response> CreateAsync(RegisterDto register,string role)
         {
+            _logger.LogInformation("Test");
             {
                 var userExists = await _userManager.FindByNameAsync(register.Username);
                 if (userExists != null)

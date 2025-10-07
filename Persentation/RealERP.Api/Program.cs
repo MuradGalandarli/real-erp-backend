@@ -7,6 +7,7 @@ using RealERP.Persistence.Context;
 using System.Text;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Persistence.Service;
+using Serilog;
 
 namespace RealERP.Api
 {
@@ -18,8 +19,14 @@ namespace RealERP.Api
 
             var builder = WebApplication.CreateBuilder(args);
             ConfigurationManager configuration = builder.Configuration;
-            builder.Services.AddScoped<IUserService, UserService>();
 
+            Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+            builder.Host.UseSerilog();
+
+            builder.Services.AddScoped<IUserService, UserService>();
 
             builder.Services.AddApplicationService();
 
