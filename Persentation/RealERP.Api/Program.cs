@@ -8,6 +8,7 @@ using System.Text;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Persistence.Service;
 using Serilog;
+using RealERP.Persistence;
 
 namespace RealERP.Api
 {
@@ -26,9 +27,8 @@ namespace RealERP.Api
 
             builder.Host.UseSerilog();
 
-            builder.Services.AddScoped<IUserService, UserService>();
-
             builder.Services.AddApplicationService();
+            builder.Services.AddPersistenceService();
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
