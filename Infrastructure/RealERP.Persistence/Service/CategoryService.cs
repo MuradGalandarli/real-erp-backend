@@ -14,10 +14,18 @@ namespace RealERP.Persistence.Service
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<bool> AddCategory(Category category)
+        public async Task<bool> AddCategoryAsync(Category category)
         {
            bool status = await _categoryRepository.AddAsync(category);
             await _categoryRepository.SaveAsync();
+            return status;
+        }
+
+        public async Task<bool> UpdateCategoryAsync(Category category)
+        {
+            bool status = _categoryRepository.Update(category);
+            if (status)
+               await _categoryRepository.SaveAsync();
             return status;
         }
     }
