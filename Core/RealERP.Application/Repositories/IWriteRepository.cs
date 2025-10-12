@@ -6,7 +6,7 @@ namespace RealERP.Application.Repositories
         public Task<bool> AddAsync(T model);
         public Task<bool> AddRange(List<T> datas);  
         public bool Update(T t);
-        public bool DeleteAsync(int id);
+        public bool Delete(int id);
         public bool DeleteRange(List<T> id);
         Task<int> SaveAsync();        
     }

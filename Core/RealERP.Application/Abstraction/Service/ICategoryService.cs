@@ -6,7 +6,9 @@ namespace RealERP.Application.Abstraction.Service
     {
         public Task<bool> AddCategoryAsync(Category category);
         public Task<bool> UpdateCategoryAsync(Category category);
-        public Task<Category> GetCategoryById(int id);
+        public Task<Category> GetCategoryByIdAsync(int id);
+        public Task<bool> DeleteCategoryAsync(int id);
+
 
     }
 }

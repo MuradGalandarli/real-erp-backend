@@ -17,7 +17,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Category.GetById
         public async Task<GetByIdCategoryQueryResponse> Handle(GetByIdCategoryQueryRequest request, CancellationToken cancellationToken)
         {
           
-          Domain.Entities.Category category = await _categoryService.GetCategoryById(request.Id);
+          Domain.Entities.Category category = await _categoryService.GetCategoryByIdAsync(request.Id);
             if (category != null)
             {
                 return new()

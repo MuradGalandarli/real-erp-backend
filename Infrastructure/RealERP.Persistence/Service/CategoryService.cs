@@ -28,7 +28,7 @@ namespace RealERP.Persistence.Service
             return status;
         }
 
-        public async Task<Category> GetCategoryById(int id)
+        public async Task<Category> GetCategoryAsync(int id)
         {
            Category category = await _readCategoryRepository.GetByIdAsync(id);
             return category;
@@ -39,6 +39,18 @@ namespace RealERP.Persistence.Service
             bool status = _categoryRepository.Update(category);
             if (status)
                await _categoryRepository.SaveAsync();
+            return status;
+        }
+
+        public Task<Category> GetCategoryByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> DeleteCategoryAsync(int id)
+        {
+           bool status = _categoryRepository.Delete(id);
+            await _categoryRepository.SaveAsync();
             return status;
         }
     }

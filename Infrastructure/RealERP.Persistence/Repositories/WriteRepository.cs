@@ -30,10 +30,15 @@ namespace RealERP.Persistence.Repositories
             return true;
         }
 
-        public bool DeleteAsync(int id)
+        public bool Delete(int id)
         {
-           EntityEntry entityEntry = Table.Remove(Table.FirstOrDefault(x=>x.Id == id));
-            return entityEntry.State == EntityState.Deleted;
+           var data = Table.FirstOrDefault(x => x.Id == id);
+            if (data != null)
+            {
+                EntityEntry entityEntry = Table.Remove(data);
+                return entityEntry.State == EntityState.Deleted;
+            }
+            return false;
         }
 
         public bool DeleteRange(List<T> id)
