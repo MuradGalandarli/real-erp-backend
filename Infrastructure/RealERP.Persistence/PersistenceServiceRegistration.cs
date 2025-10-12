@@ -12,7 +12,7 @@ namespace RealERP.Persistence
         {
             services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IReadCategoeyRepository, ReadCategoryRepository>();
+            services.AddScoped<IReadCategoryRepository, ReadCategoryRepository>();
             services.AddScoped<IWriteCategoryRepository, WriteCategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
         }

@@ -3,7 +3,7 @@ using RealERP.Domain.Entities;
 
 namespace RealERP.Persistence.Repositories.CategoryRepository
 {
-    public interface IReadCategoeyRepository : IReadRepository<Category>
+    public interface IReadCategoryRepository : IReadRepository<Category>
     {
     }
 }

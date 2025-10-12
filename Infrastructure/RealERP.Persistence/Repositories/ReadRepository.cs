@@ -22,7 +22,7 @@ namespace RealERP.Persistence.Repositories
             return Table;
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
            return await Table.FirstOrDefaultAsync(x=>x.Id == id);
         }

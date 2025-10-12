@@ -1,6 +1,4 @@
-﻿
-
-using RealERP.Domain.Entities;
+﻿using RealERP.Domain.Entities;
 
 namespace RealERP.Application.Abstraction.Service
 {
@@ -8,5 +6,7 @@ namespace RealERP.Application.Abstraction.Service
     {
         public Task<bool> AddCategoryAsync(Category category);
         public Task<bool> UpdateCategoryAsync(Category category);
+        public Task<Category> GetCategoryById(int id);
+
     }
 }

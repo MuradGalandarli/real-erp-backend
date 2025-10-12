@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using RealERP.Application.Abstraction.Features.Command.Category.AddCategory;
 using RealERP.Application.Abstraction.Features.Command.Category.UpdateCategory;
+using RealERP.Application.Abstraction.Features.Query.Category.GetById;
 
 namespace RealERP.Api.Controllers
 {
@@ -29,6 +31,13 @@ namespace RealERP.Api.Controllers
           UpdateCategoryCommandResponse updateCategoryCommandResponse = await _mediator.Send(updateCategoryCommandRequest);
             
             return Ok(updateCategoryCommandResponse);
+        }
+        [HttpGet("get-by-id-category")]
+         public async Task<IActionResult>GetByIdCategory([FromQuery]int id)
+        {
+            GetByIdCategoryQueryRequest getByIdCategoryQueryRequest = new() { Id = id};
+            GetByIdCategoryQueryResponse getByIdCategoryQueryResponse = await _mediator.Send(getByIdCategoryQueryRequest);
+            return Ok(getByIdCategoryQueryResponse);
         }
     }
 }
