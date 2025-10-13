@@ -53,5 +53,11 @@ namespace RealERP.Persistence.Service
             await _categoryRepository.SaveAsync();
             return status;
         }
+
+        public List<Category> GetAllCategory(int page, int size)
+        {
+            IQueryable<Category> categories  = _readCategoryRepository.GetAll().Skip((page-1)*size).Take(size);
+            return categories.ToList();
+        }
     }
 }
