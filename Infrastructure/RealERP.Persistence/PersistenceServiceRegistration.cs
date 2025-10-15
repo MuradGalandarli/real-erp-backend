@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Repositories.WarehouseRepository;
 using RealERP.Persistence.Context;
 using RealERP.Persistence.Repositories.CategoryRepository;
+using RealERP.Persistence.Repositories.WarehouseRepository;
 using RealERP.Persistence.Service;
 
 namespace RealERP.Persistence
@@ -15,6 +17,10 @@ namespace RealERP.Persistence
             services.AddScoped<IReadCategoryRepository, ReadCategoryRepository>();
             services.AddScoped<IWriteCategoryRepository, WriteCategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IReadWarehouseRepository, ReadWarehouseRepository>();
+            services.AddScoped<IWriteWarehouseRepository, WriteWarehouseRepository>();
+            services.AddScoped<IWarehouseService, WarehouseService>();
+
         }
     }
 }
