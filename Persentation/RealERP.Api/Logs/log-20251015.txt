@@ -12,3 +12,236 @@
 2025-10-15 13:53:47.010 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.9301ms
 2025-10-15 13:53:47.052 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
 2025-10-15 13:53:47.073 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.8944ms
+2025-10-15 13:54:21.182 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7148/api/Warehouse/add-warehouse - application/json 73
+2025-10-15 13:54:21.199 +04:00 [INF] CORS policy execution successful.
+2025-10-15 13:54:22.423 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.AddWarehouse (RealERP.Api)'
+2025-10-15 13:54:22.453 +04:00 [INF] Route matched with {action = "AddWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd.AddWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 13:54:25.934 +04:00 [INF] Executed DbCommand (174ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Warehouses] ([Description], [Location], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2025-10-15 13:54:26.041 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd.AddWarehouseCommandResponse'.
+2025-10-15 13:54:26.055 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.AddWarehouse (RealERP.Api) in 3595.6644ms
+2025-10-15 13:54:26.056 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.AddWarehouse (RealERP.Api)'
+2025-10-15 13:54:26.071 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7148/api/Warehouse/add-warehouse - 200 null application/json; charset=utf-8 4888.9469ms
+2025-10-15 14:10:31.105 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-15 14:10:31.288 +04:00 [INF] Now listening on: https://localhost:7148
+2025-10-15 14:10:31.288 +04:00 [INF] Now listening on: http://localhost:5116
+2025-10-15 14:10:31.318 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-15 14:10:31.319 +04:00 [INF] Hosting environment: Development
+2025-10-15 14:10:31.319 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-10-15 14:10:31.874 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-10-15 14:10:32.084 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 216.7918ms
+2025-10-15 14:10:32.089 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-15 14:10:32.089 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-10-15 14:10:32.094 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 4.7034ms
+2025-10-15 14:10:32.134 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.5401ms
+2025-10-15 14:10:32.184 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-10-15 14:10:32.197 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.5598ms
+2025-10-15 14:10:54.907 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - application/json 84
+2025-10-15 14:10:54.921 +04:00 [INF] CORS policy execution successful.
+2025-10-15 14:10:55.015 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:10:55.038 +04:00 [INF] Route matched with {action = "UpdateWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 14:10:56.941 +04:00 [INF] Executed DbCommand (81ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Warehouses] SET [Description] = @p0, [Location] = @p1, [Name] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-10-15 14:10:57.272 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api) in 2228.3132ms
+2025-10-15 14:10:57.274 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:10:57.279 +04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at RealERP.Persistence.Repositories.WriteRepository`1.SaveAsync() in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Repositories\WriteRepository.cs:line 52
+   at RealERP.Persistence.Service.WarehouseService.UpdateWarehouseAsync(Warehouse warehouse) in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Service\WarehouseService.cs:line 29
+   at RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandHandler.Handle(UpdateWarehouseCommandRequest request, CancellationToken cancellationToken) in D:\GitHub test\real-erp-backend\Core\RealERP.Application\Abstraction\Features\Command\Warehouse\WarehouseUpdate\UpdateWarehouseCommandHandler.cs:line 18
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at RealERP.Api.Controllers.WarehouseController.UpdateWarehouse(UpdateWarehouseCommandRequest updateWarehouseCommandRequest) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Controllers\WarehouseController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-15 14:10:57.388 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - 500 null text/plain; charset=utf-8 2483.7139ms
+2025-10-15 14:11:43.448 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-15 14:11:43.615 +04:00 [INF] Now listening on: https://localhost:7148
+2025-10-15 14:11:43.615 +04:00 [INF] Now listening on: http://localhost:5116
+2025-10-15 14:11:43.645 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-15 14:11:43.645 +04:00 [INF] Hosting environment: Development
+2025-10-15 14:11:43.645 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-10-15 14:11:44.370 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-10-15 14:11:44.528 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 165.7212ms
+2025-10-15 14:11:44.537 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-10-15 14:11:44.537 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-15 14:11:44.541 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 4.7005ms
+2025-10-15 14:11:44.589 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.6346ms
+2025-10-15 14:11:44.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-10-15 14:11:44.644 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.4123ms
+2025-10-15 14:11:58.606 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - application/json 84
+2025-10-15 14:11:58.614 +04:00 [INF] CORS policy execution successful.
+2025-10-15 14:11:58.685 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:11:58.710 +04:00 [INF] Route matched with {action = "UpdateWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 14:12:00.387 +04:00 [INF] Executed DbCommand (70ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Warehouses] SET [Description] = @p0, [Location] = @p1, [Name] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-10-15 14:12:00.812 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api) in 2098.4784ms
+2025-10-15 14:12:00.813 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:12:00.818 +04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at RealERP.Persistence.Repositories.WriteRepository`1.SaveAsync() in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Repositories\WriteRepository.cs:line 52
+   at RealERP.Persistence.Service.WarehouseService.UpdateWarehouseAsync(Warehouse warehouse) in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Service\WarehouseService.cs:line 31
+   at RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandHandler.Handle(UpdateWarehouseCommandRequest request, CancellationToken cancellationToken) in D:\GitHub test\real-erp-backend\Core\RealERP.Application\Abstraction\Features\Command\Warehouse\WarehouseUpdate\UpdateWarehouseCommandHandler.cs:line 18
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at RealERP.Api.Controllers.WarehouseController.UpdateWarehouse(UpdateWarehouseCommandRequest updateWarehouseCommandRequest) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Controllers\WarehouseController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-15 14:12:00.863 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - 500 null text/plain; charset=utf-8 2258.29ms
+2025-10-15 14:12:06.285 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - application/json 84
+2025-10-15 14:12:06.292 +04:00 [INF] CORS policy execution successful.
+2025-10-15 14:12:06.295 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:12:06.296 +04:00 [INF] Route matched with {action = "UpdateWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 14:12:48.830 +04:00 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Warehouses] SET [Description] = @p0, [Location] = @p1, [Name] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-10-15 14:12:48.939 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api) in 42642.5438ms
+2025-10-15 14:12:48.939 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:12:48.941 +04:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at RealERP.Persistence.Repositories.WriteRepository`1.SaveAsync() in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Repositories\WriteRepository.cs:line 52
+   at RealERP.Persistence.Service.WarehouseService.UpdateWarehouseAsync(Warehouse warehouse) in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Service\WarehouseService.cs:line 31
+   at RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandHandler.Handle(UpdateWarehouseCommandRequest request, CancellationToken cancellationToken) in D:\GitHub test\real-erp-backend\Core\RealERP.Application\Abstraction\Features\Command\Warehouse\WarehouseUpdate\UpdateWarehouseCommandHandler.cs:line 18
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at RealERP.Api.Controllers.WarehouseController.UpdateWarehouse(UpdateWarehouseCommandRequest updateWarehouseCommandRequest) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Controllers\WarehouseController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-15 14:12:48.947 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - 500 null text/plain; charset=utf-8 42661.5849ms
+2025-10-15 14:12:51.603 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - application/json 84
+2025-10-15 14:12:51.604 +04:00 [INF] CORS policy execution successful.
+2025-10-15 14:12:51.606 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 14:12:51.606 +04:00 [INF] Route matched with {action = "UpdateWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 15:37:22.937 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-15 15:37:24.198 +04:00 [INF] Now listening on: https://localhost:7148
+2025-10-15 15:37:24.198 +04:00 [INF] Now listening on: http://localhost:5116
+2025-10-15 15:37:24.381 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-15 15:37:24.382 +04:00 [INF] Hosting environment: Development
+2025-10-15 15:37:24.382 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-10-15 15:37:25.347 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-10-15 15:37:25.846 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 518.9215ms
+2025-10-15 15:37:25.858 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-15 15:37:25.873 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 15.4702ms
+2025-10-15 15:37:25.895 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-10-15 15:37:26.005 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 110.5964ms
+2025-10-15 15:37:26.248 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-10-15 15:37:26.286 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 38.1797ms
+2025-10-15 15:45:11.443 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - application/json 87
+2025-10-15 15:45:11.458 +04:00 [INF] CORS policy execution successful.
+2025-10-15 15:45:14.681 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 15:45:14.732 +04:00 [INF] Route matched with {action = "UpdateWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateWarehouse(RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandRequest) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-15 15:45:35.223 +04:00 [INF] Executed DbCommand (355ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Warehouses] SET [Description] = @p0, [Location] = @p1, [Name] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-10-15 15:45:35.379 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate.UpdateWarehouseCommandResponse'.
+2025-10-15 15:45:35.484 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api) in 20736.9362ms
+2025-10-15 15:45:35.488 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.UpdateWarehouse (RealERP.Api)'
+2025-10-15 15:45:35.521 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Warehouse/update-warehouse - 200 null application/json; charset=utf-8 24078.3514ms

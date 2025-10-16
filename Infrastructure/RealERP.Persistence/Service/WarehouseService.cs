@@ -22,5 +22,13 @@ namespace RealERP.Persistence.Service
             await _warehouseRepository.SaveAsync(); 
             return status;
         }
+
+        public async Task<bool> UpdateWarehouseAsync(Warehouse warehouse)
+        {
+            bool status = _warehouseRepository.Update(warehouse);
+          
+            await _warehouseRepository.SaveAsync();
+            return status;
+        }
     }
 }
