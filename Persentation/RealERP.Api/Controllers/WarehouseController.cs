@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate;
+using RealERP.Application.Abstraction.Features.Query.Warehouse;
 
 namespace RealERP.Api.Controllers
 {
@@ -26,6 +27,13 @@ namespace RealERP.Api.Controllers
         {
             UpdateWarehouseCommandResponse updateWarehouseCommandResponse = await _mediator.Send(updateWarehouseCommandRequest);
             return Ok(updateWarehouseCommandResponse);
+        }
+        [HttpGet("get-by-id-warehouse")]
+        public async Task<IActionResult> GetByIdWarehouse([FromQuery] int id)
+        {
+            GetByIdWarehouseQueryRequest getByIdWarehouseQueryRequest = new() { Id = id };
+            GetByIdWarehouseQueryResponse getByIdWarehouseQueryResponse = await _mediator.Send(getByIdWarehouseQueryRequest);
+            return Ok(getByIdWarehouseQueryResponse);
         }
     }
 }

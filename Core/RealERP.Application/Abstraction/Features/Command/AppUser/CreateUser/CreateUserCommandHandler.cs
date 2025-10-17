@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using RealERP.Application.Abstraction.Service;
-using RealERP.Application.DTOs;
+using RealERP.Application.DTOs.ResponseDto;
 
 
 namespace RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser

@@ -1,6 +1,4 @@
-﻿
-
-namespace RealERP.Application.DTOs
+﻿namespace RealERP.Application.DTOs.RequestDto
 {
     public class LoginDto
     {

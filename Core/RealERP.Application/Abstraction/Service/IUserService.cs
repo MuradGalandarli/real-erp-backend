@@ -1,5 +1,5 @@
-﻿
-using RealERP.Application.DTOs;
+﻿using RealERP.Application.DTOs.RequestDto;
+using RealERP.Application.DTOs.ResponseDto;
 
 namespace RealERP.Application.Abstraction.Service
 {

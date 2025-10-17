@@ -1,5 +1,4 @@
-﻿
-namespace RealERP.Application.DTOs
+﻿namespace RealERP.Application.DTOs.ResponseDto
 {
     public class LoginResponseDto
     {
