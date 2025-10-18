@@ -9,6 +9,7 @@ using RealERP.Application.Abstraction.Service;
 using RealERP.Persistence.Service;
 using Serilog;
 using RealERP.Persistence;
+using RealERP.Infrastructure.Middlewares;
 
 namespace RealERP.Api
 {
@@ -86,6 +87,8 @@ namespace RealERP.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");

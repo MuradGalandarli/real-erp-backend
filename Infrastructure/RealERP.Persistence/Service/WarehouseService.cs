@@ -1,6 +1,8 @@
 ﻿
+using Azure.Core;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs.ResponseDto;
+using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.WarehouseRepository;
 using RealERP.Domain.Entities;
 
@@ -28,7 +30,9 @@ namespace RealERP.Persistence.Service
         {
             Warehouse warehouse = await _readWarehouseRepository.GetByIdAsync(id);
             if (warehouse == null)
-                return new();
+            {
+               throw new NotFoundException($"Warehouse with id {id} not found");
+            }
             return new()
             {
                 Description = warehouse.Description,
