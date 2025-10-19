@@ -35,7 +35,6 @@ namespace RealERP.Infrastructure.Middlewares
             HttpStatusCode statusCode;
             string message = exception.Message;
 
-            // Xətanı log faylında saxla
             _logger.LogError(exception, "Unhandled exception occurred.");
 
             if (exception is BaseException baseEx)

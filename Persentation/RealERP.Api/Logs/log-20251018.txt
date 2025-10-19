@@ -1,0 +1,102 @@
+2025-10-18 22:18:50.820 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-18 22:18:51.971 +04:00 [INF] Now listening on: https://localhost:7148
+2025-10-18 22:18:51.971 +04:00 [INF] Now listening on: http://localhost:5116
+2025-10-18 22:18:52.023 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-18 22:18:52.024 +04:00 [INF] Hosting environment: Development
+2025-10-18 22:18:52.024 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-10-18 22:18:53.156 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-10-18 22:18:53.693 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-18 22:18:53.693 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-10-18 22:18:53.717 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 572.127ms
+2025-10-18 22:18:53.718 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 24.3894ms
+2025-10-18 22:18:53.810 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 118.5116ms
+2025-10-18 22:18:53.860 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-10-18 22:18:53.884 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.3696ms
+2025-10-18 22:19:13.948 +04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7148/api/Warehouse/delete-warehouse?id=5 - null null
+2025-10-18 22:19:13.959 +04:00 [INF] CORS policy execution successful.
+2025-10-18 22:19:16.796 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api)'
+2025-10-18 22:19:16.865 +04:00 [INF] Route matched with {action = "DeleteWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteWarehouse(Int32) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-18 22:19:24.267 +04:00 [INF] Executed DbCommand (316ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Description], [w].[Location], [w].[Name]
+FROM [Warehouses] AS [w]
+WHERE [w].[Id] = @__id_0
+2025-10-18 22:19:24.777 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api) in 7897.1713ms
+2025-10-18 22:19:24.781 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api)'
+2025-10-18 22:19:25.234 +04:00 [ERR] Unhandled exception occurred.
+RealERP.Application.Exceptions.NotFoundException: Warehouse with id 5 not found
+   at RealERP.Persistence.Service.WarehouseService.DeleteWarehouseAsync(Int32 id) in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Service\WarehouseService.cs:line 32
+   at RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseDelete.WarehouseDeleteCommandHandler.Handle(WarehouseDeleteCommandRequest request, CancellationToken cancellationToken) in D:\GitHub test\real-erp-backend\Core\RealERP.Application\Abstraction\Features\Command\Warehouse\WarehouseDelete\WarehouseDeleteCommandHandler.cs:line 19
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at RealERP.Api.Controllers.WarehouseController.DeleteWarehouse(Int32 id) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Controllers\WarehouseController.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at RealERP.Infrastructure.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Middlewares\ExceptionsMiddleware.cs:line 25
+2025-10-18 22:19:25.650 +04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7148/api/Warehouse/delete-warehouse?id=5 - 404 null application/json 11701.6019ms
+2025-10-18 22:19:32.876 +04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7148/api/Warehouse/delete-warehouse?id=1 - null null
+2025-10-18 22:19:32.894 +04:00 [INF] CORS policy execution successful.
+2025-10-18 22:19:32.900 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api)'
+2025-10-18 22:19:32.900 +04:00 [INF] Route matched with {action = "DeleteWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteWarehouse(Int32) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-18 22:19:33.083 +04:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Description], [w].[Location], [w].[Name]
+FROM [Warehouses] AS [w]
+WHERE [w].[Id] = @__id_0
+2025-10-18 22:19:33.627 +04:00 [INF] Executed DbCommand (107ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [Warehouses]
+OUTPUT 1
+WHERE [Id] = @p0;
+2025-10-18 22:19:33.712 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseDelete.WarehouseDeleteCommandResponse'.
+2025-10-18 22:19:33.725 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api) in 824.6843ms
+2025-10-18 22:19:33.726 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.DeleteWarehouse (RealERP.Api)'
+2025-10-18 22:19:33.730 +04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7148/api/Warehouse/delete-warehouse?id=1 - 200 null application/json; charset=utf-8 855.7881ms
+2025-10-18 22:19:46.722 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/api/Warehouse/get-by-id-warehouse?id=1 - null null
+2025-10-18 22:19:46.734 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.WarehouseController.GetByIdWarehouse (RealERP.Api)'
+2025-10-18 22:19:46.747 +04:00 [INF] Route matched with {action = "GetByIdWarehouse", controller = "Warehouse"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByIdWarehouse(Int32) on controller RealERP.Api.Controllers.WarehouseController (RealERP.Api).
+2025-10-18 22:19:46.839 +04:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Description], [w].[Location], [w].[Name]
+FROM [Warehouses] AS [w]
+WHERE [w].[Id] = @__id_0
+2025-10-18 22:19:49.393 +04:00 [INF] Executed action RealERP.Api.Controllers.WarehouseController.GetByIdWarehouse (RealERP.Api) in 2646.055ms
+2025-10-18 22:19:49.395 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.WarehouseController.GetByIdWarehouse (RealERP.Api)'
+2025-10-18 22:19:49.463 +04:00 [ERR] Unhandled exception occurred.
+RealERP.Application.Exceptions.NotFoundException: Warehouse with id 1 not found
+   at RealERP.Persistence.Service.WarehouseService.GetByIdWarehouseAsync(Int32 id) in D:\GitHub test\real-erp-backend\Infrastructure\RealERP.Persistence\Service\WarehouseService.cs:line 43
+   at RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse.GetByIdWarehouseQueryHandler.Handle(GetByIdWarehouseQueryRequest request, CancellationToken cancellationToken) in D:\GitHub test\real-erp-backend\Core\RealERP.Application\Abstraction\Features\Query\Warehouse\GetByIdWarehouse\GetByIdWarehouseQueryHandler.cs:line 20
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at RealERP.Api.Controllers.WarehouseController.GetByIdWarehouse(Int32 id) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Controllers\WarehouseController.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at RealERP.Infrastructure.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in D:\GitHub test\real-erp-backend\Persentation\RealERP.Api\Middlewares\ExceptionsMiddleware.cs:line 25
+2025-10-18 22:19:49.469 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/api/Warehouse/get-by-id-warehouse?id=1 - 404 null application/json 2748.7995ms

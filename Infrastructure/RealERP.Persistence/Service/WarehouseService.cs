@@ -1,6 +1,4 @@
-﻿
-using Azure.Core;
-using RealERP.Application.Abstraction.Service;
+﻿using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs.ResponseDto;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.WarehouseRepository;
@@ -23,6 +21,17 @@ namespace RealERP.Persistence.Service
         {
             bool status = await _warehouseRepository.AddAsync(warehouse);
             await _warehouseRepository.SaveAsync(); 
+            return status;
+        }
+
+        public async Task<bool> DeleteWarehouseAsync(int id)
+        {
+           bool status = _warehouseRepository.Delete(id);
+           if(!status)
+            {
+                throw new NotFoundException($"Warehouse with id {id} not found");
+            }
+            await _warehouseRepository.SaveAsync();
             return status;
         }
 

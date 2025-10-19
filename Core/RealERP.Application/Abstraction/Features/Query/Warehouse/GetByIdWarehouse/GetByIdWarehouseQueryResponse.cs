@@ -1,4 +1,4 @@
-﻿namespace RealERP.Application.Abstraction.Features.Query.Warehouse
+﻿namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse
 {
     public class GetByIdWarehouseQueryResponse
     {

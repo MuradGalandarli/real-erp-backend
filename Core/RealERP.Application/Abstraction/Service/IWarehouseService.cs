@@ -8,5 +8,6 @@ namespace RealERP.Application.Abstraction.Service
         public Task<bool> AddWarehouseAsync(Warehouse warehouse);
         public Task<bool> UpdateWarehouseAsync(Warehouse warehouse);
         public Task<WarehouseResponseDto> GetByIdWarehouseAsync(int id);
+        public Task<bool> DeleteWarehouseAsync(int id);
     }
 }

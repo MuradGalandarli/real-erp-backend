@@ -4,7 +4,7 @@ using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs.ResponseDto;
 using RealERP.Application.Exceptions;
 
-namespace RealERP.Application.Abstraction.Features.Query.Warehouse
+namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse
 {
     public class GetByIdWarehouseQueryHandler : IRequestHandler<GetByIdWarehouseQueryRequest, GetByIdWarehouseQueryResponse>
     {
@@ -17,8 +17,8 @@ namespace RealERP.Application.Abstraction.Features.Query.Warehouse
 
         public async Task<GetByIdWarehouseQueryResponse> Handle(GetByIdWarehouseQueryRequest request, CancellationToken cancellationToken)
         {
-           WarehouseResponseDto warehouseResponseDto = await _warehouseService.GetByIdWarehouseAsync(request.Id);
-          
+            WarehouseResponseDto warehouseResponseDto = await _warehouseService.GetByIdWarehouseAsync(request.Id);
+
             return new()
             {
                 Id = warehouseResponseDto.Id,
