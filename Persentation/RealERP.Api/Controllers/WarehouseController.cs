@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseDelete;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate;
+using RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse;
 
 namespace RealERP.Api.Controllers
@@ -42,6 +43,14 @@ namespace RealERP.Api.Controllers
             WarehouseDeleteCommandRequest warehouseDeleteCommandRequest = new() { Id = id };
             WarehouseDeleteCommandResponse warehouseDeleteCommandResponse = await _mediator.Send(warehouseDeleteCommandRequest);
             return Ok(warehouseDeleteCommandResponse);
+        }
+        [HttpGet("get-all-warehouse")]
+        public async Task<IActionResult> GetAllWarehouse(int page, int size)
+        {
+            GetAllWarehouseQueryRequest getAllWarehouseQueryRequest = new() { Page = page, Size = size };
+            List<GetAllWarehouseQueryResponse> getAllWarehouseQueryResponse = await _mediator.Send(getAllWarehouseQueryRequest);
+            return Ok(getAllWarehouseQueryResponse);
+
         }
     }
 }
