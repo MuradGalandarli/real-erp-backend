@@ -3,7 +3,7 @@
 using MediatR;
 using RealERP.Application.Abstraction.Service;
 
-namespace RealERP.Application.Abstraction.Features.Command.Brand
+namespace RealERP.Application.Abstraction.Features.Command.Brand.AddBrand
 {
     public class AddBrandCommandHandler : IRequestHandler<AddBrandCommandRequest, AddBrandCommandResponse>
     {
@@ -16,7 +16,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Brand
 
         public async Task<AddBrandCommandResponse> Handle(AddBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            bool status = await _brandService.AddBrnad(new() { Name = request.BrandName });
+            bool status = await _brandService.AddBrnadAsync(new() { Name = request.BrandName });
             return new()
             {
                 Status = status,

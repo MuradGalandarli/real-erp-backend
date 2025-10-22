@@ -15,12 +15,20 @@ namespace RealERP.Persistence.Service
             _writeBrandRepository = writeBrandRepository;
         }
 
-        public async Task<bool> AddBrnad(Brand brand)
+        public async Task<bool> AddBrnadAsync(Brand brand)
         {
             bool status = await _writeBrandRepository.AddAsync(brand);
             if (status)
                 await _writeBrandRepository.SaveAsync();
 
+            return status;
+        }
+
+        public async Task<bool> UpdateBrandAsync(Brand brand)
+        {
+            bool status = _writeBrandRepository.Update(brand);
+            if (status)
+            await _writeBrandRepository.SaveAsync();
             return status;
         }
     }

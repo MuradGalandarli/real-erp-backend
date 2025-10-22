@@ -1,4 +1,4 @@
-﻿namespace RealERP.Application.Abstraction.Features.Command.Brand
+﻿namespace RealERP.Application.Abstraction.Features.Command.Brand.AddBrand
 {
     public class AddBrandCommandResponse
     {

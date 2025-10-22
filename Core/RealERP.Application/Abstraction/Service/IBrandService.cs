@@ -6,6 +6,7 @@ namespace RealERP.Application.Abstraction.Service
 {
     public interface IBrandService
     {
-        public Task<bool> AddBrnad(Brand brand);
+        public Task<bool> AddBrnadAsync(Brand brand);
+        public Task<bool> UpdateBrandAsync(Brand brand);
     }
 }
