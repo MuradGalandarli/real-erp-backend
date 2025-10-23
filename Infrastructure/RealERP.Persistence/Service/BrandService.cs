@@ -9,11 +9,15 @@ namespace RealERP.Persistence.Service
     public class BrandService : IBrandService
     {
         private readonly IWriteBrandRepository _writeBrandRepository;
+        private readonly IReadBrandRepository _readBrandRepository;
 
-        public BrandService(IWriteBrandRepository writeBrandRepository)
+        public BrandService(IReadBrandRepository readBrandRepository, IWriteBrandRepository writeBrandRepository)
         {
+            _readBrandRepository = readBrandRepository;
             _writeBrandRepository = writeBrandRepository;
         }
+
+
 
         public async Task<bool> AddBrnadAsync(Brand brand)
         {
@@ -21,6 +25,14 @@ namespace RealERP.Persistence.Service
             if (status)
                 await _writeBrandRepository.SaveAsync();
 
+            return status;
+        }
+
+        public async Task<bool> DeleteBrandAsync(int id)
+        {
+            bool status = _writeBrandRepository.Delete(id);
+            if (status)
+            await _writeBrandRepository.SaveAsync();
             return status;
         }
 
