@@ -1,5 +1,6 @@
 ﻿
 using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.BrandRepository;
 using RealERP.Domain.Entities;
 
@@ -34,6 +35,14 @@ namespace RealERP.Persistence.Service
             if (status)
             await _writeBrandRepository.SaveAsync();
             return status;
+        }
+
+        public async Task<Brand> GetByIdBrand(int id)
+        {
+            Brand brand = await _readBrandRepository.GetByIdAsync(id);
+            if (brand == null)
+                throw new NotFoundException($"Brand with id {id} not found");
+            return brand;
         }
 
         public async Task<bool> UpdateBrandAsync(Brand brand)
