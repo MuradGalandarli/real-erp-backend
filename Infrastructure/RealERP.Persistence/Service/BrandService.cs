@@ -37,7 +37,13 @@ namespace RealERP.Persistence.Service
             return status;
         }
 
-        public async Task<Brand> GetByIdBrand(int id)
+        public List<Brand> GetAllBrand(int page, int size)
+        {
+           IQueryable<Brand> brands = _readBrandRepository.GetAll().Skip((page - 1)*size).Take(size);
+            return brands.ToList(); 
+        }
+
+        public async Task<Brand> GetByIdBrandAsync(int id)
         {
             Brand brand = await _readBrandRepository.GetByIdAsync(id);
             if (brand == null)

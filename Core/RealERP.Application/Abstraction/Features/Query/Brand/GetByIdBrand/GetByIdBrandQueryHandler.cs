@@ -16,9 +16,10 @@ namespace RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand
 
         public async Task<GetByIdBrandQueryResponse> Handle(GetByIdBrandQueryRequest request, CancellationToken cancellationToken)
         {
-           Domain.Entities.Brand brand = await _brandService.GetByIdBrand(request.Id);
+           Domain.Entities.Brand brand = await _brandService.GetByIdBrandAsync(request.Id);
             return new()
             {
+                Id = request.Id,
                 BrandName = brand.Name,
             };
         }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Brand.AddBrand;
 using RealERP.Application.Abstraction.Features.Command.Brand.DeleteBrand;
 using RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand;
+using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 
 namespace RealERP.Api.Controllers
@@ -46,5 +47,12 @@ namespace RealERP.Api.Controllers
             return Ok(getByIdBrandQueryResponse);
         }
 
+        [HttpGet("get-all-brnad")]
+        public async Task<IActionResult> GetAllBrand([FromQuery]int page, [FromQuery]int size)
+        {
+            GetAllBrandQueryRequest getAllBrandQueryRequest = new() { Page = page, Size = size };
+            List<GetAllBrandQueryResponse> getAllBrandQueryResponse = await _mediator.Send(getAllBrandQueryRequest);
+            return Ok(getAllBrandQueryResponse);    
+        }
     }
 }
