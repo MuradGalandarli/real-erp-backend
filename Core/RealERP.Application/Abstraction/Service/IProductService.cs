@@ -8,5 +8,6 @@ namespace RealERP.Application.Abstraction.Service
     public interface IProductService
     {
         public Task<bool> AddProductAsync(ProductRequestDto productRequestDto);
+        public Task<bool> UpdateProductAsync(ProductRequestDto productRequestDto);
     }
 }

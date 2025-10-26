@@ -27,5 +27,22 @@ namespace RealERP.Persistence.Service
                await _writeProductRepository.SaveAsync();
             return status;
         }
+
+        public async Task<bool> UpdateProductAsync(ProductRequestDto productRequestDto)
+        {
+           bool status = _writeProductRepository.Update(new()
+            {
+                Id = productRequestDto.Id,
+                Name = productRequestDto.Name,
+                BrandId = productRequestDto.BrandId,
+                CategoryId = productRequestDto.CategoryId,
+                Description = productRequestDto.Description,
+                
+            });
+            if(status)
+           await _writeProductRepository.SaveAsync();
+
+            return status;
+        }
     }
 }

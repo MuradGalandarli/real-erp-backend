@@ -3,11 +3,11 @@
 using MediatR;
 using RealERP.Application.Abstraction.Service;
 
-namespace RealERP.Application.Abstraction.Features.Command.Product
+namespace RealERP.Application.Abstraction.Features.Command.Product.AddProduct
 {
     public class AddProductCommandHandler : IRequestHandler<AddProductCommandRequest, AddProductCommandResponse>
     {
-       private readonly IProductService _productService;
+        private readonly IProductService _productService;
 
         public AddProductCommandHandler(IProductService productService)
         {

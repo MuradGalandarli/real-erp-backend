@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace RealERP.Application.Abstraction.Features.Command.Product
+namespace RealERP.Application.Abstraction.Features.Command.Product.AddProduct
 {
-    public class AddProductCommandRequest:IRequest<AddProductCommandResponse>
+    public class AddProductCommandRequest : IRequest<AddProductCommandResponse>
     {
         public string Name { get; set; }
         public string? Description { get; set; }

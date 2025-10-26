@@ -1,16 +1,13 @@
-﻿
+﻿using MediatR;
 
-using RealERP.Domain.Entities;
-
-namespace RealERP.Application.DTOs.RequestDto
+namespace RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct
 {
-    public class ProductRequestDto
+    public class UpdateProductCommandRequest:IRequest<UpdateProductCommandResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public int BrandId { get; set; }
         public int CategoryId { get; set; }
-       
     }
 }
