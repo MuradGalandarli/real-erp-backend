@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Product.AddProduct;
+using RealERP.Application.Abstraction.Features.Command.Product.DeleteProduct;
 using RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct;
 
 namespace RealERP.Api.Controllers
@@ -29,5 +30,11 @@ namespace RealERP.Api.Controllers
             UpdateProductCommandResponse updateProductCommandResponse = await _mediator.Send(updateProductCommandRequest);
             return Ok(updateProductCommandResponse);    
         }
+        [HttpDelete("delete-product")]
+        public async Task<IActionResult> DeleteProduct([FromQuery]int id)
+        {
+            DeleteProductCommandRequest deleteProductCommandRequest = new() { Id = id };
+            DeleteProductCommandResponse deleteProductCommandResponse = await _mediator.Send(deleteProductCommandRequest);
+            return Ok(deleteProductCommandResponse);
     }
 }

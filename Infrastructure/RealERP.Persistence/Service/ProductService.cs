@@ -28,6 +28,14 @@ namespace RealERP.Persistence.Service
             return status;
         }
 
+        public async Task<bool> DeleteProductAsync(int id)
+        {
+           bool status = _writeProductRepository.Delete(id);
+            if (status)
+                await _writeProductRepository.SaveAsync();
+            return status;
+        }
+
         public async Task<bool> UpdateProductAsync(ProductRequestDto productRequestDto)
         {
            bool status = _writeProductRepository.Update(new()
