@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
-using RealERP.Application.DTOs.ResponseDto;
+using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.WarehouseRepository;
 using RealERP.Domain.Entities;
@@ -36,10 +36,10 @@ namespace RealERP.Persistence.Service
             return status;
         }
 
-        public List<WarehouseResponseDto> GetAllWarehouse(int page, int size)
+        public List<WarehouseDto> GetAllWarehouse(int page, int size)
         {
            IQueryable<Warehouse> warehouses = _readWarehouseRepository.GetAll().Skip((page - 1)*size).Take(size);
-            return warehouses.Select(w => new WarehouseResponseDto
+            return warehouses.Select(w => new WarehouseDto
             {
                 Description = w.Description,
                 Id = w.Id,
@@ -48,7 +48,7 @@ namespace RealERP.Persistence.Service
             }).ToList();
         }
 
-        public async Task<WarehouseResponseDto> GetByIdWarehouseAsync(int id)
+        public async Task<WarehouseDto> GetByIdWarehouseAsync(int id)
         {
             Warehouse warehouse = await _readWarehouseRepository.GetByIdAsync(id);
             if (warehouse == null)

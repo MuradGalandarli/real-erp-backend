@@ -1,6 +1,4 @@
-﻿
-
-namespace RealERP.Application.DTOs.ResponseDto
+﻿namespace RealERP.Application.DTOs
 {
     public class ErrorResponse
     {

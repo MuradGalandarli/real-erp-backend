@@ -1,7 +1,7 @@
 ﻿
 using MediatR;
 using RealERP.Application.Abstraction.Service;
-using RealERP.Application.DTOs.ResponseDto;
+using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 
 namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse
@@ -17,7 +17,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWareho
 
         public async Task<GetByIdWarehouseQueryResponse> Handle(GetByIdWarehouseQueryRequest request, CancellationToken cancellationToken)
         {
-            WarehouseResponseDto warehouseResponseDto = await _warehouseService.GetByIdWarehouseAsync(request.Id);
+            WarehouseDto warehouseResponseDto = await _warehouseService.GetByIdWarehouseAsync(request.Id);
 
             return new()
             {

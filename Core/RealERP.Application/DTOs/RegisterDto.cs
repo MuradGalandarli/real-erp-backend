@@ -1,8 +1,9 @@
-﻿namespace RealERP.Application.DTOs.RequestDto
+﻿namespace RealERP.Application.DTOs
 {
-    public class LoginDto
+    public class RegisterDto
     {
         public string? Username { get; set; }
+        public string? Email { get; set; }
         public string? Password { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace RealERP.Application.DTOs.ResponseDto
+﻿namespace RealERP.Application.DTOs
 {
-    public class WarehouseResponseDto
+    public class WarehouseDto
     {
         public int Id { get; set; }
         public string? Name { get; set; }

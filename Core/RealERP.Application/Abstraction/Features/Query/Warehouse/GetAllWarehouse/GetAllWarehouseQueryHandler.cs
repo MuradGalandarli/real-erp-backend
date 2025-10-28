@@ -2,8 +2,7 @@
 
 using MediatR;
 using RealERP.Application.Abstraction.Service;
-using RealERP.Application.DTOs.ResponseDto;
-
+using RealERP.Application.DTOs;
 
 namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse
 {
@@ -18,7 +17,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehou
 
         public async Task<List<GetAllWarehouseQueryResponse>> Handle(GetAllWarehouseQueryRequest request, CancellationToken cancellationToken)
         {
-            List<WarehouseResponseDto> warehouseResponseDtos =  _warehouseService.GetAllWarehouse(request.Page, request.Size);
+            List<WarehouseDto> warehouseResponseDtos =  _warehouseService.GetAllWarehouse(request.Page, request.Size);
 
             return warehouseResponseDtos.Select(w => new GetAllWarehouseQueryResponse()
             {
