@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using RealERP.Application.Abstraction.Features.Command.Product.AddProduct;
 using RealERP.Application.Abstraction.Features.Command.Product.DeleteProduct;
 using RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct;
+using RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct;
 using RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct;
 
 namespace RealERP.Api.Controllers
@@ -39,12 +41,21 @@ namespace RealERP.Api.Controllers
             return Ok(deleteProductCommandResponse);
         }
         [HttpGet("get-by-id-product")]
-        public async Task<IActionResult> GetByIdProduct([FromQuery]int id)
+        public async Task<IActionResult> GetByIdProduct([FromQuery] int id)
         {
             GetByIdProductCommandRequest getByIdProductCommandRequest = new() { Id = id };
             GetByIdProductCommandResponse getByIdProductCommandResponse = await _mediator.Send(getByIdProductCommandRequest);
             return Ok(getByIdProductCommandResponse);
+        }
 
+        [HttpGet("get-all-product")]
+        public async Task<IActionResult> GetAllProduct([FromQuery] int page, [FromQuery]int size)
+        {
+            GetAllProductQueryRequest getAllProductQueryRequest = new() { Page = page, Size = size };
+            List<GetAllProductQueryResponse> getAllProductQueryResponse = await _mediator.Send(getAllProductQueryRequest);    
+            return Ok(getAllProductQueryResponse);  
+
+        }
 
     }
 }

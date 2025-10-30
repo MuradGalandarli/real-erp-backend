@@ -1,6 +1,7 @@
 ﻿
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
+using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
 
@@ -33,14 +34,35 @@ namespace RealERP.Persistence.Service
         public async Task<bool> DeleteProductAsync(int id)
         {
            bool status = _writeProductRepository.Delete(id);
-            if (status)
-                await _writeProductRepository.SaveAsync();
+            if (!status)
+            {
+                throw new NotFoundException($"Warehouse with id {id} not found");
+            }
+            await _writeProductRepository.SaveAsync();
             return status;
+        }
+
+        public List<ProductDto> GetAllProduct(int page, int size)
+        {
+           IQueryable<Product> products = _readProductRepository.GetAll().Skip((page - 1) * size).Take(size);
+            return products.Select(p => new ProductDto()
+            {
+                Name = p.Name,
+                BrandId = p.BrandId,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                Id = p.Id
+            }).ToList();
+
         }
 
         public async Task<ProductDto> GetByIdProduct(int id)
         {
           Product product = await _readProductRepository.GetByIdAsync(id);
+            if (product == null)
+            {
+                throw new NotFoundException($"Warehouse with id {id} not found");
+            }
             return new()
             {
                 BrandId = product.BrandId,

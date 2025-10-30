@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RealERP.Application.DTOs.ResponseDto;
+using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using System.Net;
 
