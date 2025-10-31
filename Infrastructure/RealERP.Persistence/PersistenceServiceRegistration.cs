@@ -30,6 +30,7 @@ namespace RealERP.Persistence
             services.AddScoped<IWriteProductRepository, WriteProductRepository>();
             services.AddScoped<IReadProductRepository, ReadProductRepository>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IAuthService, AuthService>();
 
         }
     }

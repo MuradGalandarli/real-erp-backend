@@ -6,16 +6,16 @@ namespace RealERP.Application.Abstraction.Features.Command.Login
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommandRequest, LoginCommandResponse>
     {
-        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
 
-        public LoginCommandHandler(IUserService userService)
+        public LoginCommandHandler(IAuthService authService)
         {
-            _userService = userService;
+            _authService = authService;
         }
 
         async Task<LoginCommandResponse> IRequestHandler<LoginCommandRequest, LoginCommandResponse>.Handle(LoginCommandRequest request, CancellationToken cancellationToken)
         {
-            LoginResponseDto loginResponseDto = await _userService.LoginAsync(new() { Username = request.Username, Password = request.Password });
+            LoginResponseDto loginResponseDto = await _authService.LoginAsync(new() { Username = request.Username, Password = request.Password });
             return new()
             {
                 Expiration = loginResponseDto.Expiration,

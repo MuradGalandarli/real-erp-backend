@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealERP.Domain.Entities;
 
+
 namespace RealERP.Persistence.Context
 {
     public class ApplicationDbContext:IdentityDbContext
@@ -13,5 +14,7 @@ namespace RealERP.Persistence.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<WarehouseProduct> WarehouseProducts { get; set; }
+        public DbSet<Department> Departments { get; set; }
+       
     }
 }

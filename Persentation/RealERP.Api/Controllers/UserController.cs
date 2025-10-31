@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
+using RealERP.Application.Abstraction.Features.Query.AppUser;
 
 namespace RealERP.Api.Controllers
 {
@@ -23,7 +24,13 @@ namespace RealERP.Api.Controllers
            CreateUserCommandResponse createUserCommandResponse = await _mediator.Send(createUserCommnadRequest);
             return Ok(createUserCommandResponse);
         }
-
+        [HttpGet("get-all-user")]
+        public async Task<IActionResult> GetAllUser(int page, int size)
+        {
+            GetAllUserQueryRequest getAllUserQueryRequest = new() { Page = page, Size = size };
+            List<GetAllUserQueryResponse> getAllUserQueryResponses = await _mediator.Send(getAllUserQueryRequest);
+            return Ok(getAllUserQueryResponses);
+        }
 
     }
 }

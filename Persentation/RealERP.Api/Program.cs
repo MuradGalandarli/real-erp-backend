@@ -5,11 +5,10 @@ using Microsoft.IdentityModel.Tokens;
 using RealERP.Application;
 using RealERP.Persistence.Context;
 using System.Text;
-using RealERP.Application.Abstraction.Service;
-using RealERP.Persistence.Service;
 using Serilog;
 using RealERP.Persistence;
 using RealERP.Infrastructure.Middlewares;
+using RealERP.Domain.Entities.User;
 
 namespace RealERP.Api
 {
@@ -34,7 +33,7 @@ namespace RealERP.Api
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
             })
