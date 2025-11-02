@@ -1,0 +1,106 @@
+2025-11-01 17:31:02.410 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-01 17:31:03.015 +04:00 [INF] Now listening on: https://localhost:7148
+2025-11-01 17:31:03.015 +04:00 [INF] Now listening on: http://localhost:5116
+2025-11-01 17:31:03.076 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-01 17:31:03.076 +04:00 [INF] Hosting environment: Development
+2025-11-01 17:31:03.076 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-11-01 17:31:03.815 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-11-01 17:31:04.280 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 477.6392ms
+2025-11-01 17:31:04.341 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-01 17:31:04.344 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-11-01 17:31:04.353 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 11.8179ms
+2025-11-01 17:31:04.613 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 268.8642ms
+2025-11-01 17:31:04.688 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-11-01 17:31:04.743 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 55.0074ms
+2025-11-01 17:31:32.033 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Brand/update-brand - application/json 38
+2025-11-01 17:31:32.041 +04:00 [INF] CORS policy execution successful.
+2025-11-01 17:31:34.837 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.BrandController.UpdateBrnad (RealERP.Api)'
+2025-11-01 17:31:34.864 +04:00 [INF] Route matched with {action = "UpdateBrnad", controller = "Brand"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateBrnad(RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand.BrandUpdateCommandRequest) on controller RealERP.Api.Controllers.BrandController (RealERP.Api).
+2025-11-01 17:31:37.336 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand.BrandUpdateCommandResponse'.
+2025-11-01 17:31:37.342 +04:00 [INF] Executed action RealERP.Api.Controllers.BrandController.UpdateBrnad (RealERP.Api) in 2474.3476ms
+2025-11-01 17:31:37.343 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.BrandController.UpdateBrnad (RealERP.Api)'
+2025-11-01 17:31:37.347 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Brand/update-brand - 200 null application/json; charset=utf-8 5314.7874ms
+2025-11-01 17:58:55.418 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-01 17:58:56.065 +04:00 [INF] Now listening on: https://localhost:7148
+2025-11-01 17:58:56.066 +04:00 [INF] Now listening on: http://localhost:5116
+2025-11-01 17:58:56.110 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-01 17:58:56.111 +04:00 [INF] Hosting environment: Development
+2025-11-01 17:58:56.111 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-11-01 17:58:57.092 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-11-01 17:58:57.479 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 393.1777ms
+2025-11-01 17:58:57.481 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-01 17:58:57.481 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-11-01 17:58:57.490 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 7.4353ms
+2025-11-01 17:58:57.567 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.5658ms
+2025-11-01 17:58:57.623 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-11-01 17:58:57.656 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.0206ms
+2025-11-01 17:59:22.581 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7148/api/Category/add-category - application/json 49
+2025-11-01 17:59:22.621 +04:00 [INF] CORS policy execution successful.
+2025-11-01 17:59:26.460 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api)'
+2025-11-01 17:59:26.525 +04:00 [INF] Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCategory(RealERP.Application.Abstraction.Features.Command.Category.AddCategory.AddCategoryCommandRequest) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 17:59:34.833 +04:00 [INF] Executed DbCommand (397ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categories] ([Description], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2025-11-01 17:59:35.029 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Category.AddCategory.AddCategoryCommandResponse'.
+2025-11-01 17:59:35.046 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api) in 8511.6945ms
+2025-11-01 17:59:35.048 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api)'
+2025-11-01 17:59:35.103 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7148/api/Category/add-category - 200 null application/json; charset=utf-8 12522.4412ms
+2025-11-01 18:02:57.919 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/api/Category/get-by-id-category - null null
+2025-11-01 18:02:57.944 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api)'
+2025-11-01 18:02:57.949 +04:00 [INF] Route matched with {action = "GetByIdCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByIdCategory(Int32) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 18:02:58.339 +04:00 [INF] Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0
+2025-11-01 18:02:58.343 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Query.Category.GetById.GetByIdCategoryQueryResponse'.
+2025-11-01 18:02:58.345 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api) in 396.0149ms
+2025-11-01 18:02:58.345 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api)'
+2025-11-01 18:02:58.346 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/api/Category/get-by-id-category - 200 null application/json; charset=utf-8 427.2684ms
+2025-11-01 18:04:53.835 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/api/Category/get-by-id-category - null null
+2025-11-01 18:04:53.852 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api)'
+2025-11-01 18:04:53.852 +04:00 [INF] Route matched with {action = "GetByIdCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByIdCategory(Int32) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 18:04:53.871 +04:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0
+2025-11-01 18:04:53.872 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Query.Category.GetById.GetByIdCategoryQueryResponse'.
+2025-11-01 18:04:53.872 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api) in 20.1535ms
+2025-11-01 18:04:53.872 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.GetByIdCategory (RealERP.Api)'
+2025-11-01 18:04:53.872 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/api/Category/get-by-id-category - 200 null application/json; charset=utf-8 37.1116ms
+2025-11-01 18:07:57.647 +04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7148/api/Category/delete-category - null null
+2025-11-01 18:07:57.647 +04:00 [INF] CORS policy execution successful.
+2025-11-01 18:07:57.648 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.DeleteCategory (RealERP.Api)'
+2025-11-01 18:07:57.656 +04:00 [INF] Route matched with {action = "DeleteCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteCategory(Int32) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 18:07:57.690 +04:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0
+2025-11-01 18:07:57.696 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory.DeleteCategoryCommandResponse'.
+2025-11-01 18:07:57.697 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.DeleteCategory (RealERP.Api) in 40.7679ms
+2025-11-01 18:07:57.697 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.DeleteCategory (RealERP.Api)'
+2025-11-01 18:07:57.698 +04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7148/api/Category/delete-category - 200 null application/json; charset=utf-8 51.3747ms
+2025-11-01 18:09:45.619 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7148/api/Category/add-category - application/json 49
+2025-11-01 18:09:45.628 +04:00 [INF] CORS policy execution successful.
+2025-11-01 18:09:45.629 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api)'
+2025-11-01 18:09:45.630 +04:00 [INF] Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCategory(RealERP.Application.Abstraction.Features.Command.Category.AddCategory.AddCategoryCommandRequest) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 18:09:45.642 +04:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categories] ([Description], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2025-11-01 18:09:45.642 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Category.AddCategory.AddCategoryCommandResponse'.
+2025-11-01 18:09:45.643 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api) in 12.9493ms
+2025-11-01 18:09:45.643 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.AddCategory (RealERP.Api)'
+2025-11-01 18:09:45.643 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7148/api/Category/add-category - 200 null application/json; charset=utf-8 26.8061ms
+2025-11-01 18:12:08.947 +04:00 [INF] Request starting HTTP/2 PUT https://localhost:7148/api/Category/update-category - application/json 60
+2025-11-01 18:12:08.948 +04:00 [INF] CORS policy execution successful.
+2025-11-01 18:12:08.948 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CategoryController.UpdateCategory (RealERP.Api)'
+2025-11-01 18:12:08.966 +04:00 [INF] Route matched with {action = "UpdateCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCategory(RealERP.Application.Abstraction.Features.Command.Category.UpdateCategory.UpdateCategoryCommandRequest) on controller RealERP.Api.Controllers.CategoryController (RealERP.Api).
+2025-11-01 18:12:08.980 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Category.UpdateCategory.UpdateCategoryCommandResponse'.
+2025-11-01 18:12:08.981 +04:00 [INF] Executed action RealERP.Api.Controllers.CategoryController.UpdateCategory (RealERP.Api) in 15.4253ms
+2025-11-01 18:12:08.982 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CategoryController.UpdateCategory (RealERP.Api)'
+2025-11-01 18:12:08.982 +04:00 [INF] Request finished HTTP/2 PUT https://localhost:7148/api/Category/update-category - 200 null application/json; charset=utf-8 40.6712ms
