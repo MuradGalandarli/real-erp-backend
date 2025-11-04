@@ -36,7 +36,7 @@ namespace RealERP.Persistence.Service
            bool status = _writeProductRepository.Delete(id);
             if (!status)
             {
-                throw new NotFoundException($"Warehouse with id {id} not found");
+                throw new NotFoundException($"Product with id {id} not found");
             }
             await _writeProductRepository.SaveAsync();
             return status;
@@ -61,7 +61,7 @@ namespace RealERP.Persistence.Service
           Product product = await _readProductRepository.GetByIdAsync(id);
             if (product == null)
             {
-                throw new NotFoundException($"Warehouse with id {id} not found");
+                throw new NotFoundException($"Product with id {id} not found");
             }
             return new()
             {
