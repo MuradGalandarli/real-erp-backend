@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
+using RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
 
 namespace RealERP.Api.Controllers
@@ -30,6 +31,13 @@ namespace RealERP.Api.Controllers
             GetAllUserQueryRequest getAllUserQueryRequest = new() { Page = page, Size = size };
             List<GetAllUserQueryResponse> getAllUserQueryResponses = await _mediator.Send(getAllUserQueryRequest);
             return Ok(getAllUserQueryResponses);
+        }
+
+        [HttpPut("update-user")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommandRequest updateUserCommandRequest)
+        {
+            UpdateUserCommandResponse updateUserCommandResponse = await _mediator.Send(updateUserCommandRequest);
+            return Ok(updateUserCommandResponse);
         }
 
     }

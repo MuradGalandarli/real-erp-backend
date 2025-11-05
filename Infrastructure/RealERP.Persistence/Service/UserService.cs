@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
+using RealERP.Application.Exceptions;
 using RealERP.Application.Roles;
 using RealERP.Domain.Entities.User;
 
@@ -32,7 +33,8 @@ namespace RealERP.Persistence.Service
                 {
                     Email = register.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    UserName = register.Username
+                    UserName = register.Username,
+                    DepartmentId = register.DepartmentId
                 };
                 var result = await _userManager.CreateAsync(user, register.Password);
                 if (!result.Succeeded)
@@ -58,10 +60,23 @@ namespace RealERP.Persistence.Service
             var users = await _userManager.Users.Skip((Page-1)*Size).Take(Size).ToListAsync();
             return users.Select(u => new UserDto()
             {
-                //DepartmentId = u.DepartmentId,
+                DepartmentId = u.DepartmentId,
                 Name = u.Name,
                 Email = u.Email
             }).ToList();
+        }
+
+        public async Task<bool> UpdateUserAsync(RegisterDto register)
+        {
+            AppUser appUser = new()
+            {
+                Email = register.Email,
+                UserName = register.Username
+
+            };
+            IdentityResult result = await _userManager.UpdateAsync(appUser);
+            return result.Succeeded;
+           
         }
     }
 }
