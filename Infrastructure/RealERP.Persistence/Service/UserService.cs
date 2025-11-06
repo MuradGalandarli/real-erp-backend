@@ -66,6 +66,20 @@ namespace RealERP.Persistence.Service
             }).ToList();
         }
 
+        public async Task<UserDto> GetByEmailUserAsync(string email)
+        {
+            AppUser? appUser = await _userManager.FindByEmailAsync(email);
+            if(appUser == null)
+                throw new NotFoundException($"User with email {email} not found");
+
+            return new()
+            {
+                DepartmentId = appUser.DepartmentId,
+                Email = appUser.Email,
+                Name = appUser.Name,
+            };
+        }
+
         public async Task<bool> UpdateUserAsync(RegisterDto register)
         {
             AppUser appUser = new()
