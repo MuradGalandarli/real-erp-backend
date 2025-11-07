@@ -8,6 +8,7 @@ namespace RealERP.Application.Abstraction.Service
         public Task<List<UserDto>> GetAllUser(int Page, int Size);
         public Task<bool> UpdateUserAsync(RegisterDto register);
         public Task<UserDto> GetByEmailUserAsync(string email);
+        public Task<bool> DeleteUserByEmailAsync(string email);
         
     }
 }

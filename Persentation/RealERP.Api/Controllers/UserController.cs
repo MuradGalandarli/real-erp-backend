@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
+using RealERP.Application.Abstraction.Features.Command.AppUser.DeleteUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
@@ -46,6 +45,13 @@ namespace RealERP.Api.Controllers
         {
             GetByEmailUserCommandResponse getByEmailUserCommandResponse = await _mediator.Send(getByEmailUserCommandRequest);
             return Ok(getByEmailUserCommandResponse);
+        }
+        [HttpDelete("delete-user-by-email")]
+        public async Task<IActionResult> DeleteUser([FromQuery] string email)
+        {
+            DeleteUserCommandRequest deleteUserCommandRequest = new() { Email = email };
+            DeleteUserCommandResponse deleteUserCommandResponse = await _mediator.Send(deleteUserCommandRequest);
+            return Ok(deleteUserCommandResponse);
         }
 
     }

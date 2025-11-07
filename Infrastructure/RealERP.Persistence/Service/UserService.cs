@@ -54,6 +54,16 @@ namespace RealERP.Persistence.Service
                 return new Response { Status = "Success", Message = "User created successfully!" };
             }
         }
+        public async Task<bool> DeleteUserByEmailAsync(string email)
+        {
+            AppUser? appUser = await _userManager.FindByEmailAsync(email);
+            if (appUser == null)
+                throw new NotFoundException($"User with email {email} not found");
+
+           IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
+            return identityResult.Succeeded;
+
+        }
 
         public async Task<List<UserDto>> GetAllUser(int Page, int Size)
         {
