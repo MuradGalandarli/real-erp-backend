@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using RealERP.Application.Abstraction.Features.Command.Department.AddDepartment;
 using RealERP.Application.Abstraction.Features.Command.Department.DeleteDepartment;
+using RealERP.Application.Abstraction.Features.Command.Department.UpdateDepartment;
 using RealERP.Application.Abstraction.Features.Query.Departament.GetAllDepartment;
 using RealERP.Application.Abstraction.Features.Query.Departament.GetByIdDepartment;
 
@@ -44,6 +46,12 @@ namespace RealERP.Api.Controllers
             DeleteDepartmentCommandRequest deleteDepartmentCommandRequest = new() { Id = id };
             DeleteDepartmentCommandResponse deleteDepartmentCommandResponse = await _mediator.Send(deleteDepartmentCommandRequest);
             return Ok(deleteDepartmentCommandResponse);
+        }
+        [HttpPut("update-department")]
+        public async Task<IActionResult> UpdateDepartment([FromBody]UpdateDepartmentCommandRequest updateDepartmentCommandRequest)
+        {
+            UpdateDepartmentCommandResponse updateDepartmentCommandResponse = await _mediator.Send(updateDepartmentCommandRequest);
+            return Ok(updateDepartmentCommandResponse);
         }
     }
 }

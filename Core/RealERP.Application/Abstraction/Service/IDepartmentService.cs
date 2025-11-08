@@ -8,5 +8,6 @@ namespace RealERP.Application.Abstraction.Service
         public List<DepartmentDto> GetAllDepartment(int page,int size);
         public Task<DepartmentDto> GetByIdDepartmentAsync(int id);
         public Task<bool> DeleteDepartmentByIdAsync(int id);
+        public Task<bool> UpdateDepartmentAsync(DepartmentDto department);
     }
 }

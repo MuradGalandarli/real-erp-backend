@@ -1,12 +1,10 @@
 ﻿
 
-using Azure;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Domain.Entities;
-using System.Drawing;
 
 namespace RealERP.Persistence.Service
 {
@@ -51,6 +49,17 @@ namespace RealERP.Persistence.Service
             if(department == null)
                 throw new NotFoundException($"Department with id {id} not found");
             return new() { Id = department.Id, Name = department.Name };    
+        }
+
+        public async Task<bool> UpdateDepartmentAsync(DepartmentDto department)
+        {
+            bool status = _writeDepartmentRepository.Update(new()
+            {
+                Name = department.Name,
+            });
+            if (status)
+               await _writeDepartmentRepository.SaveAsync();
+            return status;
         }
     }
 }
