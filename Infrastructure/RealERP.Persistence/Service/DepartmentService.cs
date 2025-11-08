@@ -29,6 +29,14 @@ namespace RealERP.Persistence.Service
             return status;
         }
 
+        public async Task<bool> DeleteDepartmentByIdAsync(int id)
+        {
+           bool status = _writeDepartmentRepository.Delete(id);
+            if (status)
+                await _writeDepartmentRepository.SaveAsync();
+            return status;
+        }
+
         public List<DepartmentDto> GetAllDepartment(int page, int size)
         {
             IQueryable<Department> departments = _readDepartmentRepository.GetAll().Skip((page - 1) * size).Take(size);
