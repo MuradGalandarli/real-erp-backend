@@ -1,0 +1,12 @@
+﻿using MediatR;
+
+namespace RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee
+{
+    public class AddEmployeeCommandRequest:IRequest<AddEmployeeCommandResponse>
+    {
+        public string FullName { get; set; }
+        public string Position { get; set; }
+        public int DepartmentId { get; set; }
+        public string? UserId { get; set; }
+    }
+}

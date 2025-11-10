@@ -34,7 +34,7 @@ namespace RealERP.Persistence.Service
                     Email = register.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = register.Username,
-                    DepartmentId = register.DepartmentId
+                    //DepartmentId = register.DepartmentId
                 };
                 var result = await _userManager.CreateAsync(user, register.Password);
                 if (!result.Succeeded)
@@ -70,7 +70,7 @@ namespace RealERP.Persistence.Service
             var users = await _userManager.Users.Skip((Page-1)*Size).Take(Size).ToListAsync();
             return users.Select(u => new UserDto()
             {
-                DepartmentId = u.DepartmentId,
+                //DepartmentId = u.DepartmentId,
                 Name = u.Name,
                 Email = u.Email
             }).ToList();
@@ -84,7 +84,7 @@ namespace RealERP.Persistence.Service
 
             return new()
             {
-                DepartmentId = appUser.DepartmentId,
+               // DepartmentId = appUser.DepartmentId,
                 Email = appUser.Email,
                 Name = appUser.Name,
             };
