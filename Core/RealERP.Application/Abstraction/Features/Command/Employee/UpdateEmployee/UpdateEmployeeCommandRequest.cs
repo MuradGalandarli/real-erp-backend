@@ -1,8 +1,8 @@
-﻿
+﻿using MediatR;
 
-namespace RealERP.Application.DTOs
+namespace RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee
 {
-    public class EmployeeDto
+    public class UpdateEmployeeCommandRequest:IRequest<UpdateEmployeeCommandResponse>
     {
         public int Id { get; set; }
         public string FullName { get; set; }

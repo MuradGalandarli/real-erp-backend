@@ -16,7 +16,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee
 
         public async Task<AddEmployeeCommandResponse> Handle(AddEmployeeCommandRequest request, CancellationToken cancellationToken)
         {
-            bool status = await _employeeService.AddEmployee(new() 
+            bool status = await _employeeService.AddEmployeeAsync(new() 
             {
                 DepartmentId = request.DepartmentId,
                 FullName = request.FullName,

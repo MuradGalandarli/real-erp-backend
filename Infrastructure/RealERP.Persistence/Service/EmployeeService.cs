@@ -13,7 +13,7 @@ namespace RealERP.Persistence.Service
             _writeEmployeeRepository = writeEmployeeRepository;
         }
 
-        public async Task<bool> AddEmployee(EmployeeDto employee)
+        public async Task<bool> AddEmployeeAsync(EmployeeDto employee)
         {
           bool status = await _writeEmployeeRepository.AddAsync(new()
             {
@@ -25,6 +25,22 @@ namespace RealERP.Persistence.Service
             if(status)
             await _writeEmployeeRepository.SaveAsync();
             return status;
+        }
+
+        public async Task<bool> UpdateEmployeeAsync(EmployeeDto employeeDto)
+        {
+          bool status = _writeEmployeeRepository.Update(new()
+            {
+                Id = employeeDto.Id,
+                DepartmentId = employeeDto.DepartmentId,
+                FullName = employeeDto.FullName,
+                UserId = employeeDto.UserId,
+                Position = employeeDto.Position,
+            });
+            if(status)
+                await _writeEmployeeRepository.SaveAsync();
+            return status;
+
         }
     }
 }

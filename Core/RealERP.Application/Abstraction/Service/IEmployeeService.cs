@@ -6,6 +6,7 @@ namespace RealERP.Application.Abstraction.Service
 {
     public interface IEmployeeService
     {
-        public Task<bool> AddEmployee(EmployeeDto employee);
+        public Task<bool> AddEmployeeAsync(EmployeeDto employee);
+        public Task<bool> UpdateEmployeeAsync(EmployeeDto employeeDto);
     }
 }

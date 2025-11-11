@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
+using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
+using System.Runtime.CompilerServices;
 
 namespace RealERP.Api.Controllers
 {
@@ -20,6 +22,12 @@ namespace RealERP.Api.Controllers
         {
             AddEmployeeCommandResponse addEmployeeCommandResponse = await _mediator.Send(addEmployeeCommandRequest);
             return Ok(addEmployeeCommandResponse);
+        }
+        [HttpPut("update-employee")]
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeCommandRequest updateEmployeeCommandRequest)
+        {
+            UpdateEmployeeCommandResponse updateEmployeeCommandResponse = await _mediator.Send(updateEmployeeCommandRequest);
+            return Ok(updateEmployeeCommandResponse);
         }
     }
 }
