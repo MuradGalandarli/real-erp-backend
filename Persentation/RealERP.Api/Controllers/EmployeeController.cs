@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
 using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
+using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
 using System.Runtime.CompilerServices;
 
 namespace RealERP.Api.Controllers
@@ -29,5 +30,14 @@ namespace RealERP.Api.Controllers
             UpdateEmployeeCommandResponse updateEmployeeCommandResponse = await _mediator.Send(updateEmployeeCommandRequest);
             return Ok(updateEmployeeCommandResponse);
         }
+
+        [HttpGet("get-by-id-employee")]
+        public async Task<IActionResult> GetByIdEmployee([FromQuery] int id)
+        {
+            GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest = new() { Id = id };
+            GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
+            return Ok(getByIdEmployeeQueryResponse);
+        }
+
     }
 }

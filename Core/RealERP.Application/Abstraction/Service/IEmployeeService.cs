@@ -8,5 +8,6 @@ namespace RealERP.Application.Abstraction.Service
     {
         public Task<bool> AddEmployeeAsync(EmployeeDto employee);
         public Task<bool> UpdateEmployeeAsync(EmployeeDto employeeDto);
+        public Task<EmployeeDto> GetbyIdEmployeeAsync(int id);
     }
 }
