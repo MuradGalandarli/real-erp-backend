@@ -1,0 +1,21 @@
+2025-11-12 16:02:53.071 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-12 16:02:53.558 +04:00 [INF] Now listening on: https://localhost:7148
+2025-11-12 16:02:53.559 +04:00 [INF] Now listening on: http://localhost:5116
+2025-11-12 16:02:53.616 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-12 16:02:53.617 +04:00 [INF] Hosting environment: Development
+2025-11-12 16:02:53.617 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-11-12 16:02:54.775 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-11-12 16:02:55.071 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 306.8869ms
+2025-11-12 16:02:55.093 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-12 16:02:55.095 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-11-12 16:02:55.101 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 8.7491ms
+2025-11-12 16:02:55.181 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.6396ms
+2025-11-12 16:02:55.305 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-11-12 16:02:55.342 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.9717ms
+2025-11-12 16:03:00.501 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/api/ApplicationServices - null null
+2025-11-12 16:03:01.942 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.ApplicationServicesController.GetAuthorizeDefinitionEndpoint (RealERP.Api)'
+2025-11-12 16:03:01.969 +04:00 [INF] Route matched with {action = "GetAuthorizeDefinitionEndpoint", controller = "ApplicationServices"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAuthorizeDefinitionEndpoint() on controller RealERP.Api.Controllers.ApplicationServicesController (RealERP.Api).
+2025-11-12 16:03:01.992 +04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RealERP.Application.DTOs.Configuration.Menu, RealERP.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-12 16:03:02.008 +04:00 [INF] Executed action RealERP.Api.Controllers.ApplicationServicesController.GetAuthorizeDefinitionEndpoint (RealERP.Api) in 33.7097ms
+2025-11-12 16:03:02.009 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.ApplicationServicesController.GetAuthorizeDefinitionEndpoint (RealERP.Api)'
+2025-11-12 16:03:02.009 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/api/ApplicationServices - 200 null application/json; charset=utf-8 1508.7363ms

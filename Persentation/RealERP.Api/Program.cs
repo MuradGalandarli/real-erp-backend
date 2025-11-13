@@ -9,6 +9,7 @@ using Serilog;
 using RealERP.Persistence;
 using RealERP.Infrastructure.Middlewares;
 using RealERP.Domain.Entities.User;
+using RealERP.Infrastructure;
 
 namespace RealERP.Api
 {
@@ -16,11 +17,9 @@ namespace RealERP.Api
     {
         public static void Main(string[] args)
         {
-          
-
             var builder = WebApplication.CreateBuilder(args);
             ConfigurationManager configuration = builder.Configuration;
-
+           
             Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
@@ -29,6 +28,7 @@ namespace RealERP.Api
 
             builder.Services.AddApplicationService();
             builder.Services.AddPersistenceService();
+            builder.Services.AddInfrastructureService();
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -38,9 +38,6 @@ namespace RealERP.Api
                 options.SignIn.RequireConfirmedAccount = false;
             })
 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
-
-
 
             builder.Services.AddAuthentication(options =>
             {

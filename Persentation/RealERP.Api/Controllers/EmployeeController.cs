@@ -1,9 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
 using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
+using RealERP.Application.Consts;
+using RealERP.Application.CustomAttrubutes;
+using RealERP.Application.Enums;
 using System.Runtime.CompilerServices;
 
 namespace RealERP.Api.Controllers
@@ -19,6 +21,7 @@ namespace RealERP.Api.Controllers
             _mediator = mediator;
         }
         [HttpPost("add-employee")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstans.Employee,Definition ="Add item to employee",ActionType =ActionType.Writing)]
         public async Task<IActionResult> AddEmployee([FromBody] AddEmployeeCommandRequest addEmployeeCommandRequest)
         {
             AddEmployeeCommandResponse addEmployeeCommandResponse = await _mediator.Send(addEmployeeCommandRequest);
