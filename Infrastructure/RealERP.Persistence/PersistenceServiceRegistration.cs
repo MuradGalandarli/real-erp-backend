@@ -41,6 +41,7 @@ namespace RealERP.Persistence
             services.AddScoped<IReadEmployeeRepository, ReadEmployeeRepository>();
             services.AddScoped<IWriteEmployeeRepository, WriteEmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IRoleServices, RoleService>();
 
         }
     }

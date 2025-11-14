@@ -10,6 +10,7 @@ using RealERP.Persistence;
 using RealERP.Infrastructure.Middlewares;
 using RealERP.Domain.Entities.User;
 using RealERP.Infrastructure;
+using RealERP.Domain.Entities.Identity;
 
 namespace RealERP.Api
 {
@@ -33,7 +34,7 @@ namespace RealERP.Api
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+            builder.Services.AddIdentity<AppUser, AppRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
             })

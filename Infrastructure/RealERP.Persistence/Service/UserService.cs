@@ -5,6 +5,7 @@ using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Roles;
+using RealERP.Domain.Entities.Identity;
 using RealERP.Domain.Entities.User;
 
 namespace RealERP.Persistence.Service
@@ -12,10 +13,10 @@ namespace RealERP.Persistence.Service
     public class UserService : IUserService
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<AppRole> _roleManager;
         private readonly ILogger<UserService> _logger;
 
-        public UserService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ILogger<UserService> logger)
+        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, ILogger<UserService> logger)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -40,9 +41,9 @@ namespace RealERP.Persistence.Service
                 if (!result.Succeeded)
                     return new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." };
                 if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
-                    await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                    await _roleManager.CreateAsync(new AppRole() {Name = UserRoles.Admin });
                 if (!await _roleManager.RoleExistsAsync(UserRoles.User))
-                    await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                    await _roleManager.CreateAsync(new AppRole() {Name = UserRoles.User });
                 if (role == "Admin")
                 {
                     await _userManager.AddToRoleAsync(user, UserRoles.Admin);

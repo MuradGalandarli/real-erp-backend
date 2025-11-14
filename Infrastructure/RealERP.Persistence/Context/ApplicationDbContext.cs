@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RealERP.Domain.Entities;
+using RealERP.Domain.Entities.Identity;
+using RealERP.Domain.Entities.User;
 
 
 namespace RealERP.Persistence.Context
 {
-    public class ApplicationDbContext:IdentityDbContext
+    public class ApplicationDbContext:IdentityDbContext<AppUser,AppRole,string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
 
