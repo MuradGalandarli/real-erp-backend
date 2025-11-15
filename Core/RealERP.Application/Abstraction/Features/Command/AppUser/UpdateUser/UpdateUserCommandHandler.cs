@@ -18,7 +18,7 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser
         {
            bool status = await _userService.UpdateUserAsync(new()
             {
-                DepartmentId = request.DepartmentId,
+                Name = request.Name,
                 Email = request.Email,
                 Username = request.Username,
             });

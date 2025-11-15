@@ -22,6 +22,8 @@ namespace RealERP.Api.Controllers
             CreateRoleCommandResponse createRoleCommandResponse = await _mediator.Send(createRoleCommandRequest); 
             return Ok(createRoleCommandResponse);
         }
+        //[HttpGet()]
+
 
 
     }

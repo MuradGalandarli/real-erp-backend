@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Configurations;
 using RealERP.Application.Consts;
@@ -18,7 +19,7 @@ namespace RealERP.Api.Controllers
         {
             _applicationService = applicationService;
         }
-
+        [Authorize]
         [HttpGet]
         [AuthorizeDefinition(ActionType = ActionType.Reading,Definition ="Get Authorize Definition Endpoint",Menu = AuthorizeDefinitionConstans.ApplicationService)]
         public IActionResult GetAuthorizeDefinitionEndpoint() 

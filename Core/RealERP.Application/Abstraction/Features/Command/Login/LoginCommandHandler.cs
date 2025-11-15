@@ -15,11 +15,12 @@ namespace RealERP.Application.Abstraction.Features.Command.Login
 
         async Task<LoginCommandResponse> IRequestHandler<LoginCommandRequest, LoginCommandResponse>.Handle(LoginCommandRequest request, CancellationToken cancellationToken)
         {
-            LoginResponseDto loginResponseDto = await _authService.LoginAsync(new() { Username = request.Username, Password = request.Password });
+            TokenDto loginResponseDto = await _authService.LoginAsync(new() { Username = request.Username, Password = request.Password },2,2);
             return new()
             {
                 Expiration = loginResponseDto.Expiration,
                 Token = loginResponseDto.Token,
+                RefreshToken = loginResponseDto.RefreshToken
             };
         }
     }

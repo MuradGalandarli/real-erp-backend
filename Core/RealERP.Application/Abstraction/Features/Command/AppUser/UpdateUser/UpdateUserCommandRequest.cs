@@ -6,6 +6,6 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser
     {
         public string? Username { get; set; }
         public string? Email { get; set; }
-        public int DepartmentId { get; set; }
+        public string Name { get; set; }
     }
 }

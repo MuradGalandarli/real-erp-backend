@@ -1,6 +1,8 @@
-﻿namespace RealERP.Application.Abstraction.Features.Command.Login
+﻿using MediatR;
+
+namespace RealERP.Application.Abstraction.Features.Command.RefreshToken
 {
-    public class LoginCommandResponse
+    public class RefreshTokenLoginCommandResponse
     {
         public string Token { get; set; }
         public DateTime Expiration { get; set; }

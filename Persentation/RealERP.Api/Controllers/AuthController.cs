@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Login;
+using RealERP.Application.Abstraction.Features.Command.RefreshToken;
+using System.Runtime.CompilerServices;
 
 namespace RealERP.Api.Controllers
 {
@@ -21,6 +23,12 @@ namespace RealERP.Api.Controllers
         {
             LoginCommandResponse loginQuery = await _mediatR.Send(loginQueryRequest);
             return Ok(loginQuery);
+        }
+        [HttpPut("update-refresh-token")]
+        public async Task<IActionResult> UpdateRefreshToken([FromBody] RefreshTokenLoginCommandRequest refreshTokenLoginCommandRequest)
+        {
+            RefreshTokenLoginCommandResponse refreshTokenLoginCommandResponse = await _mediatR.Send(refreshTokenLoginCommandRequest);
+            return Ok(refreshTokenLoginCommandResponse);
         }
     }
 }

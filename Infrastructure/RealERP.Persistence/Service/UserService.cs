@@ -35,7 +35,7 @@ namespace RealERP.Persistence.Service
                     Email = register.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = register.Username,
-                    //DepartmentId = register.DepartmentId
+                    Name = register.Name
                 };
                 var result = await _userManager.CreateAsync(user, register.Password);
                 if (!result.Succeeded)
