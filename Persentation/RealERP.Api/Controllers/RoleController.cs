@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Role.CreateRole;
 using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
+using RealERP.Application.Abstraction.Features.Query.Role.RoleGetById;
 using RealERP.Application.Abstraction.Service;
 
 namespace RealERP.Api.Controllers
@@ -28,6 +29,12 @@ namespace RealERP.Api.Controllers
         {
             UpdateRoleCommandResponse updateRoleCommandResponse = await _mediator.Send(updateRoleCommandRequest);
             return Ok(updateRoleCommandResponse);
+        }
+        [HttpGet("get-by-id-role")]
+        public async Task<IActionResult>GetByIdRole(RoleGetByIdQueryRequest roleGetByIdQueryRequest)
+        {
+            RoleGetByIdQueryResponse roleGetByIdQueryResponse = await _mediator.Send(roleGetByIdQueryRequest);
+            return Ok(roleGetByIdQueryResponse);
         }
 
 

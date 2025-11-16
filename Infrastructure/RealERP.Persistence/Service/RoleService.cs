@@ -3,7 +3,9 @@
 using Microsoft.AspNetCore.Identity;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
+using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities.Identity;
+using System.Data;
 
 namespace RealERP.Persistence.Service
 {
@@ -20,6 +22,20 @@ namespace RealERP.Persistence.Service
         {
            IdentityResult identityResult = await _roleManager.CreateAsync(new() {Id = Guid.NewGuid().ToString(), Name = role.Name });
             return identityResult.Succeeded;
+        }
+
+        public async Task<RoleDto> GetByIdAsync(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+
+            if (role == null)
+                throw new NotFoundException($"Role with id {id} not found");
+
+            return new()
+            {
+                id = role.Id,
+                Name = role.Name
+            };
         }
 
         public async Task<bool> UpdateRole(RoleDto role)
