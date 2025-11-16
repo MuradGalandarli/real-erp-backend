@@ -21,5 +21,21 @@ namespace RealERP.Persistence.Service
            IdentityResult identityResult = await _roleManager.CreateAsync(new() {Id = Guid.NewGuid().ToString(), Name = role.Name });
             return identityResult.Succeeded;
         }
+
+        public async Task<bool> UpdateRole(RoleDto role)
+        {
+            var existingRole = await _roleManager.FindByIdAsync(role.id);
+
+            if (existingRole == null)
+                return false;
+
+            existingRole.Name = role.Name;
+            existingRole.NormalizedName = role.Name.ToUpper();
+
+            IdentityResult identityResult = await _roleManager.UpdateAsync(existingRole);
+
+            return identityResult.Succeeded;
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Role.CreateRole;
+using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
 using RealERP.Application.Abstraction.Service;
 
 namespace RealERP.Api.Controllers
@@ -22,7 +23,12 @@ namespace RealERP.Api.Controllers
             CreateRoleCommandResponse createRoleCommandResponse = await _mediator.Send(createRoleCommandRequest); 
             return Ok(createRoleCommandResponse);
         }
-        //[HttpGet()]
+        [HttpPut("update-role")]
+        public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleCommandRequest updateRoleCommandRequest)
+        {
+            UpdateRoleCommandResponse updateRoleCommandResponse = await _mediator.Send(updateRoleCommandRequest);
+            return Ok(updateRoleCommandResponse);
+        }
 
 
 
