@@ -3,6 +3,8 @@ using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Repositories.BrandRepository;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
+using RealERP.Application.Repositories.Endpoint;
+using RealERP.Application.Repositories.Menu;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Application.Repositories.WarehouseRepository;
 using RealERP.Persistence.Context;
@@ -10,6 +12,8 @@ using RealERP.Persistence.Repositories.BrandRepository;
 using RealERP.Persistence.Repositories.CategoryRepository;
 using RealERP.Persistence.Repositories.DepartmentRepository;
 using RealERP.Persistence.Repositories.EmployeeRepository;
+using RealERP.Persistence.Repositories.Endpoint;
+using RealERP.Persistence.Repositories.Menu;
 using RealERP.Persistence.Repositories.ProductRepository;
 using RealERP.Persistence.Repositories.WarehouseRepository;
 using RealERP.Persistence.Service;
@@ -42,6 +46,11 @@ namespace RealERP.Persistence
             services.AddScoped<IWriteEmployeeRepository, WriteEmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IRoleServices, RoleService>();
+            services.AddScoped<IAuthorizationEndpointService, AuthorizationEndpointService>();
+            services.AddScoped<IReadMenuRepository,ReadMenuRepository>();
+            services.AddScoped<IWriteMenuRepository,WriteMenuRepository>();
+            services.AddScoped<IReadEndpointRepository,ReadEndpointRepository>();
+            services.AddScoped<IWriteEndpointRepository,WriteEndpointRepository>();
 
         }
     }

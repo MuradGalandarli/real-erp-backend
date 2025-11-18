@@ -18,6 +18,8 @@ namespace RealERP.Persistence.Context
         public DbSet<WarehouseProduct> WarehouseProducts { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Menu> Menus  { get; set; }
+        public DbSet<Endpoint> Endpoints  { get; set; }
        
     }
 }

@@ -1,0 +1,73 @@
+2025-11-18 17:21:43.650 +04:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-11-18 17:21:43.703 +04:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-11-18 17:21:43.705 +04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-11-18 17:21:43.706 +04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-11-18 17:21:43.729 +04:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-11-18 17:21:43.746 +04:00 [INF] Applying migration '20251118132129_mig8'.
+2025-11-18 17:21:43.827 +04:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Menus] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Menus] PRIMARY KEY ([Id])
+);
+2025-11-18 17:21:43.836 +04:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Endpoints] (
+    [Id] int NOT NULL IDENTITY,
+    [ActionType] nvarchar(max) NOT NULL,
+    [HttpType] nvarchar(max) NOT NULL,
+    [Definition] nvarchar(max) NOT NULL,
+    [Code] nvarchar(max) NOT NULL,
+    [MenuId] int NOT NULL,
+    CONSTRAINT [PK_Endpoints] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Endpoints_Menus_MenuId] FOREIGN KEY ([MenuId]) REFERENCES [Menus] ([Id]) ON DELETE CASCADE
+);
+2025-11-18 17:21:43.845 +04:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AppRoleEndpoint] (
+    [EndpointsId] int NOT NULL,
+    [RolesId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AppRoleEndpoint] PRIMARY KEY ([EndpointsId], [RolesId]),
+    CONSTRAINT [FK_AppRoleEndpoint_AspNetRoles_RolesId] FOREIGN KEY ([RolesId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AppRoleEndpoint_Endpoints_EndpointsId] FOREIGN KEY ([EndpointsId]) REFERENCES [Endpoints] ([Id]) ON DELETE CASCADE
+);
+2025-11-18 17:21:43.850 +04:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AppRoleEndpoint_RolesId] ON [AppRoleEndpoint] ([RolesId]);
+2025-11-18 17:21:43.852 +04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Endpoints_MenuId] ON [Endpoints] ([MenuId]);
+2025-11-18 17:21:43.856 +04:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20251118132129_mig8', N'8.0.1');
+2025-11-18 19:26:28.005 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-18 19:26:28.597 +04:00 [INF] Now listening on: https://localhost:7148
+2025-11-18 19:26:28.597 +04:00 [INF] Now listening on: http://localhost:5116
+2025-11-18 19:26:28.713 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-18 19:26:28.714 +04:00 [INF] Hosting environment: Development
+2025-11-18 19:26:28.714 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-11-18 19:26:29.538 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-11-18 19:26:29.932 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 404.622ms
+2025-11-18 19:26:29.941 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-18 19:26:29.949 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 7.136ms
+2025-11-18 19:26:29.952 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-11-18 19:26:30.027 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 75.4036ms
+2025-11-18 19:26:30.263 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-11-18 19:26:30.373 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 111.2713ms
+2025-11-18 19:27:20.787 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-18 19:27:21.086 +04:00 [INF] Now listening on: https://localhost:7148
+2025-11-18 19:27:21.086 +04:00 [INF] Now listening on: http://localhost:5116
+2025-11-18 19:27:21.173 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-18 19:27:21.173 +04:00 [INF] Hosting environment: Development
+2025-11-18 19:27:21.173 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-11-18 19:27:21.438 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-11-18 19:27:21.768 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 337.4911ms
+2025-11-18 19:27:21.783 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-18 19:27:21.784 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-11-18 19:27:21.791 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 8.3016ms
+2025-11-18 19:27:21.836 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 51.6983ms
+2025-11-18 19:27:21.965 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-11-18 19:27:22.040 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.3225ms

@@ -1,7 +1,7 @@
 ﻿
 using RealERP.Application.DTOs;
 
-namespace RealERP.Application.Abstraction.Service
+namespace RealERP.Application.Abstraction.Service   
 {
     public interface IRoleServices
     {
