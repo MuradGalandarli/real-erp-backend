@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.AuthorizationEndpoint.AssignRoleEndpoint;
+using RealERP.Application.Abstraction.Features.Query.AuthorizationEndpoint.GetRolesToEndpoints;
 
 namespace RealERP.Api.Controllers
 {
@@ -14,10 +15,19 @@ namespace RealERP.Api.Controllers
         {
             _mediator = mediator;
         }
+        [HttpGet("get-roles-to-endpoint")]
+        public async Task<IActionResult> GetRolesToEndpoint([FromBody] GetRolesToEndpointQueryRequest getRolesToEndpointQueryRequest)
+        {
+             
+            GetRolesToEndpointQueryResponse getRolesToEndpointQueryResponse = await _mediator.Send(getRolesToEndpointQueryRequest);
+            return Ok(getRolesToEndpointQueryResponse);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> AssignRoleEndpoint([FromBody]AssignRoleEndpointCommandRequest assignRoleEndpointCommandRequest)
         {
-            assignRoleEndpointCommandRequest.Type = typeof(Program); 
+            assignRoleEndpointCommandRequest.Type = typeof(Program);  
             AssignRoleEndpointCommandResponse assignRoleEndpointCommandResponse = await _mediator.Send(assignRoleEndpointCommandRequest);
             return Ok(assignRoleEndpointCommandResponse);
         }

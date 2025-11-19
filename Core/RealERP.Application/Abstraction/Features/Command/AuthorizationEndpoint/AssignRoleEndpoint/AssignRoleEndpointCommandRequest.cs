@@ -7,7 +7,7 @@ namespace RealERP.Application.Abstraction.Features.Command.AuthorizationEndpoint
         public string[] Roles { get; set; }
         public string Code { get; set; }
         public string Menu { get; set; }
-        public Type Type { get; set; }
+        public Type? Type { get; set; }
 
     }
 }

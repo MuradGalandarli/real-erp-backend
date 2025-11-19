@@ -30,21 +30,19 @@ namespace RealERP.Persistence.Service
             _roleManager = roleManager;
         }
 
-
-
         public async Task AssignRoleEndpointAsync(string[] roles, string menu, string code, Type type)
         {
           Menu _menu = await _readMenuRepository.GetSingleAsync(m => m.Name == menu);
             if (_menu == null)
             {
-               await _writeMenuRepository.AddAsync(new()
-                {
-                   Name = menu,
-                });
-            await _writeMenuRepository.SaveAsync();
+               _menu = new(){
+                   Name = menu
+                };
+                await _writeMenuRepository.AddAsync(_menu);
+           await _writeMenuRepository.SaveAsync();
             }
 
-          Endpoint? endpoint = await _readEndpointRepository.Table.Include(e=>e.Menu).
+          Endpoint? endpoint = await _readEndpointRepository.Table.Include(e=>e.Menu).Include(r=>r.Roles).
                 FirstOrDefaultAsync(x => x.Code == code && x.Menu.Name == menu);
             if(endpoint == null)
             {
@@ -56,10 +54,13 @@ namespace RealERP.Persistence.Service
                     ActionType = action.ActionType,
                     Definition = action.Definition,
                     HttpType = action.HttpType,
+                    Menu = _menu
                 };
                 await _writeEndpointRepository.AddAsync(endpoint);
                 await _writeEndpointRepository.SaveAsync();
             }
+            foreach(var role in endpoint.Roles)
+                endpoint.Roles.Remove(role);
 
             var appRoles = _roleManager.Roles.Where(r => roles.Contains(r.Name));
 
@@ -67,6 +68,18 @@ namespace RealERP.Persistence.Service
                 endpoint.Roles.Add(role);
             }
             await _writeEndpointRepository.SaveAsync(); 
+        }
+
+        public async Task<List<string>> GetRolesToEndpoint(string code,string menu)
+        {
+            Endpoint? endpoint = await _readEndpointRepository.Table.Include(r => r.Roles)
+                .Include(m=>m.Menu)
+                .FirstOrDefaultAsync(e => e.Code == code && e.Menu.Name == menu);
+            if(endpoint != null)
+            return endpoint.Roles.Select(r => r.Name).ToList();
+
+            return null;
+
         }
     }
 }
