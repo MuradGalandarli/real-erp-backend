@@ -4,6 +4,7 @@ using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.DeleteUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser;
+using RealERP.Application.Abstraction.Features.Command.AssignRoleToUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
 
 namespace RealERP.Api.Controllers
@@ -53,6 +54,11 @@ namespace RealERP.Api.Controllers
             DeleteUserCommandResponse deleteUserCommandResponse = await _mediator.Send(deleteUserCommandRequest);
             return Ok(deleteUserCommandResponse);
         }
-
+        [HttpPost("assign-role-to-user")]
+        public async Task<IActionResult> AssignRoleToUser([FromBody]AssignRoleToUserCommandRequest toUserCommandRequest)
+        {
+            await _mediator.Send(toUserCommandRequest);
+            return Ok();
+        }
     }
 }

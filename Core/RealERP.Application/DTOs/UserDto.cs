@@ -5,8 +5,10 @@ namespace RealERP.Application.DTOs
     public class UserDto
     {
        
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public int DepartmentId { get; set; }
+        public bool TwoFactorEnabled { get; set; }
     }
 }

@@ -23,6 +23,18 @@ namespace RealERP.Persistence.Service
             _logger = logger;
         }
 
+        public async Task AssignRoleToUserAsync(string id, string[] roles)
+        {
+            AppUser? user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                var userRoles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, userRoles);
+
+                await _userManager.AddToRolesAsync(user, roles);
+            }
+        }
+
         public async Task<Response> CreateAsync(RegisterDto register,string role)
         {
             _logger.LogInformation("Test");
@@ -72,8 +84,11 @@ namespace RealERP.Persistence.Service
             return users.Select(u => new UserDto()
             {
                 //DepartmentId = u.DepartmentId,
+                Id = u.Id,
                 Name = u.Name,
-                Email = u.Email
+                Email = u.Email,
+                TwoFactorEnabled = u.TwoFactorEnabled,
+                
             }).ToList();
         }
 
@@ -88,6 +103,7 @@ namespace RealERP.Persistence.Service
                // DepartmentId = appUser.DepartmentId,
                 Email = appUser.Email,
                 Name = appUser.Name,
+                
             };
         }
 
