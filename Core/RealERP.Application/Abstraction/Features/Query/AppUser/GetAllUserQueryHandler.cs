@@ -21,7 +21,7 @@ namespace RealERP.Application.Abstraction.Features.Query.AppUser
 
             return userDtos.Select(u => new GetAllUserQueryResponse()
             {
-                DepartmentId = u.DepartmentId,
+                UserId = u.Id,
                 Email = u.Email,
                 Name = u.Name,
 

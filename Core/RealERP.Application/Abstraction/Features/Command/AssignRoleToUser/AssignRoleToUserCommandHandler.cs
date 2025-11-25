@@ -1,6 +1,4 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using RealERP.Application.Abstraction.Service;
 
 namespace RealERP.Application.Abstraction.Features.Command.AssignRoleToUser

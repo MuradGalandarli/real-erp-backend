@@ -19,6 +19,7 @@ namespace RealERP.Persistence.Repositories
 
         public IQueryable<T> GetAll()
         {
+           
             return Table;
         }
 

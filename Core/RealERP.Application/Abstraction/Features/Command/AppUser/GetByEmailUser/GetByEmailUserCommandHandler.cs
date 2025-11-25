@@ -21,7 +21,7 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUse
             return new()
             {
                 Email = userDto.Email,
-                DepartmentId = userDto.DepartmentId,
+                UserId = userDto.Id,
                 Name = userDto.Name,
             };
         }

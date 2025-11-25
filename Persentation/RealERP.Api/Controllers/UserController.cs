@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.DeleteUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUser;
+using RealERP.Application.Abstraction.Features.Command.AppUser.GetRolesToUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser;
 using RealERP.Application.Abstraction.Features.Command.AssignRoleToUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
@@ -59,6 +60,13 @@ namespace RealERP.Api.Controllers
         {
             await _mediator.Send(toUserCommandRequest);
             return Ok();
+        }
+        [HttpGet("get-roles-to-user")]
+        public async Task<IActionResult> GetRolesToUser([FromQuery] string userId)
+        {
+            GetRolesToUserCommandRequest getRolesToUserCommandRequest = new() { UserId = userId };
+            GetRolesToUserCommandResponse getRolesToUserCommandResponse = await _mediator.Send(getRolesToUserCommandRequest);
+            return Ok(getRolesToUserCommandResponse);
         }
     }
 }
