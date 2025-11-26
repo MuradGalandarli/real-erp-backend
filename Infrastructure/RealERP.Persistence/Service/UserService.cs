@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
+using RealERP.Application.Repositories.Endpoint;
 using RealERP.Application.Roles;
+using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.Identity;
 using RealERP.Domain.Entities.User;
 
@@ -15,12 +17,14 @@ namespace RealERP.Persistence.Service
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly ILogger<UserService> _logger;
+        private readonly IReadEndpointRepository _readEndpointRepository;
 
-        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, ILogger<UserService> logger)
+        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, ILogger<UserService> logger, IReadEndpointRepository readEndpointRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _logger = logger;
+            _readEndpointRepository = readEndpointRepository;
         }
 
         public async Task AssignRoleToUserAsync(string id, string[] roles)
@@ -107,15 +111,47 @@ namespace RealERP.Persistence.Service
             };
         }
 
-        public async Task<string[]> GetRolesToUserAsync(string userId)
+        public async Task<string[]> GetRolesToUserAsync(string userIdOrName)
         {
-            AppUser? appUser = await _userManager.FindByIdAsync(userId);
-            if (appUser != null)
-            {
-                var userRoles = await _userManager.GetRolesAsync(appUser);
+            AppUser? user = await _userManager.FindByIdAsync(userIdOrName);
+            if (user == null)
+                user = await _userManager.FindByNameAsync(userIdOrName);
+
+            if (user != null)
+            { 
+                var userRoles = await _userManager.GetRolesAsync(user);
                 return userRoles.ToArray();
             }
             return new string [] { };
+        }
+
+        public async Task<bool> HasRolePermissionToEndpointAsync(string name, string code)
+        {
+            var userRoles = await GetRolesToUserAsync(name);
+
+            if (!userRoles.Any())
+                return false;
+
+            Endpoint? endpoint = await _readEndpointRepository.Table
+                     .Include(e => e.Roles)
+                     .FirstOrDefaultAsync(e => e.Code == code);
+
+            if (endpoint == null)
+                return false;
+
+            var hasRole = false;
+            var endpointRoles = endpoint.Roles.Select(r => r.Name);
+
+           
+
+            foreach (var userRole in userRoles)
+            {
+                foreach (var endpointRole in endpointRoles)
+                    if (userRole == endpointRole)
+                        return true;
+            }
+
+            return false;
         }
 
         public async Task<bool> UpdateUserAsync(RegisterDto register)

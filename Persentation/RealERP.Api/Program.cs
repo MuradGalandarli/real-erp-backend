@@ -11,6 +11,7 @@ using RealERP.Infrastructure.Middlewares;
 using RealERP.Domain.Entities.User;
 using RealERP.Infrastructure;
 using RealERP.Domain.Entities.Identity;
+using RealERP.Api.Filters;
 
 namespace RealERP.Api
 {
@@ -73,7 +74,13 @@ namespace RealERP.Api
             });
 
 
-            builder.Services.AddControllers();
+            //builder.Services.AddControllers();
+
+            builder.Services.AddControllers(options =>
+            {
+
+                options.Filters.Add<RolePermissionFilter>();
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
