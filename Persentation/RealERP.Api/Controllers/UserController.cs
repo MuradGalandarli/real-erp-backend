@@ -28,7 +28,7 @@ namespace RealERP.Api.Controllers
             return Ok(createUserCommandResponse);
         }
         [HttpGet("get-all-user")]
-        public async Task<IActionResult> GetAllUser(int page, int size)
+        public async Task<IActionResult> GetAllUser([FromQuery]int page, [FromQuery]int size)
         {
             GetAllUserQueryRequest getAllUserQueryRequest = new() { Page = page, Size = size };
             List<GetAllUserQueryResponse> getAllUserQueryResponses = await _mediator.Send(getAllUserQueryRequest);
@@ -43,8 +43,9 @@ namespace RealERP.Api.Controllers
         }
 
         [HttpGet("get-by-email-user")]
-        public async Task<IActionResult>GetByEmailUser(GetByEmailUserCommandRequest getByEmailUserCommandRequest)
+        public async Task<IActionResult> GetByEmailUser([FromQuery] string email)
         {
+            GetByEmailUserCommandRequest getByEmailUserCommandRequest = new() { Email = email };
             GetByEmailUserCommandResponse getByEmailUserCommandResponse = await _mediator.Send(getByEmailUserCommandRequest);
             return Ok(getByEmailUserCommandResponse);
         }

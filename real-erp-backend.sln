@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5513B222-E11E-4FB3-AD1E-EBEFB31D0CB1}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealERP.Infrastructure", "Infrastructure\RealERP.Infrastructure\RealERP.Infrastructure.csproj", "{3624F22A-E04C-4AEE-A069-3AE6BBD8503D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealERP.Persistence", "Infrastructure\RealERP.Persistence\RealERP.Persistence.csproj", "{A239AE6F-F722-4997-8597-AF02F242D5AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealERP.UI", "Presentation\RealERP.UI\RealERP.UI.csproj", "{87561927-E793-49D1-B8D1-4ACE412CA36B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A239AE6F-F722-4997-8597-AF02F242D5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A239AE6F-F722-4997-8597-AF02F242D5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A239AE6F-F722-4997-8597-AF02F242D5AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87561927-E793-49D1-B8D1-4ACE412CA36B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87561927-E793-49D1-B8D1-4ACE412CA36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87561927-E793-49D1-B8D1-4ACE412CA36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87561927-E793-49D1-B8D1-4ACE412CA36B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +61,6 @@ Global
 		{862551F0-25FE-4608-81DD-B664AA84DDDD} = {7DCE493E-C64A-4EEA-9C2A-68335B5ECBAD}
 		{3624F22A-E04C-4AEE-A069-3AE6BBD8503D} = {D6EB7943-9E78-4FED-A300-712CE5215800}
 		{A239AE6F-F722-4997-8597-AF02F242D5AF} = {D6EB7943-9E78-4FED-A300-712CE5215800}
+		{87561927-E793-49D1-B8D1-4ACE412CA36B} = {5513B222-E11E-4FB3-AD1E-EBEFB31D0CB1}
 	EndGlobalSection
 EndGlobal
