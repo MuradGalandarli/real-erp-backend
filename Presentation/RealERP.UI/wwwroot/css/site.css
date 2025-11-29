@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,119 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+/* Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Modal box */
+.modal {
+    width: 350px;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: scaleIn 0.25s ease;
+}
+
+    .modal h2 {
+        margin: 0 0 15px 0;
+        font-size: 22px;
+        color: #222;
+        text-align: center;
+    }
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+    .close-btn:hover {
+        background: #d93636;
+    }
+
+/* Form styles */
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal label {
+    font-size: 14px;
+    color: #444;
+}
+
+.modal input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+    .modal input:focus {
+        border-color: #4a90e2;
+        outline: none;
+        box-shadow: 0 0 5px rgba(74,144,226,0.3);
+    }
+
+/* Submit button */
+#submit-btn {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    background: #4a90e2;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+    #submit-btn:hover {
+        background: #3b78c0;
+    }
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

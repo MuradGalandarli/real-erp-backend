@@ -1,2 +1,23 @@
-﻿body {
+﻿.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    width: 300px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 4px 8px;
 }

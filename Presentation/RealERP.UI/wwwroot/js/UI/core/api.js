@@ -1,6 +1,4 @@
 ﻿export async function apiRequest(url, method = "GET", body = null) {
-    console.log("Salam")
-    console.log("data")
     const options = {
         method: method,
         headers: {  
