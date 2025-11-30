@@ -8,6 +8,10 @@ export const fetchUsers = {
     },
     getById: async (email) => {
         return await apiRequest(`${API_URL}/User/get-by-email-user?email=${email}`);
+    },
+    addUser: async (data) => {
+        return await apiRequest(`${API_URL}/User/add-user`, data)
     }
+
   
 };

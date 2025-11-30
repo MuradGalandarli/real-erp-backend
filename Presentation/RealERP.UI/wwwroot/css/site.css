@@ -33,7 +33,6 @@ body {
     animation: fadeIn 0.2s ease;
 }
 
-/* Modal box */
 .modal {
     width: 350px;
     background: #ffffff;
@@ -51,7 +50,6 @@ body {
         text-align: center;
     }
 
-/* Close button */
 .close-btn {
     position: absolute;
     right: 10px;
@@ -70,7 +68,6 @@ body {
         background: #d93636;
     }
 
-/* Form styles */
 .modal form {
     display: flex;
     flex-direction: column;
@@ -96,7 +93,6 @@ body {
         box-shadow: 0 0 5px rgba(74,144,226,0.3);
     }
 
-/* Submit button */
 #submit-btn {
     margin-top: 10px;
     padding: 12px;
@@ -112,8 +108,7 @@ body {
     #submit-btn:hover {
         background: #3b78c0;
     }
-
-/* Animations */
+   
 @keyframes fadeIn {
     from {
         opacity: 0;

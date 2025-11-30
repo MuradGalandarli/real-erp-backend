@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
 
 namespace RealERP.UI.Controllers
@@ -21,6 +23,12 @@ namespace RealERP.UI.Controllers
             return Ok(getAllUserQueryResponse);
         }
 
+        [HttpPost("add-user")]
+public async Task<IActionResult>AddUser([FromBody] CreateUserCommnadRequest createUserCommnadRequest)
+        {
+            CreateUserCommandResponse createUserCommandResponse = await _mediator.Send(createUserCommnadRequest);
+            return Ok(createUserCommandResponse);
+        }
 
         public IActionResult Index()
         {

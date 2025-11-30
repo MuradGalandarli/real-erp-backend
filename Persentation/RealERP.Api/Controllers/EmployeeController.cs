@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
 using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
+using RealERP.Application.Abstraction.Features.Query.Employee.GetAllEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
 using RealERP.Application.Consts;
 using RealERP.Application.CustomAttrubutes;
@@ -40,6 +41,14 @@ namespace RealERP.Api.Controllers
             GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest = new() { Id = id };
             GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
             return Ok(getByIdEmployeeQueryResponse);
+        }
+        [HttpGet("get-all-employee")]
+        public async Task<IActionResult> GetAllEmployee([FromQuery]int page,int size)
+        {
+            GetAllEmployeeQueryRequest getAllEmployeeQueryRequest = new() { Page = page,Size = size };
+            GetAllEmployeeQueryResponse getAllEmployeeQueryResponse = await _mediator.Send(getAllEmployeeQueryRequest);
+            return Ok(getAllEmployeeQueryResponse);
+
         }
 
     }

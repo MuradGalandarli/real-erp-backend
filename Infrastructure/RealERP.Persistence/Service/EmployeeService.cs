@@ -1,4 +1,5 @@
-﻿using RealERP.Application.Abstraction.Service;
+﻿using Microsoft.EntityFrameworkCore;
+using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.EmployeeRepository;
@@ -29,6 +30,17 @@ namespace RealERP.Persistence.Service
             if(status)
             await _writeEmployeeRepository.SaveAsync();
             return status;
+        }
+
+        public List<EmployeeDto> GetAllEmployee(int page, int size)
+        {
+           IQueryable<Employee> employees = _readEmployeeRepository.GetAll().Skip((page-1)*size).Take(size);
+            return employees.Select(e=> new EmployeeDto {
+                FullName = e.FullName,
+                DepartmentId=e.DepartmentId,
+                Id = e.Id,
+                Position = e.Position,
+            }).ToList();
         }
 
         public async Task<EmployeeDto> GetbyIdEmployeeAsync(int id)
