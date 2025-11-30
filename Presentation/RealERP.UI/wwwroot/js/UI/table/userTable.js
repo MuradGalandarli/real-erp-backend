@@ -1,4 +1,6 @@
-﻿export async function createUserTableHeader() {
+﻿import { getNavbar } from "../components/navbar/navbar.js"
+
+export async function createUserTableHeader() {
     const table = `
 
     <h2> User list </h2>

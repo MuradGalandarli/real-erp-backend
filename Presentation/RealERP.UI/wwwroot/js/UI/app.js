@@ -1,5 +1,7 @@
 ﻿import { getAllUserTable, closeModal } from "../UI/pages/user/user.js"
 import { modalUser } from "../UI/components/modals/addUserModal.js"
+import { getAllEmployeeAsync } from "../UI/pages/employee/employee.js"
+import { getNavbar } from "../UI/components/navbar/navbar.js"
 
 const content = document.getElementById("Content");
 
@@ -34,5 +36,15 @@ document.addEventListener("submit", (e) => {
     }
 });
 
+//content.innerHTML = await getNavbar()
     content.innerHTML = await getAllUserTable()
+
+
+document.getElementById("userTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllUserTable();
+})
+
+document.getElementById("employeeTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllEmployeeAsync();
+})
 

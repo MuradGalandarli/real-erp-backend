@@ -1,7 +1,6 @@
 ﻿import { createUserTableHeader } from "../../table/userTable.js";
 import { fetchUsers } from "../../services/userService.js";
 import { apiRequest } from "../../core/api.js";
-//import { modalUser } from "../../components/modals/addUserModal.js"
 
 
 export async function getAllUserTable() {
@@ -37,26 +36,12 @@ export function openModal() {
 }
 
 export function closeModal(e, clickedOutside) {
-    console.log("AAA")
     debugger;
     if (clickedOutside) {
         if (e.target.classList.contains(".modal-overlay"))
             modal.classList.add("hide");
     } else modal.classList.add("hide");
 }
-
-//export async function(e) {
-
-//    let user = {
-//        name: e.target.name.value,
-//        email: ""
-//    }
-
-//    if (user != null)
-       
-//        await apiRequest().add(user);
-
-//}
 
 
 

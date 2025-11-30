@@ -1,19 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RealERP.UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RealERP.UI.styles.css" asp-append-version="true" />
-</head>
-<body>
+﻿
+
+export function getNavbar() {
+    const nav = `
     <nav class="navbar">
         <div class="logo">
             <a href="/">
                 <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png"
-                     alt="gfg_logo">
+                    alt="gfg_logo">
             </a>
         </div>
         <div class="menu">
@@ -27,8 +20,6 @@
             <a href="#">About</a>
             <a href="#">Contact</a>
         </div>
-    </nav>
-
-    @RenderBody();
-</body>
-</html>
+    </nav>`
+    return nav;
+}

@@ -130,3 +130,28 @@ body {
         opacity: 1;
     }
 }
+
+table, th, td {
+    border: 1px solid black; /* ?g?r yoxdursa, x?tl?r görünm?z */
+    border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
