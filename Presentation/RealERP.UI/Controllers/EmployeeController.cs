@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetAllEmployee;
+using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
 
 namespace RealERP.UI.Controllers
 {
@@ -23,6 +24,12 @@ namespace RealERP.UI.Controllers
             GetAllEmployeeQueryRequest getAllEmployeeQueryRequest = new() { Page = page, Size = size };
             GetAllEmployeeQueryResponse getAllEmployeeQueryResponse = await _mediator.Send(getAllEmployeeQueryRequest);
             return Ok(getAllEmployeeQueryResponse);
+        }
+        [HttpGet("get-By-Id-Employee")]
+        public async Task<IActionResult> GetByIdEmploye([FromBody] GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest)
+        {
+            GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
+            return Ok(getByIdEmployeeQueryResponse);
         }
 
 

@@ -1,6 +1,6 @@
 ﻿import { fetchEmployee } from "../../services/employeeService.js"
 import { createEmployeeTable } from "../../table/employeeTable.js"
-
+    
 export async function getAllEmployeeAsync() {
   
     const data = await fetchEmployee.getAll();
@@ -9,12 +9,7 @@ export async function getAllEmployeeAsync() {
     console.log(employees)
     let table = createEmployeeTable();
     debugger;
-   //let mapEmployess = employees.map(emp => ({
-   //     fullName: emp.fullName,
-   //     position: emp.position,
-   //     department: DepartmentId,  
-   //     user: UserId
-   // }));
+  
     
     let id = 0
     employees.forEach(employee => {
@@ -25,6 +20,9 @@ export async function getAllEmployeeAsync() {
         <td>${employee.position}</td>
         <td>${employee.departmentId}</td>
         <td>${employee.userId}</td>
+        <td><button data-userId=${employee.id} id="getUpdateEmployeModal">Update</button></td>
+        <td><button>Delete</button></td>
+        
         </tr> `
     }
     );

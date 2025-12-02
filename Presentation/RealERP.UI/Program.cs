@@ -11,6 +11,7 @@ namespace RealERP.UI
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,7 @@ namespace RealERP.UI
             builder.Services.AddPersistenceService();
             builder.Services.AddInfrastructureService();
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -47,7 +48,15 @@ namespace RealERP.UI
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers["Cache-Control"] = "no-cache, no-store";
+                }
+            });
+
 
             app.UseRouting();
 

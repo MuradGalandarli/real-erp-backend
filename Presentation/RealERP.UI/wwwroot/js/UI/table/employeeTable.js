@@ -7,6 +7,8 @@
             <th>Position</th>
             <th>Department</th>
             <th>UserId</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
     `;
 }

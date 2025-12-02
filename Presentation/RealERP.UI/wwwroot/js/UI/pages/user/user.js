@@ -1,6 +1,6 @@
 ﻿import { createUserTableHeader } from "../../table/userTable.js";
 import { fetchUsers } from "../../services/userService.js";
-import { apiRequest } from "../../core/api.js";
+
 
 
 export async function getAllUserTable() {
@@ -35,13 +35,13 @@ export function openModal() {
     modal.classList.remove("hide");
 }
 
-export function closeModal(e, clickedOutside) {
-    debugger;
-    if (clickedOutside) {
-        if (e.target.classList.contains(".modal-overlay"))
-            modal.classList.add("hide");
-    } else modal.classList.add("hide");
-}
+//export function closeModal(e, clickedOutside) {
+//    debugger;
+//    if (clickedOutside) {
+//        if (e.target.classList.contains(".modal-overlay"))
+//            modal.classList.add("hide");
+//    } else modal.classList.add("hide");
+//}
 
 
 
