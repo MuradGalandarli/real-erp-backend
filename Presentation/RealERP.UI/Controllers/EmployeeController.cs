@@ -26,8 +26,9 @@ namespace RealERP.UI.Controllers
             return Ok(getAllEmployeeQueryResponse);
         }
         [HttpGet("get-By-Id-Employee")]
-        public async Task<IActionResult> GetByIdEmploye([FromBody] GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest)
+        public async Task<IActionResult> GetByIdEmploye([FromQuery]int id)
         {
+            GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest = new() { Id = id };
             GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
             return Ok(getByIdEmployeeQueryResponse);
         }

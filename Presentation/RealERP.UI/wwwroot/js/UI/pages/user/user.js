@@ -35,15 +35,6 @@ export function openModal() {
     modal.classList.remove("hide");
 }
 
-//export function closeModal(e, clickedOutside) {
-//    debugger;
-//    if (clickedOutside) {
-//        if (e.target.classList.contains(".modal-overlay"))
-//            modal.classList.add("hide");
-//    } else modal.classList.add("hide");
-//}
-
-
 
 
 

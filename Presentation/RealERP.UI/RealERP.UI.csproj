@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\js\UI\components\modals\modalTest.js">
+    <Content Update="wwwroot\js\UI\components\modals\modal.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\js\UI\table\userTable.js">

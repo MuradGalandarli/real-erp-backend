@@ -1,6 +1,6 @@
 ﻿import { getAllUserTable } from "../UI/pages/user/user.js"
-import { modalAddForUser, modalUpdateForEmployee } from "./components/modals/modalTest.js"
-import { getAllEmployeeAsync } from "../UI/pages/employee/employee.js"
+import { modalAddForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
+import { getAllEmployeeAsync, getByIdEmployeeAsync } from "../UI/pages/employee/employee.js"
 
 
 const content = document.getElementById("Content");
@@ -16,7 +16,9 @@ function openModal(html) {
 document.addEventListener("click", (e) => {
 
     if (e.target.matches("#getAddUserModal")) {
+     
         openModal(modalAddForUser());
+        
     }
 
     if (e.target.classList.contains("close-btn")) {
@@ -41,39 +43,6 @@ document.addEventListener("submit", (e) => {
 });
 
 
-//function openModal(html) {
-//    document.body.insertAdjacentHTML("beforeend", html);
-//}
-
-//document.addEventListener("click", (e) => {
-
-//    if (e.target.matches("#getAddUserModal")) {
-//        console.log(modalAddForUser());
-
-//        openModal(modalAddForUser());
-//    }
-
-
-//    document.body.addEventListener("click", (e) => {
-//        if (e.target.classList.contains("close-btn")) {
-//            e.target.closest(".modal-overlay").remove();
-//        }
-//    });
-
-//    document.body.addEventListener("submit", (e) => {
-//        if (e.target.id === "addUserForm") {
-//            e.preventDefault();
-//            const formData = new FormData(e.target);
-//            console.log("Form submitted:", Object.fromEntries(formData));
-//            e.target.closest(".modal-overlay").remove();
-//        }
-//    });
-//})
-
-
-
-
-
 
     document.getElementById("userTableRender").addEventListener("click", async () => {
         content.innerHTML = await getAllUserTable();
@@ -83,18 +52,19 @@ document.addEventListener("submit", (e) => {
         content.innerHTML = await getAllEmployeeAsync();
     })
 
-
-
-
-
 //document.getElementById("getByIdEmployee").addEventListener("click", () => {
 
 //})
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
 
     if (e.target.matches("#getUpdateEmployeModal")) {
+       
+        const id = e.target.dataset.userId;
+
+        console.log(id)
         openModal(modalUpdateForEmployee());
+        await getByIdEmployeeAsync(id, e);
     }
 
     if (e.target.classList.contains("close-btn")) {
@@ -104,8 +74,9 @@ document.addEventListener("click", (e) => {
 
 
 document.addEventListener("submit", (e) => {
-    if (e.target.id === "updateEmployeeForm") {
+    if (e.target.id === "employeeForm") {
         e.preventDefault();
+
 
         const name = e.target.name.value;
         const email = e.target.email.value;
