@@ -1,6 +1,6 @@
 ﻿import { getAllUserTable } from "../UI/pages/user/user.js"
 import { modalAddForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
-import { getAllEmployeeAsync, getByIdEmployeeAsync } from "../UI/pages/employee/employee.js"
+import { getAllEmployeeAsync, getByIdEmployeeAsync,updateEmployeeAsync } from "../UI/pages/employee/employee.js"
 
 
 const content = document.getElementById("Content");
@@ -61,10 +61,8 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#getUpdateEmployeModal")) {
        
         const id = e.target.dataset.userId;
-
-        console.log(id)
         openModal(modalUpdateForEmployee());
-        await getByIdEmployeeAsync(id, e);
+        await getByIdEmployeeAsync(id);
     }
 
     if (e.target.classList.contains("close-btn")) {
@@ -73,16 +71,16 @@ document.addEventListener("click", async (e) => {
 });
 
 
-document.addEventListener("submit", (e) => {
+document.addEventListener("submit",async (e) => {
     if (e.target.id === "employeeForm") {
         e.preventDefault();
 
 
-        const name = e.target.name.value;
-        const email = e.target.email.value;
+        const id = document.querySelector("#submit-btn").dataset.employeeid;
+        debugger;
+        await updateEmployeeAsync(id);
 
-        console.log("Ad:", name, "Email:", email);
-
+        content.innerHTML = await getAllEmployeeAsync();
         e.target.reset();
 
         const modal = e.target.closest(".modal-overlay");

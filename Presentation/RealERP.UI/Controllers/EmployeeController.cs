@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetAllEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
 
@@ -31,6 +32,13 @@ namespace RealERP.UI.Controllers
             GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest = new() { Id = id };
             GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
             return Ok(getByIdEmployeeQueryResponse);
+        }
+        [HttpPut("update-employee")]
+        public async Task<IActionResult> UpdateEmployee([FromBody] UpdateEmployeeCommandRequest updateEmployeeCommandRequest)
+        {
+            UpdateEmployeeCommandResponse updateEmployeeCommandResponse = await _mediator.Send(updateEmployeeCommandRequest);
+            return Ok(updateEmployeeCommandResponse);
+
         }
 
 

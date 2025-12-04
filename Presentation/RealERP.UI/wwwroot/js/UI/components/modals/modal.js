@@ -32,9 +32,6 @@ export function modalUpdateForEmployee() {
                 <label>DepartmentId:</label>
                 <input type="text" id="departmentId" name="departmentId" required />
 
-                <label>UserId:</label>
-                <input type="text" id="userId" name="userId" required />
-
                 <button type="submit" id="submit-btn">Save</button>
             </form>
             <button class="close-btn">X</button>

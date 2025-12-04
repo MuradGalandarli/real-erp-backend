@@ -8,5 +8,9 @@ export const fetchEmployee = {
     },
         getById: async (id) => {
             return await apiRequest(`${API_URL}/get-By-Id-Employee?id=${id}`)
-        } 
+    },
+    update: async (employee) => {
+        return await apiRequest(`${API_URL}/update-employee`,"PUT", employee)
+    }
+
     } 

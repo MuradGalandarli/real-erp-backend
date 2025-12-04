@@ -40,7 +40,7 @@ namespace RealERP.Persistence.Service
         }
 
         public async Task<Response> CreateAsync(RegisterDto register, string role)
-        {
+            {
             _logger.LogInformation("Test");
             {
                 var userExists = await _userManager.FindByNameAsync(register.Username);
@@ -57,9 +57,9 @@ namespace RealERP.Persistence.Service
                 if (!result.Succeeded)
                     return new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." };
                 if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
-                    await _roleManager.CreateAsync(new AppRole() { Name = UserRoles.Admin });
+                    await _roleManager.CreateAsync(new AppRole() { Id = Guid.NewGuid().ToString(), Name = UserRoles.Admin });
                 if (!await _roleManager.RoleExistsAsync(UserRoles.User))
-                    await _roleManager.CreateAsync(new AppRole() { Name = UserRoles.User });
+                    await _roleManager.CreateAsync(new AppRole() { Id = Guid.NewGuid().ToString(), Name = UserRoles.User });
                 if (role == "Admin")
                 {
                     await _userManager.AddToRoleAsync(user, UserRoles.Admin);
@@ -87,7 +87,6 @@ namespace RealERP.Persistence.Service
             var users = await _userManager.Users.Skip((Page - 1) * Size).Take(Size).ToListAsync();
             return users.Select(u => new UserDto()
             {
-                //DepartmentId = u.DepartmentId,
                 Id = u.Id,
                 Name = u.Name,
                 Email = u.Email,

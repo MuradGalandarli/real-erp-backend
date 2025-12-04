@@ -61,18 +61,19 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> UpdateEmployeeAsync(EmployeeDto employeeDto)
         {
-          bool status = _writeEmployeeRepository.Update(new()
-            {
-                Id = employeeDto.Id,
-                DepartmentId = employeeDto.DepartmentId,
-                FullName = employeeDto.FullName,
-                UserId = employeeDto.UserId,
-                Position = employeeDto.Position,
-            });
-            if(status)
-                await _writeEmployeeRepository.SaveAsync();
-            return status;
+            var employee = await _readEmployeeRepository.GetByIdAsync(employeeDto.Id);
+            if (employee == null)
+                return false;
 
+            employee.FullName = employeeDto.FullName;
+            employee.DepartmentId = employeeDto.DepartmentId;
+            employee.Position = employeeDto.Position;
+
+            await _writeEmployeeRepository.SaveAsync();
+            return true;
         }
+
+
     }
 }
+

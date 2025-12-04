@@ -3,14 +3,16 @@ import { fetchUsers } from "../../services/userService.js";
 import { createEmployeeTable } from "../../table/employeeTable.js"
     
 export async function getAllEmployeeAsync() {
-  
-    const data = await fetchEmployee.getAll();
-    const employees = data.employees; 
    
+    const data = await fetchEmployee.getAll();
+    const employees = data.employees;
+    
     let table = createEmployeeTable();
    
     let id = 0
+   
     employees.forEach(employee => {
+       
         table += `
         <tr>
         <td>${++id}</td>
@@ -33,11 +35,18 @@ export async function getByIdEmployeeAsync(id) {
     document.querySelector("#fullName").value = data.fullName;
     document.querySelector("#position").value = data.position;
     document.querySelector("#departmentId").value = data.departmentId;
-    document.querySelector("#userId").value = data.userId;
+    document.querySelector("#submit-btn").dataset.employeeid = id;
 }
 
- //public int Id { get; set; }
- //       public string FullName { get; set; }
- //       public string Position { get; set; }
- //       public int DepartmentId { get; set; }
- //       public string ? UserId { get; set; }
+export async function updateEmployeeAsync(id) {
+
+    const employee = {
+        id:id,
+        fullName: document.querySelector("#fullName").value,
+        position: document.querySelector("#position").value,
+        departmentId: document.querySelector("#departmentId").value
+    }
+    await fetchEmployee.update(employee);
+
+
+}
