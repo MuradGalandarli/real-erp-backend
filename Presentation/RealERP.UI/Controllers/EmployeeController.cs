@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
 using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetAllEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
@@ -38,7 +39,12 @@ namespace RealERP.UI.Controllers
         {
             UpdateEmployeeCommandResponse updateEmployeeCommandResponse = await _mediator.Send(updateEmployeeCommandRequest);
             return Ok(updateEmployeeCommandResponse);
-
+        }
+        [HttpPost("add-employee")]
+        public async Task<IActionResult> AddEmployee([FromBody] AddEmployeeCommandRequest addEmployeeCommandRequest)
+        {
+            AddEmployeeCommandResponse addEmployeeCommandResponse = await _mediator.Send(addEmployeeCommandRequest);
+            return Ok(addEmployeeCommandResponse);
         }
 
 

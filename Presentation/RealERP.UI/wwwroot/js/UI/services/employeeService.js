@@ -11,6 +11,9 @@ export const fetchEmployee = {
     },
     update: async (employee) => {
         return await apiRequest(`${API_URL}/update-employee`,"PUT", employee)
+    },
+    add: async (employee) => {
+        return await apiRequest(`${API_URL}/add-employee`,"POST", employee)
     }
 
     } 

@@ -1,5 +1,6 @@
 ﻿export function createEmployeeTable() {
     return `
+    <button id="getAddModal">Add</button>
     <table border="1" width="100%">
         <tr>
             <th>Id</th>

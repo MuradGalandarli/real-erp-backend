@@ -23,6 +23,8 @@ export function modalUpdateForEmployee() {
         <div class="modal">
             <h2>Employee</h2>
             <form id="employeeForm">
+            <input type="hidden" id="formMode" value="add">
+
                 <label>Full name:</label>
                 <input type="text" id="fullName" name="fullName" required />
 
@@ -31,6 +33,11 @@ export function modalUpdateForEmployee() {
 
                 <label>DepartmentId:</label>
                 <input type="text" id="departmentId" name="departmentId" required />
+
+                <div id="show" style="display:block;"readonly>
+                <label style="display:block" >UserId:</label>
+                <input type="text" id="userId" name="userId" style="width:335px;" />
+                </div>
 
                 <button type="submit" id="submit-btn">Save</button>
             </form>
