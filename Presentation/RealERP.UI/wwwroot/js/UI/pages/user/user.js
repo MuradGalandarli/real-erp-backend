@@ -2,24 +2,25 @@
 import { fetchUsers } from "../../services/userService.js";
 
 
-
 export async function getAllUserTable() {
     const content = document.getElementById("Content")
     let table = await createUserTableHeader()
     const users = await fetchUsers.getAll(1, 10);
-    //debugger;
+    
     const mapUser = users.map(user => ({
         id: user.Id,
         name: user.name,
-        email: user.email
-    }) );
+        email: user.email,
+        surname: user.surname
+    }));
     let id = 0
-   
+    debugger
     mapUser.forEach(user =>
 
         table += `
         <tr>
           <td>${++id}</td>
+            <td>${user.surname}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td><button class="updateUser" data-userid="${user.id}">Update</button></td>
@@ -30,9 +31,17 @@ export async function getAllUserTable() {
     table + `</table >`;
     return table;
 }
- 
-export function openModal() {
-    modal.classList.remove("hide");
+
+export async function addUser() {
+    const user =
+    {
+        surname: document.getElementById("surName").value,
+        email: document.getElementById("email").value,
+        name: document.getElementById("name").value,
+        password: document.getElementById("password").value
+    }
+
+    return await fetchUsers.addUser(user);
 }
 
 

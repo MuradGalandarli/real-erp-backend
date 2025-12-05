@@ -1,5 +1,5 @@
-﻿import { getAllUserTable } from "../UI/pages/user/user.js"
-import { modalAddForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
+﻿import { getAllUserTable, addUser } from "../UI/pages/user/user.js"
+import { modalForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
 
 
@@ -13,35 +13,6 @@ function openModal(html) {
     document.body.appendChild(modalEl);
 }
 
-document.addEventListener("click", (e) => {
-
-    if (e.target.matches("#getAddUserModal")) {
-     
-        openModal(modalAddForUser());
-        
-    }
-
-    if (e.target.classList.contains("close-btn")) {
-        e.target.closest(".modal-overlay").remove();
-    }
-});
-
-document.addEventListener("submit", (e) => {
-    if (e.target.id === "addUserForm") {
-        e.preventDefault();
-
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-
-        console.log("Ad:", name, "Email:", email);
-
-        e.target.reset();
-
-        const modal = e.target.closest(".modal-overlay");
-        if (modal) modal.remove();
-    }
-});
-
 
 
     document.getElementById("userTableRender").addEventListener("click", async () => {
@@ -52,9 +23,6 @@ document.addEventListener("submit", (e) => {
         content.innerHTML = await getAllEmployeeAsync();
     })
 
-//document.getElementById("getByIdEmployee").addEventListener("click", () => {
-
-//})
 
 document.addEventListener("click", async (e) => {
 
@@ -77,6 +45,13 @@ document.addEventListener("click", async (e) => {
         document.getElementById("formMode").value = "add";
     }
 
+
+    if (e.target.matches("#getAddUserModal")) {
+
+        openModal(modalForUser());
+
+    }
+
     if (e.target.classList.contains("close-btn")) {
         e.target.closest(".modal-overlay").remove();
     }
@@ -90,19 +65,33 @@ document.addEventListener("submit",async (e) => {
         const mode = document.getElementById("formMode").value;
         if (mode == "update") {
             const id = document.querySelector("#submit-btn").dataset.employeeid;
-            await updateEmployeeAsync(id);  
-            console.log("update")
+            await updateEmployeeAsync(id);
         }
+      
         if (mode == "add") {
-            await addEmployee();
-        }
 
+            await addEmployee();
+           
+        }
         content.innerHTML = await getAllEmployeeAsync();
+    }
+        
+        if (e.target.id == "addUserForm") {
+            const userMode = document.getElementById("userFromMode").value
+            if (userMode == "addUser") {
+                
+                await addUser();
+                content.innerHTML = await getAllUserTable()
+            }
+
+   
+        }
+       
         e.target.reset();
 
         const modal = e.target.closest(".modal-overlay");
         if (modal) modal.remove();
-    }
+    
 });
 
 

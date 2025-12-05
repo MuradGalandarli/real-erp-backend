@@ -19,21 +19,28 @@ namespace RealERP.Persistence.Service
         }
 
         public async Task<bool> AddEmployeeAsync(EmployeeDto employee)
-        {
-            bool hasEmployee = _readEmployeeRepository.Table.Any(x => x.UserId == employee.UserId);
-            if (!hasEmployee)
+        { 
+            bool hasEmployee = false;
+            if (!string.IsNullOrEmpty(employee.UserId))
             {
-                bool status = await _writeEmployeeRepository.AddAsync(new()
-                {
-                    DepartmentId = employee.DepartmentId,
-                    FullName = employee.FullName,
-                    UserId = employee.UserId,
-                    Position = employee.Position,
-                });
-                if (status)
-                    await _writeEmployeeRepository.SaveAsync();
-            return status;
+                 hasEmployee = _readEmployeeRepository.Table.Any(x => x.UserId == employee.UserId);
             }
+                if (!hasEmployee)
+                {
+                    bool status = await _writeEmployeeRepository.AddAsync(new()
+                    {
+                        DepartmentId = employee.DepartmentId,
+                        FullName = employee.FullName,
+                        UserId = employee.UserId,
+                        Position = employee.Position,
+                    });
+                    if (status)
+                       
+                            await _writeEmployeeRepository.SaveAsync();
+
+                    return status;
+                }
+            
             return false;
         }
 

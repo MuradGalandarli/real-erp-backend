@@ -51,12 +51,16 @@ export async function updateEmployeeAsync(id) {
 }
 
 export async function addEmployee() {
+
+    const userIdValue = document.querySelector("#userId")?.value;
     const employee = {
         fullName: document.querySelector("#fullName").value,
         position: document.querySelector("#position").value,
         departmentId: document.querySelector("#departmentId").value,
-        userId: document.querySelector("#userId").value
-    }
-    debugger;
+        userId: userIdValue === "" ? null : userIdValue
+    };
+
+    
+   
     await fetchEmployee.add(employee);
 }

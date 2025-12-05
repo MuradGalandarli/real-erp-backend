@@ -19,7 +19,7 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser
             {
                 Email = request.Email,
                 Password = request.Password,
-                Username = request.Username,
+                Surname = request.SurName,
                 Name = request.Name,
             },"User");
 

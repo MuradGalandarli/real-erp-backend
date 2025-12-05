@@ -40,17 +40,18 @@ namespace RealERP.Persistence.Service
         }
 
         public async Task<Response> CreateAsync(RegisterDto register, string role)
-            {
+        {
             _logger.LogInformation("Test");
             {
-                var userExists = await _userManager.FindByNameAsync(register.Username);
+                var userExists = await _userManager.FindByEmailAsync(register.Email);
                 if (userExists != null)
                     return new Response { Status = "Error", Message = "User already exists!" };
                 AppUser user = new()
                 {
+                    SurName = register.Surname,
                     Email = register.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    UserName = register.Username,
+                    UserName = register.Email,
                     Name = register.Name
                 };
                 var result = await _userManager.CreateAsync(user, register.Password);
@@ -84,15 +85,27 @@ namespace RealERP.Persistence.Service
 
         public async Task<List<UserDto>> GetAllUser(int Page, int Size)
         {
-            var users = await _userManager.Users.Skip((Page - 1) * Size).Take(Size).ToListAsync();
-            return users.Select(u => new UserDto()
+            try
             {
-                Id = u.Id,
-                Name = u.Name,
-                Email = u.Email,
-                TwoFactorEnabled = u.TwoFactorEnabled,
+                var users = await _userManager.Users.Skip((Page - 1) * Size).Take(Size).ToListAsync();
 
-            }).ToList();
+
+
+                return users.Select(u => new UserDto()
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    Surname = u.SurName,
+                    TwoFactorEnabled = u.TwoFactorEnabled,
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                var a = ex.InnerException.Message;
+            }
+            return new() { };
         }
 
         public async Task<UserDto> GetByEmailUserAsync(string email)
@@ -103,10 +116,9 @@ namespace RealERP.Persistence.Service
 
             return new()
             {
-                // DepartmentId = appUser.DepartmentId,
                 Email = appUser.Email,
                 Name = appUser.Name,
-
+               Surname = appUser.SurName
             };
         }
 
@@ -117,11 +129,11 @@ namespace RealERP.Persistence.Service
                 user = await _userManager.FindByNameAsync(userIdOrName);
 
             if (user != null)
-            { 
+            {
                 var userRoles = await _userManager.GetRolesAsync(user);
                 return userRoles.ToArray();
             }
-            return new string [] { };
+            return new string[] { };
         }
 
         public async Task<bool> HasRolePermissionToEndpointAsync(string name, string code)
@@ -141,7 +153,7 @@ namespace RealERP.Persistence.Service
             var hasRole = false;
             var endpointRoles = endpoint.Roles.Select(r => r.Name);
 
-           
+
 
             foreach (var userRole in userRoles)
             {
@@ -157,8 +169,8 @@ namespace RealERP.Persistence.Service
         {
             AppUser appUser = new()
             {
-                Email = register.Email,
-                UserName = register.Username
+                Name = register.Name,
+                SurName = register.Surname
 
             };
             IdentityResult result = await _userManager.UpdateAsync(appUser);

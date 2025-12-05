@@ -24,6 +24,7 @@ namespace RealERP.Application.Abstraction.Features.Query.AppUser
                 UserId = u.Id,
                 Email = u.Email,
                 Name = u.Name,
+                Surname = u.Surname
 
             }).ToList();
         }
