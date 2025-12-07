@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Repositories.BrandRepository;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
@@ -17,6 +18,7 @@ using RealERP.Persistence.Repositories.Menu;
 using RealERP.Persistence.Repositories.ProductRepository;
 using RealERP.Persistence.Repositories.WarehouseRepository;
 using RealERP.Persistence.Service;
+using RealERP.Persistence.Service.UnitOfWork;
 
 namespace RealERP.Persistence
 {
@@ -51,6 +53,7 @@ namespace RealERP.Persistence
             services.AddScoped<IWriteMenuRepository,WriteMenuRepository>();
             services.AddScoped<IReadEndpointRepository,ReadEndpointRepository>();
             services.AddScoped<IWriteEndpointRepository,WriteEndpointRepository>();
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
 
         }
     }

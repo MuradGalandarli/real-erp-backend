@@ -1,7 +1,7 @@
 ﻿export function createEmployeeTable() {
     return `
     <button id="getAddModal">Add</button>
-    <table border="1" width="100%">
+    <table>
         <tr>
             <th>Id</th>
             <th>FullName</th>

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.Endpoint;
@@ -14,17 +15,22 @@ namespace RealERP.Persistence.Service
 {
     public class UserService : IUserService
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+      
+
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly ILogger<UserService> _logger;
         private readonly IReadEndpointRepository _readEndpointRepository;
 
-        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, ILogger<UserService> logger, IReadEndpointRepository readEndpointRepository)
+        public UserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, ILogger<UserService> logger, IReadEndpointRepository readEndpointRepository, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _logger = logger;
             _readEndpointRepository = readEndpointRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task AssignRoleToUserAsync(string id, string[] roles)
@@ -74,12 +80,31 @@ namespace RealERP.Persistence.Service
         }
         public async Task<bool> DeleteUserByEmailAsync(string email)
         {
-            AppUser? appUser = await _userManager.FindByEmailAsync(email);
+            //AppUser? appUser = await _unitOfWork.UserManager.FindByEmailAsync(email);
+            AppUser? appUser = await _unitOfWork.UserManager.Users.Include(e => e.Employee)
+                .ThenInclude(d => d.Department).FirstOrDefaultAsync(u => u.Email == email);
+
             if (appUser == null)
                 throw new NotFoundException($"User with email {email} not found");
 
-            IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
-            return identityResult.Succeeded;
+            await _unitOfWork.BeginTransactionAsync();
+            try
+            {
+                IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
+                if (appUser.Employee != null)
+                {
+                    _unitOfWork.writeEmployeeRepository.Delete(appUser.Employee.Id);
+                    await _unitOfWork.SaveChangesAsync();
+                }
+                await _unitOfWork.CommitAsync();
+                return identityResult.Succeeded;
+            }
+            catch
+            {
+               await _unitOfWork.RollbackAsync();
+            }
+           
+            return false;
 
         }
 

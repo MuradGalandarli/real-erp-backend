@@ -1,0 +1,26 @@
+﻿.update-btn{
+    display:block;
+    margin:0 auto;
+    background-color:white;
+    border-radius:10px;
+    border-color:white;
+
+}
+    .update-btn:hover {
+        background-color: yellow;
+        box-shadow:     0 8px 16px 0 rgba(0,0,0,0.6)    
+    }
+
+.delete-btn {
+    display:block;
+    margin:0 auto;
+    background-color: white;
+    border-radius: 10px;
+    border-color: white;
+    
+}
+
+    .delete-btn:hover {
+        background-color: red;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6)
+    }

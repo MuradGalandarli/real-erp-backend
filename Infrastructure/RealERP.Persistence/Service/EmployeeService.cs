@@ -51,6 +51,7 @@ namespace RealERP.Persistence.Service
                 FullName = e.FullName,
                 DepartmentId=e.DepartmentId,
                 Id = e.Id,
+                UserId = e.UserId,
                 Position = e.Position,
             }).ToList();
         }

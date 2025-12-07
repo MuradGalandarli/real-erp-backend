@@ -9,7 +9,7 @@ namespace RealERP.Domain.Entities.User
     {
         public string Name { get; set; }
         public string SurName { get; set; }
-        public Employee? Employee { get; set; }
+        public Employee? Employee { get; set; } 
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenEndDate { get; set; }
     }

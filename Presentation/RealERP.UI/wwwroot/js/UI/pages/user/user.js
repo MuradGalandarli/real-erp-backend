@@ -14,7 +14,7 @@ export async function getAllUserTable() {
         surname: user.surname
     }));
     let id = 0
-    debugger
+ 
     mapUser.forEach(user =>
 
         table += `
@@ -23,8 +23,8 @@ export async function getAllUserTable() {
             <td>${user.surname}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
-            <td><button class="updateUser" data-userid="${user.id}">Update</button></td>
-            <td><button class="deleteUser" data-userid="${user.id}">Delete</button></td>
+            <td><button class="update-btn" data-userid="${user.id}">Update</button></td>
+            <td><button class="delete-btn" data-userid="${user.id}">Delete</button></td>
         </tr>
        ` )
 

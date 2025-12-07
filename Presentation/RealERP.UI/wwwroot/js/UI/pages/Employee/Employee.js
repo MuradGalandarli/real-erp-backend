@@ -5,12 +5,13 @@ import { createEmployeeTable } from "../../table/employeeTable.js"
 export async function getAllEmployeeAsync() {
    
     const data = await fetchEmployee.getAll();
+    console.log(data)
     const employees = data.employees;
     
     let table = createEmployeeTable();
-   
+  
     let id = 0
-   
+    debugger;
     employees.forEach(employee => {
        
         table += `
@@ -20,8 +21,8 @@ export async function getAllEmployeeAsync() {
         <td>${employee.position}</td>
         <td>${employee.departmentId}</td>
         <td>${employee.userId}</td>
-        <td><button data-user-id=${employee.id} id="getUpdateEmployeModal">Update</button></td>
-        <td><button>Delete</button></td>
+        <td><button data-user-id=${employee.id} class="update-btn" id="getUpdateEmployeModal">Update</button></td>
+        <td><button class="delete-btn" >Delete</button></td>
         </tr> `
     }
     );
