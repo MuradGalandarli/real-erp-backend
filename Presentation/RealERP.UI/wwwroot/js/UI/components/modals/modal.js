@@ -4,7 +4,7 @@ export function modalForUser() {
     return `
     <div class="modal-overlay">
         <div class="modal">
-            <h2>Add User</h2>
+            <h2>User</h2>
             <form id="addUserForm">
             <input type="hidden" Id="userFromMode" value="addUser"
 
@@ -14,11 +14,15 @@ export function modalForUser() {
                  <label>Surname:</label>
                 <input type="text" id="name" name="name" required />
 
-                <label>Email:</label>
-                <input type="email" id="email" name="email" required />
 
-                 <label>Password:</label>
-                <input type="password" id="password" name="Password" required />
+                 <div id="show" style="display:none;">
+    <label>Email:</label>
+    <input type="email" id="email" name="email" style="width:335px;" required />
+
+    <label>Password:</label>
+    <input type="password" id="password" name="password" style="width:335px;" required />
+</div>
+
 
                 <button type="submit" id="submit-btn">Add</button>
             </form>

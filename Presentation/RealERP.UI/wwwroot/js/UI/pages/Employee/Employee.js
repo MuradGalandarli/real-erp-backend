@@ -60,8 +60,5 @@ export async function addEmployee() {
         departmentId: document.querySelector("#departmentId").value,
         userId: userIdValue === "" ? null : userIdValue
     };
-
-    
-   
     await fetchEmployee.add(employee);
 }

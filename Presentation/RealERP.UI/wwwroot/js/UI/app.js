@@ -1,4 +1,4 @@
-﻿import { getAllUserTable, addUser } from "../UI/pages/user/user.js"
+﻿import { getAllUserTable, addUser, getByEmailUser } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
 
@@ -25,10 +25,10 @@ function openModal(html) {
 
 
 document.addEventListener("click", async (e) => {
-
+    const id = e.target.dataset.userId;
     if (e.target.matches("#getUpdateEmployeModal")) {
        
-        const id = e.target.dataset.userId;
+       
         openModal(modalUpdateForEmployee());
        
         document.getElementById("formMode").value = "update";
@@ -49,7 +49,21 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#getAddUserModal")) {
 
         openModal(modalForUser());
+        const showDiv = document.getElementById("show");
+        if (showDiv) {
+            showDiv.style.display = "block";
+        }
 
+    }
+    if (e.target.matches("#getUpdateUserModal")) {
+        const email = e.target.dataset.email
+
+
+
+
+        openModal(modalForUser());
+        await getByEmailUser(email)
+        
     }
 
     if (e.target.classList.contains("close-btn")) {

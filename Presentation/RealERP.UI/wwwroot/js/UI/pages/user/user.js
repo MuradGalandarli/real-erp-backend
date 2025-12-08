@@ -23,7 +23,7 @@ export async function getAllUserTable() {
             <td>${user.surname}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
-            <td><button class="update-btn" data-userid="${user.id}">Update</button></td>
+            <td><button  class="update-btn" data-email="${user.email}" id="getUpdateUserModal">Update</button></td>
             <td><button class="delete-btn" data-userid="${user.id}">Delete</button></td>
         </tr>
        ` )
@@ -42,6 +42,14 @@ export async function addUser() {
     }
 
     return await fetchUsers.addUser(user);
+}
+
+export async function getByEmailUser(email) {
+    const user = await fetchUsers.getById(email);
+    console.log(user)
+    document.getElementById("surName").value = user.surname;
+    document.getElementById("name").value = user.name;
+   
 }
 
 

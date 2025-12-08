@@ -140,7 +140,7 @@ namespace RealERP.Persistence.Service
                 throw new NotFoundException($"User with email {email} not found");
 
             return new()
-            {
+            { Id = appUser.Id,
                 Email = appUser.Email,
                 Name = appUser.Name,
                Surname = appUser.SurName

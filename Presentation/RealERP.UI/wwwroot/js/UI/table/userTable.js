@@ -9,8 +9,8 @@ export async function createUserTableHeader() {
     <table border="1" width="100%">
         <tr>
             <th>Id</th>
-            <th>Surname</th>
             <th>Name</th>
+            <th>Surname</th>
             <th>Email</th>
             <th>Update</th>
             <th>Delete</th> 
