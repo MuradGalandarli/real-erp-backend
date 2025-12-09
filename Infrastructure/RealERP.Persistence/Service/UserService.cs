@@ -10,6 +10,7 @@ using RealERP.Application.Roles;
 using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.Identity;
 using RealERP.Domain.Entities.User;
+using System.Reflection.Metadata.Ecma335;
 
 namespace RealERP.Persistence.Service
 {
@@ -192,16 +193,19 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> UpdateUserAsync(RegisterDto register)
         {
-            AppUser appUser = new()
+           
+            AppUser? user = await _unitOfWork.UserManager.FindByIdAsync(register.Id);
+            if (user != null)
             {
-                Name = register.Name,
-                SurName = register.Surname
-
-            };
-            IdentityResult result = await _userManager.UpdateAsync(appUser);
-            return result.Succeeded;
-
+                user.Name = register.Name;
+                user.SurName = register.Surname;
+            
+                IdentityResult result = await _userManager.UpdateAsync(user);
+                return result.Succeeded;
+            }
+            return false;
         }
+
     }
 }
 

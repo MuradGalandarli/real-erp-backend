@@ -5,7 +5,7 @@ export function modalForUser() {
     <div class="modal-overlay">
         <div class="modal">
             <h2>User</h2>
-            <form id="addUserForm">
+            <form id="userForm">
             <input type="hidden" Id="userFromMode" value="addUser"
 
                 <label>Name:</label>
@@ -17,10 +17,10 @@ export function modalForUser() {
 
                  <div id="show" style="display:none;">
     <label>Email:</label>
-    <input type="email" id="email" name="email" style="width:335px;" required />
+    <input type="email" id="email" name="email" style="width:335px;" />
 
     <label>Password:</label>
-    <input type="password" id="password" name="password" style="width:335px;" required />
+    <input type="password" id="password" name="password" style="width:335px;" />
 </div>
 
 
@@ -52,7 +52,6 @@ export function modalUpdateForEmployee() {
     <label style="display:block">UserId:</label>
     <input type="text" id="userId" name="userId" style="width:335px;" />
 </div>
-
 
                 <button type="submit" id="submit-btn">Save</button>
             </form>

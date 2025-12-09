@@ -6,7 +6,7 @@ export async function getAllUserTable() {
     const content = document.getElementById("Content")
     let table = await createUserTableHeader()
     const users = await fetchUsers.getAll(1, 10);
-    
+
     const mapUser = users.map(user => ({
         id: user.Id,
         name: user.name,
@@ -14,7 +14,7 @@ export async function getAllUserTable() {
         surname: user.surname
     }));
     let id = 0
- 
+
     mapUser.forEach(user =>
 
         table += `
@@ -49,8 +49,22 @@ export async function getByEmailUser(email) {
     console.log(user)
     document.getElementById("surName").value = user.surname;
     document.getElementById("name").value = user.name;
-   
+    document.querySelector("#submit-btn").dataset.userid = user.userId;
 }
+
+export async function updateUser(id) {
+  
+    const user = {
+        "id": id,
+        "surname": document.getElementById("surName").value,
+        "name": document.getElementById("name").value
+    }
+
+        await fetchUsers.update(user)
+        console.log("work")
+    }
+
+
 
 
 

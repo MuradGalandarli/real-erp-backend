@@ -1,4 +1,4 @@
-﻿import { getAllUserTable, addUser, getByEmailUser } from "../UI/pages/user/user.js"
+﻿import { getAllUserTable, addUser, getByEmailUser, updateUser } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
 
@@ -15,28 +15,28 @@ function openModal(html) {
 
 
 
-    document.getElementById("userTableRender").addEventListener("click", async () => {
-        content.innerHTML = await getAllUserTable();
-    })
+document.getElementById("userTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllUserTable();
+})
 
-    document.getElementById("employeeTableRender").addEventListener("click", async () => {
-        content.innerHTML = await getAllEmployeeAsync();
-    })
+document.getElementById("employeeTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllEmployeeAsync();
+})
 
 
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     if (e.target.matches("#getUpdateEmployeModal")) {
-       
-       
+
+
         openModal(modalUpdateForEmployee());
-       
+
         document.getElementById("formMode").value = "update";
         const showDiv = document.getElementById("show");
         if (showDiv) {
-            showDiv.style.display = "none"; 
+            showDiv.style.display = "none";
         }
-        
+
         await getByIdEmployeeAsync(id);
     }
 
@@ -58,12 +58,10 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#getUpdateUserModal")) {
         const email = e.target.dataset.email
 
-
-
-
         openModal(modalForUser());
         await getByEmailUser(email)
-        
+        document.getElementById("userFromMode").value = "userUpdate";
+
     }
 
     if (e.target.classList.contains("close-btn")) {
@@ -72,7 +70,7 @@ document.addEventListener("click", async (e) => {
 });
 
 
-document.addEventListener("submit",async (e) => {
+document.addEventListener("submit", async (e) => {
     if (e.target.id === "employeeForm") {
         e.preventDefault();
 
@@ -81,31 +79,36 @@ document.addEventListener("submit",async (e) => {
             const id = document.querySelector("#submit-btn").dataset.employeeid;
             await updateEmployeeAsync(id);
         }
-      
+
         if (mode == "add") {
 
             await addEmployee();
-           
+
         }
         content.innerHTML = await getAllEmployeeAsync();
     }
-        
-        if (e.target.id == "addUserForm") {
-            const userMode = document.getElementById("userFromMode").value
-            if (userMode == "addUser") {
-                
-                await addUser();
-                content.innerHTML = await getAllUserTable()
-            }
 
-   
+    if (e.target.id == "userForm") {
+        const userMode = document.getElementById("userFromMode").value
+        if (userMode == "addUser") {
+            debugger;
+            await addUser();
+            content.innerHTML = await getAllUserTable()
         }
-       
-        e.target.reset();
+        if (userMode == "userUpdate") {
+            const id = document.querySelector("#submit-btn").dataset.userid
+            console.log(id);
+            await updateUser(id);
+            content.innerHTML = await getAllUserTable()
+        }
 
-        const modal = e.target.closest(".modal-overlay");
-        if (modal) modal.remove();
-    
+    }
+
+    e.target.reset();
+
+    const modal = e.target.closest(".modal-overlay");
+    if (modal) modal.remove();
+
 });
 
 

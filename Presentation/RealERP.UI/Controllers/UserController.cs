@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.DeleteUser;
 using RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUser;
+using RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser;
 using RealERP.Application.Abstraction.Features.Query.AppUser;
 
 namespace RealERP.UI.Controllers
@@ -46,7 +47,12 @@ namespace RealERP.UI.Controllers
             GetByEmailUserCommandResponse getByEmailUserCommandResponse = await _mediator.Send(getByEmailUserCommandRequest);
             return Ok(getByEmailUserCommandResponse);
         }
-
+        [HttpPut("update-user")]
+        public async Task<IActionResult> UpdateUser([FromBody]UpdateUserCommandRequest updateUserCommandRequest)
+        {
+            UpdateUserCommandResponse updateUserCommandResponse = await _mediator.Send(updateUserCommandRequest);
+            return Ok(updateUserCommandResponse);
+        }
 
 
         public IActionResult Index()

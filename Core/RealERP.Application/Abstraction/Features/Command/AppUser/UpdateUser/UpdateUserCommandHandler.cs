@@ -20,8 +20,8 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.UpdateUser
             {
                 Id = request.Id,
                 Name = request.Name,
-                Email = request.Email,
-                Surname = request.Surname
+                Surname = request.Surname,
+                Email = request.Email
             });
             return new()
             {
