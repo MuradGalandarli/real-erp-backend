@@ -24,7 +24,7 @@ export async function getAllUserTable() {
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td><button  class="update-btn" data-email="${user.email}" id="getUpdateUserModal">Update</button></td>
-            <td><button class="delete-btn" data-userid="${user.id}">Delete</button></td>
+            <td><button class="delete-btn" data-email="${user.email}" id="deleteUser">Delete</button></td>
         </tr>
        ` )
 
@@ -62,7 +62,12 @@ export async function updateUser(id) {
 
         await fetchUsers.update(user)
         console.log("work")
-    }
+}
+
+export async function deleteUserAsync(id)
+{
+    await fetchUsers.deleteUser(id);
+}
 
 
 

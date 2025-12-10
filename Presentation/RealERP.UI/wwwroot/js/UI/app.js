@@ -1,4 +1,4 @@
-﻿import { getAllUserTable, addUser, getByEmailUser, updateUser } from "../UI/pages/user/user.js"
+﻿import { getAllUserTable, addUser, getByEmailUser, updateUser,deleteUserAsync } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
 
@@ -26,6 +26,12 @@ document.getElementById("employeeTableRender").addEventListener("click", async (
 
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
+    const email = e.target.dataset.email
+    if (e.target.matches("#deleteUser")) {
+        await deleteUserAsync(email);
+        content.innerHTML = await getAllUserTable();
+    }
+
     if (e.target.matches("#getUpdateEmployeModal")) {
 
 
@@ -56,7 +62,7 @@ document.addEventListener("click", async (e) => {
 
     }
     if (e.target.matches("#getUpdateUserModal")) {
-        const email = e.target.dataset.email
+        
 
         openModal(modalForUser());
         await getByEmailUser(email)
