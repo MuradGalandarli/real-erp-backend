@@ -81,7 +81,6 @@ namespace RealERP.Persistence.Service
         }
         public async Task<bool> DeleteUserByEmailAsync(string email)
         {
-            //AppUser? appUser = await _unitOfWork.UserManager.FindByEmailAsync(email);
             AppUser? appUser = await _unitOfWork.UserManager.Users.Include(e => e.Employee)
                 .ThenInclude(d => d.Department).FirstOrDefaultAsync(u => u.Email == email);
 

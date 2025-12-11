@@ -1,7 +1,7 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser,deleteUserAsync } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
-
+import { getAllDepartmentAsync } from "../UI/pages/department/department.js"
 
 const content = document.getElementById("Content");
 
@@ -13,7 +13,9 @@ function openModal(html) {
     document.body.appendChild(modalEl);
 }
 
-
+document.getElementById("departmentTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllDepartmentAsync(1,5);
+})
 
 document.getElementById("userTableRender").addEventListener("click", async () => {
     content.innerHTML = await getAllUserTable();
@@ -97,7 +99,6 @@ document.addEventListener("submit", async (e) => {
     if (e.target.id == "userForm") {
         const userMode = document.getElementById("userFromMode").value
         if (userMode == "addUser") {
-            debugger;
             await addUser();
             content.innerHTML = await getAllUserTable()
         }

@@ -6,7 +6,7 @@ export async function createUserTableHeader() {
     <h2> User list </h2>
     <button id="getAddUserModal"> Add </button>
 
-    <table border="1" width="100%">
+    <table>
         <tr>
             <th>Id</th>
             <th>Name</th>

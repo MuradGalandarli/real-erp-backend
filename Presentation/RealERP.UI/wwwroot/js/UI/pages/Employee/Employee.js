@@ -10,8 +10,7 @@ export async function getAllEmployeeAsync() {
     
     let table = createEmployeeTable();
   
-    let id = 0
-    debugger;
+    let id = 0;
     employees.forEach(employee => {
        
         table += `
