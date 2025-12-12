@@ -59,3 +59,24 @@ export function modalUpdateForEmployee() {
         </div>
     </div>`
 }
+
+
+export function modalForDepartment() {
+    return `
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Department</h2>
+            <form id="departmentForm">
+            <input type="hidden" id="formMode" value="add">
+
+                <label>Name:</label>
+                <input type="text" id="name" name="name" required />
+
+
+                <button type="submit" id="submit-btn">Save</button>
+            </form>
+            <button class="close-btn">X</button>
+        </div>
+    </div>`
+}
+

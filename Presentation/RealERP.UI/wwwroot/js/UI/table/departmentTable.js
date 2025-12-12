@@ -1,7 +1,8 @@
 ﻿export function createDepartmentTable() {
 
-    return `<table>
-    <button id"addDepartment"> Add </button>
+    return `<button id="getAddDepartmentModal">Add</button>
+
+    <table>
     <tr>
     <th>Id</th>
     <th>Name</th>

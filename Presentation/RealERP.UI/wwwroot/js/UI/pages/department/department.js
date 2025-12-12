@@ -12,11 +12,16 @@ export async function getAllDepartmentAsync(page, size) {
         <td>${dep.name}</td>
         <td><button class="update-btn">Update</button></td>
         <td><button class="delete-btn">Sil</button></td>
-      
         </tr>
         `
     })
     table +=`</table>`
     console.log(department)
     return table;
+}
+
+export async function addDepartmentAsync() {
+    const department = { name: document.getElementById("name").value };
+    await fetchDepartment.add(department);
+
 }

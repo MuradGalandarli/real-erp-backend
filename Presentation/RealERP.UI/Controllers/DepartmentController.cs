@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Department.AddDepartment;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Departament.GetAllDepartment;
 
@@ -19,9 +20,13 @@ namespace RealERP.UI.Controllers
           GetAllDepartmentQueryRequest getAllDepartmentQueryRequest = new() { Page = page, Size = size };
             List<GetAllDepartmentQueryResponse> getAllDepartmentQueryResponse = await _mediator.Send(getAllDepartmentQueryRequest);
             return Ok(getAllDepartmentQueryResponse);
-
         }
-
+        [HttpPost("add-department")]
+        public async Task<IActionResult> AddDepartment([FromBody] AddDepartmentCommandRequest addDepartmentCommandRequest)
+        {
+            AddDepartmentCommandResponse addDepartmentCommandResponse = await _mediator.Send(addDepartmentCommandRequest);
+            return Ok(addDepartmentCommandRequest);
+        }
 
     }
 }
