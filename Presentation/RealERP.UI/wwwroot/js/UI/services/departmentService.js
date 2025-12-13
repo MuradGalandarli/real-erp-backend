@@ -8,6 +8,11 @@ export const fetchDepartment =
     },
     add: async (department) => {
         return await apiRequest(`${API_URL}/add-department`, "POST", department)
+    },
+    getById: async (id)=>
+    {
+        return await apiRequest(`${API_URL}/get-By-Id?id=${id}`)
     }
+
 
 }

@@ -1,7 +1,7 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser,deleteUserAsync } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee, modalForDepartment } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
-import { getAllDepartmentAsync, addDepartmentAsync } from "../UI/pages/department/department.js"
+import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment } from "../UI/pages/department/department.js"
 
 const content = document.getElementById("Content");
 
@@ -14,7 +14,7 @@ function openModal(html) {
 }
 
 document.getElementById("departmentTableRender").addEventListener("click", async () => {
-    content.innerHTML = await getAllDepartmentAsync(1,5);
+    content.innerHTML = await getAllDepartmentAsync(1,10);
 })
 
 document.getElementById("userTableRender").addEventListener("click", async () => {
@@ -36,12 +36,18 @@ document.addEventListener("click", async (e) => {
     }
 
     if (e.target.matches("#getAddDepartmentModal")) {
-        openModal(modalForDepartment());
+       
+            openModal(modalForDepartment());
       
+    }
+    if (e.target.matches("#getUpdateDepartmentModal")) {
+        openModal(modalForDepartment());
+        document.getElementById("formMode").value = "update";
+        const id = e.target.dataset.id;
+        await getByIdDepartment(id);
     }
 
     if (e.target.matches("#getUpdateEmployeModal")) {
-
 
         openModal(modalUpdateForEmployee());
 
@@ -91,9 +97,15 @@ document.addEventListener("submit", async (e) => {
         const mode = document.getElementById("formMode").value;
 
     if (e.target.id == "departmentForm") {
-        
-        await addDepartmentAsync();
-        content.innerHTML = await getAllDepartmentAsync();
+
+        if (mode == "add") {
+            debugger;
+            await addDepartmentAsync();
+            content.innerHTML = await getAllDepartmentAsync(1,10);
+        }
+        else {
+            console.log("Update")
+        }
         }
 
 
@@ -121,7 +133,6 @@ document.addEventListener("submit", async (e) => {
         }
         if (userMode == "userUpdate") {
             const id = document.querySelector("#submit-btn").dataset.userid
-            console.log(id);
             await updateUser(id);
             content.innerHTML = await getAllUserTable()
         }

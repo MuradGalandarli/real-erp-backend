@@ -72,7 +72,6 @@ export function modalForDepartment() {
                 <label>Name:</label>
                 <input type="text" id="name" name="name" required />
 
-
                 <button type="submit" id="submit-btn">Save</button>
             </form>
             <button class="close-btn">X</button>
