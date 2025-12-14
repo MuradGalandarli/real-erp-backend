@@ -55,6 +55,7 @@ namespace RealERP.Persistence.Service
         {
             bool status = _writeDepartmentRepository.Update(new()
             {
+                Id = department.Id,
                 Name = department.Name,
             });
             if (status)

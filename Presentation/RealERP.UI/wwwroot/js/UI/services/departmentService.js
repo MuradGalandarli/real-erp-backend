@@ -12,7 +12,11 @@ export const fetchDepartment =
     getById: async (id)=>
     {
         return await apiRequest(`${API_URL}/get-By-Id?id=${id}`)
+    },
+    update: async (department) => {
+        return apiRequest(`${API_URL}/update-department`, "PUT", department)
     }
+    
 
 
 }

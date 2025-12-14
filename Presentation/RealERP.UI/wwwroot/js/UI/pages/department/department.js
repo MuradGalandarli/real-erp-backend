@@ -26,6 +26,14 @@ export async function addDepartmentAsync() {
 
 export async function getByIdDepartment(id) {
     const department = await fetchDepartment.getById(id);
-    let name = document.getElementById("name").value = department.name;
+    document.getElementById("name").value = department.name;
+    document.querySelector("#submit-btn").dataset.id = id;
 
+}
+export async function updateDepartmentAsync(id) {
+    const department = {
+        id: id,
+        name: document.getElementById("name").value
+    }
+    await fetchDepartment.update(department);
 }

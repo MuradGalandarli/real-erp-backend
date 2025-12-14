@@ -1,7 +1,7 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser,deleteUserAsync } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee, modalForDepartment } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
-import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment } from "../UI/pages/department/department.js"
+import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync } from "../UI/pages/department/department.js"
 
 const content = document.getElementById("Content");
 
@@ -99,13 +99,16 @@ document.addEventListener("submit", async (e) => {
     if (e.target.id == "departmentForm") {
 
         if (mode == "add") {
-            debugger;
+          
             await addDepartmentAsync();
-            content.innerHTML = await getAllDepartmentAsync(1,10);
+            
         }
         else {
-            console.log("Update")
+            
+            const id = document.querySelector("#submit-btn").dataset.id
+            await updateDepartmentAsync(id)
         }
+        content.innerHTML = await getAllDepartmentAsync(1, 10);
         }
 
 
