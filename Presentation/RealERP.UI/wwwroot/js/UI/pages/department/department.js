@@ -11,7 +11,7 @@ export async function getAllDepartmentAsync(page, size) {
         <td>${++id}</td>
         <td>${dep.name}</td>
         <td><button data-id="${dep.id}"id="getUpdateDepartmentModal" class="update-btn">Update</button></td>
-        <td><button class="delete-btn">Sil</button></td>
+        <td><button data-id="${dep.id}" id="deleteDepartment" class="delete-btn">Sil</button></td>
         </tr>
         `
     })
@@ -36,4 +36,8 @@ export async function updateDepartmentAsync(id) {
         name: document.getElementById("name").value
     }
     await fetchDepartment.update(department);
+}
+
+export async function deleteDepartment(id) {
+    await fetchDepartment.delete(id);
 }

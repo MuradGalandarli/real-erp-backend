@@ -9,14 +9,16 @@ export const fetchDepartment =
     add: async (department) => {
         return await apiRequest(`${API_URL}/add-department`, "POST", department)
     },
-    getById: async (id)=>
-    {
+    getById: async (id) => {
         return await apiRequest(`${API_URL}/get-By-Id?id=${id}`)
     },
     update: async (department) => {
-        return apiRequest(`${API_URL}/update-department`, "PUT", department)
+        return await apiRequest(`${API_URL}/update-department`, "PUT", department)
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-department?id=${id}`, "DELETE")
     }
-    
+
 
 
 }

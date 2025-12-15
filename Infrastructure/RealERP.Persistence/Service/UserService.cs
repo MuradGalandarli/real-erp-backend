@@ -17,9 +17,6 @@ namespace RealERP.Persistence.Service
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-      
-
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly ILogger<UserService> _logger;
