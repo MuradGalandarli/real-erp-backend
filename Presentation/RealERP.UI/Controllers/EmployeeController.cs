@@ -21,14 +21,14 @@ namespace RealERP.UI.Controllers
             return View();
         }
         [HttpGet("get-all-employee")]
-        public async Task<IActionResult> GetALLEmployee([FromQuery]int page, [FromQuery]int size)
+        public async Task<IActionResult> GetALLEmployee([FromQuery] int page, [FromQuery] int size)
         {
             GetAllEmployeeQueryRequest getAllEmployeeQueryRequest = new() { Page = page, Size = size };
             GetAllEmployeeQueryResponse getAllEmployeeQueryResponse = await _mediator.Send(getAllEmployeeQueryRequest);
             return Ok(getAllEmployeeQueryResponse);
         }
         [HttpGet("get-By-Id-Employee")]
-        public async Task<IActionResult> GetByIdEmploye([FromQuery]int id)
+        public async Task<IActionResult> GetByIdEmploye([FromQuery] int id)
         {
             GetByIdEmployeeQueryRequest getByIdEmployeeQueryRequest = new() { Id = id };
             GetByIdEmployeeQueryResponse getByIdEmployeeQueryResponse = await _mediator.Send(getByIdEmployeeQueryRequest);
@@ -46,6 +46,7 @@ namespace RealERP.UI.Controllers
             AddEmployeeCommandResponse addEmployeeCommandResponse = await _mediator.Send(addEmployeeCommandRequest);
             return Ok(addEmployeeCommandResponse);
         }
+       
 
 
     }

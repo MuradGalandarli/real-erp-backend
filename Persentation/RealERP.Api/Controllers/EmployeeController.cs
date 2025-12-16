@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee;
+using RealERP.Application.Abstraction.Features.Command.Employee.DeleteEmployee;
 using RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetAllEmployee;
 using RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmployee;
@@ -48,7 +49,13 @@ namespace RealERP.Api.Controllers
             GetAllEmployeeQueryRequest getAllEmployeeQueryRequest = new() { Page = page,Size = size };
             GetAllEmployeeQueryResponse getAllEmployeeQueryResponse = await _mediator.Send(getAllEmployeeQueryRequest);
             return Ok(getAllEmployeeQueryResponse);
-
+        }
+        [HttpDelete("delete-employe")]
+        public async Task<IActionResult> DeleteEmployee([FromQuery] int id)
+        {
+            DeleteEmployeCommandRequest deleteEmployeCommandRequest = new() { Id = id };
+            DeleteEmployeCommandResponse deleteEmployeCommandResponse = await _mediator.Send(deleteEmployeCommandRequest);
+            return Ok(deleteEmployeCommandResponse);
         }
 
     }

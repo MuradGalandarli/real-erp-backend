@@ -1,21 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RealERP.Application.Abstraction.Service;
+﻿using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
-using RealERP.Application.Repositories.EmployeeRepository;
 using RealERP.Domain.Entities;
 
 namespace RealERP.Persistence.Service
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly IWriteEmployeeRepository _writeEmployeeRepository;
-        private readonly IReadEmployeeRepository _readEmployeeRepository;
+        
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EmployeeService(IWriteEmployeeRepository writeEmployeeRepository, IReadEmployeeRepository readEmployeeRepository)
+        public EmployeeService(IUnitOfWork unitOfWork)
         {
-            _writeEmployeeRepository = writeEmployeeRepository;
-            _readEmployeeRepository = readEmployeeRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> AddEmployeeAsync(EmployeeDto employee)
@@ -23,11 +21,11 @@ namespace RealERP.Persistence.Service
             bool hasEmployee = false;
             if (!string.IsNullOrEmpty(employee.UserId))
             {
-                 hasEmployee = _readEmployeeRepository.Table.Any(x => x.UserId == employee.UserId);
+                 hasEmployee = _unitOfWork.readEmployeeRepository.Table.Any(x => x.UserId == employee.UserId);
             }
                 if (!hasEmployee)
                 {
-                    bool status = await _writeEmployeeRepository.AddAsync(new()
+                    bool status = await _unitOfWork.writeEmployeeRepository.AddAsync(new()
                     {
                         DepartmentId = employee.DepartmentId,
                         FullName = employee.FullName,
@@ -36,7 +34,7 @@ namespace RealERP.Persistence.Service
                     });
                     if (status)
                        
-                            await _writeEmployeeRepository.SaveAsync();
+                            await _unitOfWork.writeEmployeeRepository.SaveAsync();
 
                     return status;
                 }
@@ -44,9 +42,20 @@ namespace RealERP.Persistence.Service
             return false;
         }
 
+        public async Task<bool> DeleteEmployee(int id)
+        {
+            bool removed = _unitOfWork.writeEmployeeRepository.Delete(id);
+            if (removed)
+            {
+                await _unitOfWork.SaveChangesAsync();
+                return true;
+            }
+            return false; 
+        }
+
         public List<EmployeeDto> GetAllEmployee(int page, int size)
         {
-           IQueryable<Employee> employees = _readEmployeeRepository.GetAll().Skip((page-1)*size).Take(size);
+           IQueryable<Employee> employees = _unitOfWork.readEmployeeRepository.GetAll().Skip((page-1)*size).Take(size);
             return employees.Select(e=> new EmployeeDto {
                 FullName = e.FullName,
                 DepartmentId=e.DepartmentId,
@@ -58,7 +67,7 @@ namespace RealERP.Persistence.Service
 
         public async Task<EmployeeDto> GetbyIdEmployeeAsync(int id)
         {
-          Employee employee = await _readEmployeeRepository.GetByIdAsync(id);
+          Employee employee = await _unitOfWork.readEmployeeRepository.GetByIdAsync(id);
             if(employee == null)
                 throw new NotFoundException($"Department with id {id} not found");
             return new()
@@ -74,7 +83,7 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> UpdateEmployeeAsync(EmployeeDto employeeDto)
         {
-            var employee = await _readEmployeeRepository.GetByIdAsync(employeeDto.Id);
+            var employee = await _unitOfWork.readEmployeeRepository.GetByIdAsync(employeeDto.Id);
             if (employee == null)
                 return false;
 
@@ -82,7 +91,7 @@ namespace RealERP.Persistence.Service
             employee.DepartmentId = employeeDto.DepartmentId;
             employee.Position = employeeDto.Position;
 
-            await _writeEmployeeRepository.SaveAsync();
+            await _unitOfWork.writeEmployeeRepository.SaveAsync();
             return true;
         }
 
