@@ -16,7 +16,7 @@ export const fetchEmployee = {
         return await apiRequest(`${API_URL}/add-employee`, "POST", employee)
     },
     delete: async (id) => {
-        return await apiRequest(`${API_URL}/`)
+        return await apiRequest(`${API_URL}/delete-employee?id=${id}`,"DELETE")
     }
 
 } 

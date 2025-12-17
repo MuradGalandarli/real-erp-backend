@@ -1,6 +1,6 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
 import { modalForUser, modalUpdateForEmployee, modalForDepartment } from "./components/modals/modal.js"
-import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee } from "../UI/pages/employee/employee.js"
+import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 
 const content = document.getElementById("Content");
@@ -72,7 +72,12 @@ document.addEventListener("click", async (e) => {
 
         document.getElementById("formMode").value = "add";
     }
-
+    if (e.target.matches("#deleteEmployee")) {
+        const id = e.target.dataset.id;
+        debugger;
+        await deleteEmployee(id);
+        content.innerHTML = await getAllEmployeeAsync();
+    }
 
     if (e.target.matches("#getAddUserModal")) {
 
@@ -157,9 +162,6 @@ document.addEventListener("submit", async (e) => {
     if (modal) modal.remove();
 
 });
-
-
-
 
 
 

@@ -21,7 +21,7 @@ export async function getAllEmployeeAsync() {
         <td>${employee.departmentId}</td>
         <td>${employee.userId}</td>
         <td><button data-user-id=${employee.id} class="update-btn" id="getUpdateEmployeModal">Update</button></td>
-        <td><button class="delete-btn" >Delete</button></td>
+        <td><button data-id=${employee.id} id="deleteEmployee" class="delete-btn" >Delete</button></td>
         </tr> `
     }
     );
@@ -60,4 +60,8 @@ export async function addEmployee() {
         userId: userIdValue === "" ? null : userIdValue
     };
     await fetchEmployee.add(employee);
+}
+
+export async function deleteEmployee(id) {
+    await fetchEmployee.delete(id);
 }
