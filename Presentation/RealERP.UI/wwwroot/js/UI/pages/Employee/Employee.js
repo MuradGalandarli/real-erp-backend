@@ -5,7 +5,6 @@ import { createEmployeeTable } from "../../table/employeeTable.js"
 export async function getAllEmployeeAsync() {
    
     const data = await fetchEmployee.getAll();
-    console.log(data)
     const employees = data.employees;
     
     let table = createEmployeeTable();

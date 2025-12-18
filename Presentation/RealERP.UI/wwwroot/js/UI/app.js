@@ -2,6 +2,8 @@
 import { modalForUser, modalUpdateForEmployee, modalForDepartment } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
+import { getAllCategory } from "../UI/pages/category/category.js"
+
 
 const content = document.getElementById("Content");
 
@@ -24,11 +26,16 @@ document.getElementById("userTableRender").addEventListener("click", async () =>
 document.getElementById("employeeTableRender").addEventListener("click", async () => {
     content.innerHTML = await getAllEmployeeAsync();
 })
+document.getElementById("categoryTableRender").addEventListener("click", async () => {
+    content.innerHTML = await getAllCategory(1, 10);
+})
 
 
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+   
+
 
     if (e.target.matches("#deleteUser")) {
         await deleteUserAsync(email);
@@ -74,7 +81,6 @@ document.addEventListener("click", async (e) => {
     }
     if (e.target.matches("#deleteEmployee")) {
         const id = e.target.dataset.id;
-        debugger;
         await deleteEmployee(id);
         content.innerHTML = await getAllEmployeeAsync();
     }
