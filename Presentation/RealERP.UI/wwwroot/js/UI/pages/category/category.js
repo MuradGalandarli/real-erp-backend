@@ -19,5 +19,15 @@ export async function getAllCategory(page, size) {
     })
 
     return table += `</table>`
+}
 
+export async function addCategory() {
+    debugger;
+    const name = document.getElementById("name").value;
+    const description = document.getElementById("description").value;
+    let category = {
+        "name": name,
+        "description": description
+    };
+    await fetchCategory.add(category);
 }

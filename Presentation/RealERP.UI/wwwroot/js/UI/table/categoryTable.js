@@ -1,6 +1,7 @@
 ﻿export function createCategoryTable()
 {
     return `
+    <button id="addCategory">Add</button>
         <table>
         <tr>
             <th>Id</th>

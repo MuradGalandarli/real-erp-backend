@@ -1,8 +1,8 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
-import { modalForUser, modalUpdateForEmployee, modalForDepartment } from "./components/modals/modal.js"
+import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
-import { getAllCategory } from "../UI/pages/category/category.js"
+import { getAllCategory, addCategory } from "../UI/pages/category/category.js"
 
 
 const content = document.getElementById("Content");
@@ -34,7 +34,11 @@ document.getElementById("categoryTableRender").addEventListener("click", async (
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
-   
+
+    if (e.target.matches("#addCategory")) {
+
+        openModal(modalForCategory())
+    }
 
 
     if (e.target.matches("#deleteUser")) {
@@ -115,6 +119,14 @@ document.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const mode = document.getElementById("formMode").value;
+
+    if (e.target.id == "categoryForm") {
+        if (mode == "add") {
+            await addCategory();
+            content.innerHTML = await getAllCategory(1, 10);
+        }
+    }
+
 
     if (e.target.id == "departmentForm") {
 
