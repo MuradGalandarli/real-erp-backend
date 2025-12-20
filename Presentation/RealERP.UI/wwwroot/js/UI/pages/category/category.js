@@ -13,16 +13,16 @@ export async function getAllCategory(page, size) {
         <td>${category.name}</td>
         <td>${category.description}</td>
         <td><button  class="update-btn">Update</button></td>
-        <td><button class="delete-btn">Delete</button></td>
+        <td><button class="delete-btn" data-id="deleteCategory">Delete</button></td>
         </tr>
         `
     })
 
-    return table += `</table>`
+    return table += `</table>` 
 }
 
 export async function addCategory() {
-    debugger;
+  
     const name = document.getElementById("name").value;
     const description = document.getElementById("description").value;
     let category = {
@@ -31,3 +31,11 @@ export async function addCategory() {
     };
     await fetchCategory.add(category);
 }
+
+export async function deleteCategory(id) {
+
+    await fetchCategory.delete(id);
+
+}
+
+

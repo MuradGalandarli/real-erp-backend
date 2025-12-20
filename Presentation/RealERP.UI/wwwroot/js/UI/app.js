@@ -2,7 +2,7 @@
 import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
-import { getAllCategory, addCategory } from "../UI/pages/category/category.js"
+import { getAllCategory, addCategory, deleteCategory } from "../UI/pages/category/category.js"
 
 
 const content = document.getElementById("Content");
@@ -34,6 +34,12 @@ document.getElementById("categoryTableRender").addEventListener("click", async (
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+    if (e.target.matches("#deleteCategory")) {
+        const id = e.target.dataset.id;
+        await deleteCategory(id);
+        content.innerHTML = await getAllCategory(1, 10);
+    }
 
     if (e.target.matches("#addCategory")) {
 

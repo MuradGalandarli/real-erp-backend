@@ -5,6 +5,7 @@ using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
 using RealERP.Domain.Entities.User;
 using RealERP.Persistence.Context;
+using RealERP.Persistence.Repositories.CategoryRepository;
 
 namespace RealERP.Persistence.Service.UnitOfWork
 {
@@ -24,12 +25,18 @@ namespace RealERP.Persistence.Service.UnitOfWork
 
         public IReadEmployeeRepository readEmployeeRepository { get; }
 
+        public IWriteCategoryRepository categoryWriteRepository {  get; }
+
+        public IReadCategoryRepository categoryReadRepository {  get; }
+
         public UnitOfWork(UserManager<AppUser> userManager,
             ApplicationDbContext applicationDbContext,
              IReadEmployeeRepository readEmployeeRepository,
              IWriteEmployeeRepository writeEmployeeRepository,
              IReadDepartmentRepository readDepartmentRepository,
-             IWriteDepartmentRepository writeDepartmentRepository)
+             IWriteDepartmentRepository writeDepartmentRepository,
+             IReadCategoryRepository categoryReadRepository,
+             IWriteCategoryRepository categoryWriteRepository)
         {
             UserManager = userManager;
             _applicationDbContext = applicationDbContext;
@@ -37,7 +44,8 @@ namespace RealERP.Persistence.Service.UnitOfWork
             this.readDepartmentRepository = readDepartmentRepository;
             this.writeEmployeeRepository = writeEmployeeRepository;
             this.readEmployeeRepository = readEmployeeRepository;
-
+            this.categoryReadRepository = categoryReadRepository;
+            this.categoryWriteRepository = categoryWriteRepository;
         }
 
         public async Task BeginTransactionAsync()

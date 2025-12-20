@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Category.AddCategory;
+using RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Category.GetAllCategory;
 
@@ -27,6 +28,13 @@ namespace RealERP.UI.Controllers
         {
             AddCategoryCommandResponse addCategoryCommandResponse = await _mediator.Send(addCategoryCommandRequest);
             return Ok(addCategoryCommandResponse);
+        }
+        [HttpDelete("delete-category")]
+        public async Task<IActionResult> DeleteCategory([FromQuery] int id)
+        {
+            DeleteCategoryCommandRequset deleteCategoryCommandRequset = new() { Id = id };
+            DeleteCategoryCommandResponse deleteCategoryCommandResponse = await _mediator.Send(deleteCategoryCommandRequset);
+            return Ok(deleteCategoryCommandResponse);
         }
         
     }

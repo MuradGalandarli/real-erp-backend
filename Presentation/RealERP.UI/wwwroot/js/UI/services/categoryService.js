@@ -7,6 +7,9 @@ export const fetchCategory = {
     },
     add: async (category) => {
         return await apiRequest(`${API_URL}/add-category`, "POST", category);
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-category?id=${id}`, "DELETE")
     }
         
 }

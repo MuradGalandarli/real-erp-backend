@@ -5,6 +5,7 @@ using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
 using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.User;
+using RealERP.Persistence.Repositories.CategoryRepository;
 
 namespace RealERP.Application.Abstraction.Service.UnitOfWork
 {
@@ -15,6 +16,8 @@ namespace RealERP.Application.Abstraction.Service.UnitOfWork
         IReadDepartmentRepository readDepartmentRepository { get; }
         IWriteEmployeeRepository writeEmployeeRepository { get; }
         IReadEmployeeRepository readEmployeeRepository { get; }
+        IWriteCategoryRepository categoryWriteRepository { get; }
+        IReadCategoryRepository categoryReadRepository { get; }
 
         Task BeginTransactionAsync();
         Task CommitAsync();
