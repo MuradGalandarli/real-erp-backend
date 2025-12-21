@@ -2,7 +2,7 @@
 import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
-import { getAllCategory, addCategory, deleteCategory } from "../UI/pages/category/category.js"
+import { getAllCategory, addCategory, deleteCategory, getByIdCategory } from "../UI/pages/category/category.js"
 
 
 const content = document.getElementById("Content");
@@ -37,6 +37,8 @@ document.addEventListener("click", async (e) => {
 
     if (e.target.matches("#deleteCategory")) {
         const id = e.target.dataset.id;
+        debugger;
+
         await deleteCategory(id);
         content.innerHTML = await getAllCategory(1, 10);
     }
@@ -44,6 +46,11 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#addCategory")) {
 
         openModal(modalForCategory())
+    }
+    if (e.target.matches("#updateCategory")) {
+        const id = e.target.dataset.id;
+        openModal(modalForCategory())
+        await getByIdCategory(id);
     }
 
 

@@ -10,6 +10,9 @@ export const fetchCategory = {
     },
     delete: async (id) => {
         return await apiRequest(`${API_URL}/delete-category?id=${id}`, "DELETE")
+    },
+    getById: async (id) => {
+        return await apiRequest(`${API_URL}/get-by-id-category?id=${id}`)
     }
         
 }

@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Identity;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
+using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.User;
 using RealERP.Persistence.Repositories.CategoryRepository;
@@ -18,6 +19,8 @@ namespace RealERP.Application.Abstraction.Service.UnitOfWork
         IReadEmployeeRepository readEmployeeRepository { get; }
         IWriteCategoryRepository categoryWriteRepository { get; }
         IReadCategoryRepository categoryReadRepository { get; }
+        IReadProductRepository readProductRepository { get; }
+        IWriteProductRepository writeProductRepository { get; }
 
         Task BeginTransactionAsync();
         Task CommitAsync();

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
+using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities.User;
 using RealERP.Persistence.Context;
 using RealERP.Persistence.Repositories.CategoryRepository;
@@ -29,6 +30,10 @@ namespace RealERP.Persistence.Service.UnitOfWork
 
         public IReadCategoryRepository categoryReadRepository {  get; }
 
+        public IReadProductRepository readProductRepository {  get; }
+
+        public IWriteProductRepository writeProductRepository {  get; }
+
         public UnitOfWork(UserManager<AppUser> userManager,
             ApplicationDbContext applicationDbContext,
              IReadEmployeeRepository readEmployeeRepository,
@@ -36,7 +41,9 @@ namespace RealERP.Persistence.Service.UnitOfWork
              IReadDepartmentRepository readDepartmentRepository,
              IWriteDepartmentRepository writeDepartmentRepository,
              IReadCategoryRepository categoryReadRepository,
-             IWriteCategoryRepository categoryWriteRepository)
+             IWriteCategoryRepository categoryWriteRepository,
+             IReadProductRepository readProductRepository,
+             IWriteProductRepository writeProductRepository)
         {
             UserManager = userManager;
             _applicationDbContext = applicationDbContext;
@@ -46,6 +53,8 @@ namespace RealERP.Persistence.Service.UnitOfWork
             this.readEmployeeRepository = readEmployeeRepository;
             this.categoryReadRepository = categoryReadRepository;
             this.categoryWriteRepository = categoryWriteRepository;
+            this.readProductRepository = readProductRepository;
+            this.writeProductRepository = writeProductRepository;
         }
 
         public async Task BeginTransactionAsync()

@@ -1,5 +1,6 @@
 ﻿import { createCategoryTable } from "../../table/categoryTable.js"
 import { fetchCategory } from "../../services/categoryService.js"
+import { apiRequest } from "../../core/api.js";
 
 export async function getAllCategory(page, size) {
     let table = createCategoryTable();
@@ -12,8 +13,8 @@ export async function getAllCategory(page, size) {
         <td>${++id}</td>
         <td>${category.name}</td>
         <td>${category.description}</td>
-        <td><button  class="update-btn">Update</button></td>
-        <td><button class="delete-btn" data-id="deleteCategory">Delete</button></td>
+        <td><button  class="update-btn" data-id="${category.id}" id="updateCategory">Update</button></td>
+        <td><button class="delete-btn" data-id="${category.id}" id="deleteCategory">Delete</button></td>
         </tr>
         `
     })
@@ -35,7 +36,15 @@ export async function addCategory() {
 export async function deleteCategory(id) {
 
     await fetchCategory.delete(id);
+}
 
+export async function getByIdCategory(id) {
+    debugger
+    const category = await fetchCategory.getById(id);
+
+    document.getElementById("name").value = category.name;
+    document.getElementById("description").value = category.description;
+    document.querySelector("#submit-btn").dataset.id = id;
 }
 
 

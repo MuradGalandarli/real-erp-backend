@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Category.AddCategory;
 using RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
+using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 using RealERP.Application.Abstraction.Features.Query.Category.GetAllCategory;
+using RealERP.Application.Abstraction.Features.Query.Category.GetById;
 
 namespace RealERP.UI.Controllers
 {
@@ -35,6 +37,13 @@ namespace RealERP.UI.Controllers
             DeleteCategoryCommandRequset deleteCategoryCommandRequset = new() { Id = id };
             DeleteCategoryCommandResponse deleteCategoryCommandResponse = await _mediator.Send(deleteCategoryCommandRequset);
             return Ok(deleteCategoryCommandResponse);
+        }
+        [HttpGet("get-by-id")]
+        public async Task<IActionResult> GetByIdCategory([FromQuery] int id)
+        {
+            GetByIdCategoryQueryRequest getByIdCategoryQueryRequest = new() { Id = id };
+            GetByIdCategoryQueryResponse getByIdCategoryQueryResponse = await _mediator.Send(getByIdCategoryQueryRequest);
+            return Ok(getByIdCategoryQueryResponse);
         }
         
     }
