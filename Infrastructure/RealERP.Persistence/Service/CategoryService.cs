@@ -52,11 +52,12 @@ namespace RealERP.Persistence.Service
                     foreach (var product in item.Products)
                     {
                         _unitOfWork.writeProductRepository.Delete(product.Id);
-                        await _unitOfWork.CommitAsync();
+                        
                     }
                     _unitOfWork.categoryWriteRepository.Delete(id);
                 }
                 await _unitOfWork.SaveChangesAsync();
+                await _unitOfWork.CommitAsync();
             }
             catch
             {

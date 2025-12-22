@@ -2,7 +2,7 @@
 import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
-import { getAllCategory, addCategory, deleteCategory, getByIdCategory } from "../UI/pages/category/category.js"
+import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 
 
 const content = document.getElementById("Content");
@@ -37,7 +37,6 @@ document.addEventListener("click", async (e) => {
 
     if (e.target.matches("#deleteCategory")) {
         const id = e.target.dataset.id;
-        debugger;
 
         await deleteCategory(id);
         content.innerHTML = await getAllCategory(1, 10);
@@ -50,6 +49,7 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#updateCategory")) {
         const id = e.target.dataset.id;
         openModal(modalForCategory())
+        document.getElementById("formMode").value = "update";
         await getByIdCategory(id);
     }
 
@@ -138,6 +138,12 @@ document.addEventListener("submit", async (e) => {
             await addCategory();
             content.innerHTML = await getAllCategory(1, 10);
         }
+        else {
+            
+            const id = document.querySelector("#submit-btn").dataset.id
+            await updateCategory(id);
+            content.innerHTML = await getAllCategory(1, 10)
+        }
     }
 
 
@@ -163,7 +169,7 @@ document.addEventListener("submit", async (e) => {
             const id = document.querySelector("#submit-btn").dataset.employeeid;
             await updateEmployeeAsync(id);
         }
-        debugger
+        
         if (mode == "add") {
 
             await addEmployee();

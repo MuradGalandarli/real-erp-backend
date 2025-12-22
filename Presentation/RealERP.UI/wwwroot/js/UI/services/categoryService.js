@@ -13,6 +13,10 @@ export const fetchCategory = {
     },
     getById: async (id) => {
         return await apiRequest(`${API_URL}/get-by-id-category?id=${id}`)
+    },
+    update: async (category)=>
+    {
+        return await apiRequest(`${API_URL}/update-category`, "PUT", category)
     }
         
 }

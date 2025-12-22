@@ -39,12 +39,20 @@ export async function deleteCategory(id) {
 }
 
 export async function getByIdCategory(id) {
-    debugger
     const category = await fetchCategory.getById(id);
 
     document.getElementById("name").value = category.name;
     document.getElementById("description").value = category.description;
     document.querySelector("#submit-btn").dataset.id = id;
+}
+
+export async function updateCategory(id) {
+    const category = {
+        "id": id,
+        "name": document.getElementById("name").value,
+        "description": document.getElementById("description").value
+    }
+    await fetchCategory.update(category);
 }
 
 
