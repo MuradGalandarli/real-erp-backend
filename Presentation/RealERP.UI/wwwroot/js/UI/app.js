@@ -3,8 +3,8 @@ import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCateg
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
-
-
+import { getAllBrand } from "../UI/pages/brand/brand.js"
+ 
 const content = document.getElementById("Content");
 
 
@@ -29,6 +29,11 @@ document.getElementById("employeeTableRender").addEventListener("click", async (
 document.getElementById("categoryTableRender").addEventListener("click", async () => {
     content.innerHTML = await getAllCategory(1, 10);
 })
+document.getElementById("brandTableRender").addEventListener("click", async () => {
+    debugger
+    content.innerHTML = await getAllBrand(1, 10);
+})
+
 
 
 document.addEventListener("click", async (e) => {
