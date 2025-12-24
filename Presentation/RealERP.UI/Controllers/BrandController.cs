@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Brand.AddBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 
 namespace RealERP.UI.Controllers
@@ -20,6 +21,13 @@ namespace RealERP.UI.Controllers
             GetAllBrandQueryRequest getAllBrandQueryRequest = new() { Page = page, Size = size };
             List<GetAllBrandQueryResponse> getAllBrandQueryResponse = await _mediator.Send(getAllBrandQueryRequest);
             return Ok(getAllBrandQueryResponse);
+        }
+        [HttpPost("add-brnad")]
+        public async Task<IActionResult> AddBrand([FromBody] AddBrandCommandRequest addBrandCommandRequest)
+        {
+            AddBrandCommandResponse addBrandCommandResponse = await _mediator.Send(addBrandCommandRequest);
+            return Ok(addBrandCommandResponse);
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 export function brandTable() {
     return `
+    <button id="addBrnad">Add </button>
     <table>
     <tr>
     <th>Id</th>

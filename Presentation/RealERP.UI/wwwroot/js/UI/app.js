@@ -1,9 +1,9 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
-import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory } from "./components/modals/modal.js"
+import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
-import { getAllBrand } from "../UI/pages/brand/brand.js"
+import { getAllBrand, addBrandAsync } from "../UI/pages/brand/brand.js"
  
 const content = document.getElementById("Content");
 
@@ -30,7 +30,7 @@ document.getElementById("categoryTableRender").addEventListener("click", async (
     content.innerHTML = await getAllCategory(1, 10);
 })
 document.getElementById("brandTableRender").addEventListener("click", async () => {
-    debugger
+    
     content.innerHTML = await getAllBrand(1, 10);
 })
 
@@ -39,6 +39,11 @@ document.getElementById("brandTableRender").addEventListener("click", async () =
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+    if (e.target.matches("#addBrnad")) {
+        openModal(modalForBrand())
+       
+    }
 
     if (e.target.matches("#deleteCategory")) {
         const id = e.target.dataset.id;
@@ -136,7 +141,17 @@ document.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
+
     const mode = document.getElementById("formMode").value;
+
+
+    if (e.target.matches("#brandForm")) {
+        debugger;
+        if (mode == "add") {
+            await addBrandAsync();
+            content.innerHTML = await getAllBrand(1,10);
+        }
+    }
 
     if (e.target.id == "categoryForm") {
         if (mode == "add") {

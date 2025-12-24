@@ -20,5 +20,12 @@ export async function getAllBrand(page, size) {
 
     table += `</table>`
     return table
+}
 
+export async function addBrandAsync() {
+
+    let brand = {
+        brandName: document.getElementById("name").value
+    }
+    await fetchBrand.add(brand);
 }
