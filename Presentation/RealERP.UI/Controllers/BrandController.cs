@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Brand.AddBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
+using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 
 namespace RealERP.UI.Controllers
 {
@@ -27,7 +28,14 @@ namespace RealERP.UI.Controllers
         {
             AddBrandCommandResponse addBrandCommandResponse = await _mediator.Send(addBrandCommandRequest);
             return Ok(addBrandCommandResponse);
-
         }
+        [HttpGet("get-by-id-brand")]
+        public async Task<IActionResult> GetByIdBrand([FromQuery] int id)
+        {
+            GetByIdBrandQueryRequest getByIdBrandQueryRequest = new() { Id = id };
+            GetByIdBrandQueryResponse getByIdBrandQueryResponse = await _mediator.Send(getByIdBrandQueryRequest);
+            return Ok(getByIdBrandQueryResponse);
+        }
+
     }
 }

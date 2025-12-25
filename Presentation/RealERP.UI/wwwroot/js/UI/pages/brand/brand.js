@@ -29,3 +29,8 @@ export async function addBrandAsync() {
     }
     await fetchBrand.add(brand);
 }
+export async function getByIdBrandAsync(id) {
+    const brand = await fetchBrand.getById(id);
+    document.getElementById("name").value = brand.brandName
+    document.querySelector("#submit-btn").dataset.id = id;
+}

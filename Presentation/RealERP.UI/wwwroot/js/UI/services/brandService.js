@@ -7,5 +7,8 @@ export const fetchBrand = {
     },
     add: async (brand) => {
         return await apiRequest(`${API_URL}/add-brnad`, "POST", brand)
+    },
+    getById: async (id) => {
+        return await apiRequest(`${API_URL}/get-by-id-brand?id=${id}`)
     }
 } 

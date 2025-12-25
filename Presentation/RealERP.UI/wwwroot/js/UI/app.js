@@ -3,7 +3,7 @@ import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCateg
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
-import { getAllBrand, addBrandAsync } from "../UI/pages/brand/brand.js"
+import { getAllBrand, addBrandAsync, getByIdBrandAsync } from "../UI/pages/brand/brand.js"
  
 const content = document.getElementById("Content");
 
@@ -42,7 +42,11 @@ document.addEventListener("click", async (e) => {
 
     if (e.target.matches("#addBrnad")) {
         openModal(modalForBrand())
-       
+    }
+    if (e.target.matches("#getUpdateBrandModal")) {
+        openModal(modalForBrand())
+        document.getElementById("formMode").value = "update";
+        await getByIdBrandAsync(e.target.dataset.id)
     }
 
     if (e.target.matches("#deleteCategory")) {
@@ -146,7 +150,6 @@ document.addEventListener("submit", async (e) => {
 
 
     if (e.target.matches("#brandForm")) {
-        debugger;
         if (mode == "add") {
             await addBrandAsync();
             content.innerHTML = await getAllBrand(1,10);
