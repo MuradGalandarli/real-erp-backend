@@ -12,8 +12,8 @@ using RealERP.Persistence.Context;
 namespace RealERP.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251203124003_mg1")]
-    partial class mg1
+    [Migration("20251226100819_CreateDb")]
+    partial class CreateDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,21 +146,6 @@ namespace RealERP.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ProductWarehouse", b =>
-                {
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WarehousesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductsId", "WarehousesId");
-
-                    b.HasIndex("WarehousesId");
-
-                    b.ToTable("ProductWarehouse");
-                });
-
             modelBuilder.Entity("RealERP.Domain.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -169,11 +154,16 @@ namespace RealERP.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Brands");
                 });
@@ -186,6 +176,9 @@ namespace RealERP.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -195,7 +188,47 @@ namespace RealERP.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("RealERP.Domain.Entities.Department", b =>
@@ -206,11 +239,16 @@ namespace RealERP.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Departments");
                 });
@@ -222,6 +260,9 @@ namespace RealERP.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
@@ -238,6 +279,8 @@ namespace RealERP.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("DepartmentId");
 
@@ -337,7 +380,10 @@ namespace RealERP.Persistence.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -353,6 +399,8 @@ namespace RealERP.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CompanyId");
+
                     b.ToTable("Products");
                 });
 
@@ -362,6 +410,9 @@ namespace RealERP.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -411,6 +462,10 @@ namespace RealERP.Persistence.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SurName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -419,6 +474,8 @@ namespace RealERP.Persistence.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -439,6 +496,9 @@ namespace RealERP.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -451,6 +511,8 @@ namespace RealERP.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Warehouses");
                 });
@@ -466,13 +528,13 @@ namespace RealERP.Persistence.Migrations
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("StockCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("WarehouseId")
+                    b.Property<int?>("WarehouseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -550,23 +612,45 @@ namespace RealERP.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductWarehouse", b =>
+            modelBuilder.Entity("RealERP.Domain.Entities.Brand", b =>
                 {
-                    b.HasOne("RealERP.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Brands")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RealERP.Domain.Entities.Warehouse", null)
-                        .WithMany()
-                        .HasForeignKey("WarehousesId")
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.Category", b =>
+                {
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Categories")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.Department", b =>
+                {
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Departments")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("RealERP.Domain.Entities.Employee", b =>
                 {
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Employees")
+                        .HasForeignKey("CompanyId");
+
                     b.HasOne("RealERP.Domain.Entities.Department", "Department")
                         .WithMany("Employees")
                         .HasForeignKey("DepartmentId")
@@ -576,6 +660,8 @@ namespace RealERP.Persistence.Migrations
                     b.HasOne("RealERP.Domain.Entities.User.AppUser", "User")
                         .WithOne("Employee")
                         .HasForeignKey("RealERP.Domain.Entities.Employee", "UserId");
+
+                    b.Navigation("Company");
 
                     b.Navigation("Department");
 
@@ -603,28 +689,48 @@ namespace RealERP.Persistence.Migrations
 
                     b.HasOne("RealERP.Domain.Entities.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Products")
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.User.AppUser", b =>
+                {
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Users")
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.Warehouse", b =>
+                {
+                    b.HasOne("RealERP.Domain.Entities.Company", "Company")
+                        .WithMany("Warehouses")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("RealERP.Domain.Entities.WarehouseProduct", b =>
                 {
                     b.HasOne("RealERP.Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("WarehouseProducts")
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("RealERP.Domain.Entities.Warehouse", "Warehouse")
-                        .WithMany()
-                        .HasForeignKey("WarehouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("WarehouseProducts")
+                        .HasForeignKey("WarehouseId");
 
                     b.Navigation("Product");
 
@@ -641,6 +747,23 @@ namespace RealERP.Persistence.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("RealERP.Domain.Entities.Company", b =>
+                {
+                    b.Navigation("Brands");
+
+                    b.Navigation("Categories");
+
+                    b.Navigation("Departments");
+
+                    b.Navigation("Employees");
+
+                    b.Navigation("Products");
+
+                    b.Navigation("Users");
+
+                    b.Navigation("Warehouses");
+                });
+
             modelBuilder.Entity("RealERP.Domain.Entities.Department", b =>
                 {
                     b.Navigation("Employees");
@@ -651,9 +774,19 @@ namespace RealERP.Persistence.Migrations
                     b.Navigation("Endpoints");
                 });
 
+            modelBuilder.Entity("RealERP.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("WarehouseProducts");
+                });
+
             modelBuilder.Entity("RealERP.Domain.Entities.User.AppUser", b =>
                 {
                     b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("RealERP.Domain.Entities.Warehouse", b =>
+                {
+                    b.Navigation("WarehouseProducts");
                 });
 #pragma warning restore 612, 618
         }

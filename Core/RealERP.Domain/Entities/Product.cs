@@ -9,9 +9,11 @@ namespace RealERP.Domain.Entities
         public string? Description { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }  
-        public ICollection<Warehouse> Warehouses { get; set; }
-        
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
+        public ICollection<WarehouseProduct> WarehouseProducts { get; set; }
+        public Company? Company { get; set; }
+        public int? CompanyId { get; set; }
+
     }
 }

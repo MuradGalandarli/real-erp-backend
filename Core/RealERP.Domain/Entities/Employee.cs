@@ -1,5 +1,6 @@
 ﻿using RealERP.Domain.Entities.Common;
 using RealERP.Domain.Entities.User;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealERP.Domain.Entities
 {
@@ -11,5 +12,8 @@ namespace RealERP.Domain.Entities
         public Department Department { get; set; }
         public string? UserId { get; set; }
         public AppUser? User { get; set; }
+        [ForeignKey(nameof(CompanyId))]
+        public Company? Company { get; set; }
+        public int? CompanyId { get; set; }
     }
 }
