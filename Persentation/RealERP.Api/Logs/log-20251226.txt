@@ -1,0 +1,84 @@
+2025-12-26 18:39:08.007 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-26 18:39:08.286 +04:00 [INF] Now listening on: https://localhost:7148
+2025-12-26 18:39:08.286 +04:00 [INF] Now listening on: http://localhost:5116
+2025-12-26 18:39:08.333 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 18:39:08.333 +04:00 [INF] Hosting environment: Development
+2025-12-26 18:39:08.333 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-12-26 18:39:08.820 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-12-26 18:39:09.294 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 486.2737ms
+2025-12-26 18:39:09.298 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-12-26 18:39:09.298 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-26 18:39:09.308 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 9.8858ms
+2025-12-26 18:39:09.366 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.444ms
+2025-12-26 18:39:09.459 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-12-26 18:39:09.539 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 80.3514ms
+2025-12-26 18:40:39.770 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-26 18:40:39.982 +04:00 [INF] Now listening on: https://localhost:7148
+2025-12-26 18:40:39.982 +04:00 [INF] Now listening on: http://localhost:5116
+2025-12-26 18:40:40.016 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 18:40:40.017 +04:00 [INF] Hosting environment: Development
+2025-12-26 18:40:40.017 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-12-26 18:40:40.501 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-12-26 18:40:40.758 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-12-26 18:40:40.758 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-26 18:40:40.759 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 261.6666ms
+2025-12-26 18:40:40.764 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 6.2578ms
+2025-12-26 18:40:40.804 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.7064ms
+2025-12-26 18:40:40.900 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-12-26 18:40:40.971 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.4917ms
+2025-12-26 18:44:37.411 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-26 18:44:37.681 +04:00 [INF] Now listening on: https://localhost:7148
+2025-12-26 18:44:37.681 +04:00 [INF] Now listening on: http://localhost:5116
+2025-12-26 18:44:37.753 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 18:44:37.753 +04:00 [INF] Hosting environment: Development
+2025-12-26 18:44:37.753 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-12-26 18:44:38.343 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-12-26 18:44:38.623 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-26 18:44:38.620 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 280.6752ms
+2025-12-26 18:44:38.623 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-12-26 18:44:38.629 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 6.7317ms
+2025-12-26 18:44:38.658 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.1822ms
+2025-12-26 18:44:38.694 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-12-26 18:44:38.761 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 68.457ms
+2025-12-26 18:45:21.788 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-26 18:45:22.120 +04:00 [INF] Now listening on: https://localhost:7148
+2025-12-26 18:45:22.120 +04:00 [INF] Now listening on: http://localhost:5116
+2025-12-26 18:45:22.234 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 18:45:22.240 +04:00 [INF] Hosting environment: Development
+2025-12-26 18:45:22.241 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-12-26 18:45:22.447 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-12-26 18:45:22.698 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 256.2454ms
+2025-12-26 18:45:22.706 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-12-26 18:45:22.706 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-26 18:45:22.712 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 6.3212ms
+2025-12-26 18:45:22.743 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.9211ms
+2025-12-26 18:45:22.771 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-12-26 18:45:22.855 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 84.5877ms
+2025-12-26 18:48:28.625 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-26 18:48:28.939 +04:00 [INF] Now listening on: https://localhost:7148
+2025-12-26 18:48:28.940 +04:00 [INF] Now listening on: http://localhost:5116
+2025-12-26 18:48:29.016 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-26 18:48:29.016 +04:00 [INF] Hosting environment: Development
+2025-12-26 18:48:29.016 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2025-12-26 18:48:29.370 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2025-12-26 18:48:29.669 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2025-12-26 18:48:29.673 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-26 18:48:29.675 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 311.2533ms
+2025-12-26 18:48:29.682 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 8.9437ms
+2025-12-26 18:48:29.712 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 43.1816ms
+2025-12-26 18:48:29.740 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2025-12-26 18:48:29.802 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 62.1639ms
+2025-12-26 18:49:47.767 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7148/api/Company/add-company - application/json 164
+2025-12-26 18:49:47.788 +04:00 [INF] CORS policy execution successful.
+2025-12-26 18:49:49.328 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.CompanyController.AddCompany (RealERP.Api)'
+2025-12-26 18:49:50.138 +04:00 [INF] Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(RealERP.Application.Abstraction.Features.Command.Company.AddCompany.AddCompanyCommandRequest) on controller RealERP.Api.Controllers.CompanyController (RealERP.Api).
+2025-12-26 18:49:52.941 +04:00 [INF] Executed DbCommand (184ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Companies] ([Address], [City], [Country], [CreatedAt], [Email], [Name], [Phone], [Status])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-12-26 18:49:53.029 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Company.AddCompany.AddCompanyCommandResponse'.
+2025-12-26 18:49:53.042 +04:00 [INF] Executed action RealERP.Api.Controllers.CompanyController.AddCompany (RealERP.Api) in 2897.4303ms
+2025-12-26 18:49:53.043 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.CompanyController.AddCompany (RealERP.Api)'
+2025-12-26 18:49:53.067 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7148/api/Company/add-company - 200 null application/json; charset=utf-8 5300.3872ms

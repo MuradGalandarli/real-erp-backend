@@ -2,6 +2,7 @@
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Repositories.BrandRepository;
+using RealERP.Application.Repositories.CompanyRepository;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
 using RealERP.Application.Repositories.Endpoint;
@@ -11,6 +12,7 @@ using RealERP.Application.Repositories.WarehouseRepository;
 using RealERP.Persistence.Context;
 using RealERP.Persistence.Repositories.BrandRepository;
 using RealERP.Persistence.Repositories.CategoryRepository;
+using RealERP.Persistence.Repositories.CompanyRepository;
 using RealERP.Persistence.Repositories.DepartmentRepository;
 using RealERP.Persistence.Repositories.EmployeeRepository;
 using RealERP.Persistence.Repositories.Endpoint;
@@ -53,6 +55,9 @@ namespace RealERP.Persistence
             services.AddScoped<IWriteMenuRepository,WriteMenuRepository>();
             services.AddScoped<IReadEndpointRepository,ReadEndpointRepository>();
             services.AddScoped<IWriteEndpointRepository,WriteEndpointRepository>();
+            services.AddScoped<IWriteCompanyRepository,WriteCompanyRepository>();
+            services.AddScoped<IReadCompanyRepository,ReadCompanyRepository>();
+            services.AddScoped<ICompanyService,CompanyService>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
 
         }
