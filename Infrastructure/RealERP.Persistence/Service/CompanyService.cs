@@ -38,5 +38,31 @@ namespace RealERP.Persistence.Service
             }
             return true;
         }
+
+        public async Task<bool> UpdateCompany(CompanyDto company,int id)
+        {
+            try
+            {
+                _unitOfWork.writeCompanyRepository.Update(new()
+                {
+                    Id = id,
+                    Address = company.Address,
+                    City = company.City,
+                    Name = company.Name,
+                    Email = company.Email,
+                    Phone = company.Phone,
+                    Country = company.Country,
+
+                });
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex.Message.ToString());
+                return false;
+            }
+            return true;
+            
+        }
     }
 }
