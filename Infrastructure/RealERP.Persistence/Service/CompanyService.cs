@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
+using RealERP.Application.Exceptions;
+using RealERP.Domain.Entities;
 
 namespace RealERP.Persistence.Service
 {
@@ -37,6 +40,17 @@ namespace RealERP.Persistence.Service
                 return false;
             }
             return true;
+        }
+
+        public async Task<bool> DeleteCompany(int id)
+        {
+           Company companies = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
+            if (companies == null)
+                throw new NotFoundException($"There are not this {id} company");
+            _unitOfWork.writeCompanyRepository.Delete(id);
+            await _unitOfWork.SaveChangesAsync();
+            return true;
+                
         }
 
         public async Task<bool> UpdateCompany(CompanyDto company,int id)

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
+using RealERP.Application.Abstraction.Features.Command.Company.DeleteCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany;
 
 namespace RealERP.Api.Controllers
@@ -28,6 +29,12 @@ namespace RealERP.Api.Controllers
         {
             UpdateCompanyCommandResponse updateCompanyCommandResponse = await _mediator.Send(updateCompanyCommandRequest);
             return Ok(updateCompanyCommandResponse);
+        }
+        [HttpDelete("delete-company")]
+        public async Task<IActionResult> DeleteCompany([FromBody] DeleteCompanyCommandRequest deleteCompanyCommandRequest)
+        {
+            DeleteCompanyCommandResponse deleteCompanyCommandResponse = await _mediator.Send(deleteCompanyCommandRequest);
+            return Ok(deleteCompanyCommandResponse);
         }
 
     }
