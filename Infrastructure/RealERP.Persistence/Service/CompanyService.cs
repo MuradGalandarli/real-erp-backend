@@ -5,6 +5,7 @@ using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace RealERP.Persistence.Service
 {
@@ -51,6 +52,22 @@ namespace RealERP.Persistence.Service
             await _unitOfWork.SaveChangesAsync();
             return true;
                 
+        }
+
+        public async Task<CompanyDto> GetByIdCompany(int id)
+        {
+            Company company = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
+            if (company == null)
+                throw new NotFoundException($"There are not this {id} company");
+            return new CompanyDto()
+            {
+                Address = company.Address,
+                City = company.City,
+                Name = company.Name,
+                Email = company.Email,
+                Phone = company.Phone,
+                Country = company.Country,
+            };
         }
 
         public async Task<bool> UpdateCompany(CompanyDto company,int id)

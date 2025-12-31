@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.DeleteCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany;
+using RealERP.Application.Abstraction.Features.Query.Company.GetByIdCompany;
 
 namespace RealERP.Api.Controllers
 {
@@ -36,6 +37,12 @@ namespace RealERP.Api.Controllers
             DeleteCompanyCommandResponse deleteCompanyCommandResponse = await _mediator.Send(deleteCompanyCommandRequest);
             return Ok(deleteCompanyCommandResponse);
         }
-
+        [HttpGet("get-by-id-company")]
+        public async Task<IActionResult> GetByIdCompany([FromQuery]int id)
+        {
+            GetByIdCompanyQueryRequest request = new() { Id = id };
+            GetByIdCompanyQueryResponse getByIdCompanyQueryResponse = await _mediator.Send(request);
+            return Ok(getByIdCompanyQueryResponse);
+        }
     }
 }
