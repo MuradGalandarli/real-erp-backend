@@ -1,15 +1,27 @@
 ﻿
 
 using MediatR;
+using RealERP.Application.Abstraction.Service;
+using RealERP.Application.DTOs;
 
 namespace RealERP.Application.Abstraction.Features.Query.Company.GetByIdCompany
 {
-    public class GetByIdCompanyQueryHandler : IRequestHandler<GetByIdCompanyQueryResponse, GetByIdCompanyQueryRequest>
-        >
+    public class GetByIdCompanyQueryHandler : IRequestHandler<GetByIdCompanyQueryRequest, GetByIdCompanyQueryResponse>
     {
-        public Task<GetByIdCompanyQueryRequest> Handle(GetByIdCompanyQueryResponse request, CancellationToken cancellationToken)
+        private readonly ICompanyService _companyService;
+
+        public GetByIdCompanyQueryHandler(ICompanyService companyService)
         {
-            throw new NotImplementedException();
+            _companyService = companyService;
+        }
+
+        public async Task<GetByIdCompanyQueryResponse> Handle(GetByIdCompanyQueryRequest request, CancellationToken cancellationToken)
+        {
+           CompanyDto company = await _companyService.GetByIdCompany(request.Id);
+            return new()
+            {
+                Company = company,
+            };
         }
     }
 }

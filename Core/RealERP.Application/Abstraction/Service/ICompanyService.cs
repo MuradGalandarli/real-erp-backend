@@ -9,5 +9,6 @@ namespace RealERP.Application.Abstraction.Service
         public Task<bool>UpdateCompany(CompanyDto company,int id);
         public Task<bool>DeleteCompany(int id);
         public Task<CompanyDto>GetByIdCompany(int id);
+        public Task<List<CompanyDto>> GetAllCompany(int page, int size);
     }
 }

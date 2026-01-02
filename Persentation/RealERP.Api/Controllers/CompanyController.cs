@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.DeleteCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany;
+using RealERP.Application.Abstraction.Features.Query.Company.GetAllCompany;
 using RealERP.Application.Abstraction.Features.Query.Company.GetByIdCompany;
 
 namespace RealERP.Api.Controllers
@@ -22,11 +23,11 @@ namespace RealERP.Api.Controllers
         [HttpPost("add-company")]
         public async Task<IActionResult> AddCompany([FromBody] AddCompanyCommandRequest addCompanyCommandRequest)
         {
-           AddCompanyCommandResponse addCompanyCommandResponse = await _mediator.Send(addCompanyCommandRequest);
+            AddCompanyCommandResponse addCompanyCommandResponse = await _mediator.Send(addCompanyCommandRequest);
             return Ok(addCompanyCommandResponse);
         }
         [HttpPut("update-company")]
-        public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest updateCompanyCommandRequest )
+        public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest updateCompanyCommandRequest)
         {
             UpdateCompanyCommandResponse updateCompanyCommandResponse = await _mediator.Send(updateCompanyCommandRequest);
             return Ok(updateCompanyCommandResponse);
@@ -38,11 +39,18 @@ namespace RealERP.Api.Controllers
             return Ok(deleteCompanyCommandResponse);
         }
         [HttpGet("get-by-id-company")]
-        public async Task<IActionResult> GetByIdCompany([FromQuery]int id)
+        public async Task<IActionResult> GetByIdCompany([FromQuery] int id)
         {
             GetByIdCompanyQueryRequest request = new() { Id = id };
             GetByIdCompanyQueryResponse getByIdCompanyQueryResponse = await _mediator.Send(request);
             return Ok(getByIdCompanyQueryResponse);
+        }
+        [HttpPost("get-all-company")]
+        public async Task<IActionResult> GetAllCompany([FromQuery] int page, [FromQuery]int size)
+        {
+            GetAllCompanyQueryRequest request = new() { Page = page, Size = size };
+            GetAllCompanyQueryResponse getAllCompanyQueryResponse = await _mediator.Send(request);
+            return Ok(getAllCompanyQueryResponse);
         }
     }
 }

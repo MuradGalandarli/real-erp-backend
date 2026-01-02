@@ -5,7 +5,7 @@ using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 
 namespace RealERP.Persistence.Service
 {
@@ -35,23 +35,36 @@ namespace RealERP.Persistence.Service
                 });
                 await _unitOfWork.SaveChangesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message.ToString());
                 return false;
             }
             return true;
         }
-
         public async Task<bool> DeleteCompany(int id)
         {
-           Company companies = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
+            Company companies = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
             if (companies == null)
                 throw new NotFoundException($"There are not this {id} company");
             _unitOfWork.writeCompanyRepository.Delete(id);
             await _unitOfWork.SaveChangesAsync();
             return true;
-                
+
+        }
+
+        public async Task<List<CompanyDto>> GetAllCompany(int page, int size)
+        {
+            List<Company> companies = await _unitOfWork.readCompanyRepository.GetAll().Skip((page - 1) * size).Take(size).ToListAsync();
+            return companies.Select(x=> new CompanyDto
+            {
+                Address=x.Address,
+                City=x.City,    
+                Country=x.Country,
+                Name=x.Name,
+                Phone=x.Phone,
+                Email =x.Email,
+            }).ToList();
         }
 
         public async Task<CompanyDto> GetByIdCompany(int id)
@@ -70,7 +83,7 @@ namespace RealERP.Persistence.Service
             };
         }
 
-        public async Task<bool> UpdateCompany(CompanyDto company,int id)
+        public async Task<bool> UpdateCompany(CompanyDto company, int id)
         {
             try
             {
@@ -93,7 +106,7 @@ namespace RealERP.Persistence.Service
                 return false;
             }
             return true;
-            
+
         }
     }
 }
