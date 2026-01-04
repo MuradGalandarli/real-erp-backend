@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Role.CreateRole;
 using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
+using RealERP.Application.Abstraction.Features.Query.Role.GetAllRole;
 using RealERP.Application.Abstraction.Features.Query.Role.RoleGetById;
 using RealERP.Application.Abstraction.Service;
 
@@ -21,7 +22,7 @@ namespace RealERP.Api.Controllers
         [HttpPost("create-role")]
         public async Task<IActionResult> CreateRole([FromBody] CreateRoleCommandRequest createRoleCommandRequest)
         {
-            CreateRoleCommandResponse createRoleCommandResponse = await _mediator.Send(createRoleCommandRequest); 
+            CreateRoleCommandResponse createRoleCommandResponse = await _mediator.Send(createRoleCommandRequest);
             return Ok(createRoleCommandResponse);
         }
         [HttpPut("update-role")]
@@ -31,12 +32,18 @@ namespace RealERP.Api.Controllers
             return Ok(updateRoleCommandResponse);
         }
         [HttpGet("get-by-id-role")]
-        public async Task<IActionResult>GetByIdRole(RoleGetByIdQueryRequest roleGetByIdQueryRequest)
+        public async Task<IActionResult> GetByIdRole(RoleGetByIdQueryRequest roleGetByIdQueryRequest)
         {
             RoleGetByIdQueryResponse roleGetByIdQueryResponse = await _mediator.Send(roleGetByIdQueryRequest);
             return Ok(roleGetByIdQueryResponse);
         }
-
+        [HttpGet("get-all-role")]
+        public async Task<IActionResult> GetAllRole([FromQuery]int page,[FromQuery] int size)
+        {
+            GetAllRoleQueryRequest getAllRoleQueryRequest = new() { Page = page, Size = size };
+            List<GetAllRoleQueryResponse> getAllRoleQueryResponse = await _mediator.Send(getAllRoleQueryRequest);
+            return Ok(getAllRoleQueryResponse);
+        }
 
 
     }

@@ -1,6 +1,7 @@
 ﻿
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
@@ -22,6 +23,21 @@ namespace RealERP.Persistence.Service
         {
            IdentityResult identityResult = await _roleManager.CreateAsync(new() {Id = Guid.NewGuid().ToString(), Name = role.Name });
             return identityResult.Succeeded;
+        }
+
+        public async Task<List<RoleDto>> GetAllRole(int page, int size)
+        {
+            var roles = await _roleManager.Roles
+       .Skip((page - 1) * size)
+       .Take(size)
+       .Select(r => new RoleDto
+       {
+           id = r.Id,
+           Name = r.Name
+       })
+       .ToListAsync();
+
+            return roles;
         }
 
         public async Task<RoleDto> GetByIdAsync(string id)
