@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Role.CreateRole;
+using RealERP.Application.Abstraction.Features.Command.Role.DeleteRole;
 using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
 using RealERP.Application.Abstraction.Features.Query.Role.GetAllRole;
 using RealERP.Application.Abstraction.Features.Query.Role.RoleGetById;
@@ -44,7 +45,13 @@ namespace RealERP.Api.Controllers
             List<GetAllRoleQueryResponse> getAllRoleQueryResponse = await _mediator.Send(getAllRoleQueryRequest);
             return Ok(getAllRoleQueryResponse);
         }
-
+        [HttpGet("delete-role")]
+        public async Task<IActionResult> DeleteRole([FromQuery] string id)
+        {
+            DeleteRoleCommandRequest deleteRoleCommandRequest = new() { Id = id };
+            DeleteRoleCommandResponse deleteRoleCommandResponse = await _mediator.Send(deleteRoleCommandRequest);
+            return Ok(deleteRoleCommandResponse);
+        }
 
     }
 }

@@ -1,0 +1,14 @@
+2026-01-05 22:16:43.638 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-05 22:16:44.308 +04:00 [INF] Now listening on: https://localhost:7148
+2026-01-05 22:16:44.308 +04:00 [INF] Now listening on: http://localhost:5116
+2026-01-05 22:16:44.389 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-05 22:16:44.389 +04:00 [INF] Hosting environment: Development
+2026-01-05 22:16:44.390 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2026-01-05 22:16:48.058 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2026-01-05 22:16:48.857 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 817.0925ms
+2026-01-05 22:16:48.860 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-05 22:16:48.862 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2026-01-05 22:16:48.903 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 43.1092ms
+2026-01-05 22:16:49.009 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 146.6494ms
+2026-01-05 22:16:49.061 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2026-01-05 22:16:49.227 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 166.2069ms

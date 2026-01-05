@@ -25,6 +25,17 @@ namespace RealERP.Persistence.Service
             return identityResult.Succeeded;
         }
 
+        public async Task<bool> DeleteRole(string id)
+        {
+            AppRole role = await _roleManager.Roles.FirstOrDefaultAsync(x => x.Id == id);
+            if (role == null)
+            {
+                throw new NotFoundException($"There in not {id} role");
+            }
+           await _roleManager.DeleteAsync(role);
+            return true;
+        }
+
         public async Task<List<RoleDto>> GetAllRole(int page, int size)
         {
             var roles = await _roleManager.Roles
