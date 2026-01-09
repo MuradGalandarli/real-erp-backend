@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
 using RealERP.Application.Abstraction.Features.Query.Company.GetAllCompany;
 
 namespace RealERP.UI.Controllers
@@ -19,7 +20,13 @@ namespace RealERP.UI.Controllers
             GetAllCompanyQueryRequest getAllCompanyQueryRequest = new() { Page = page, Size = size };
             GetAllCompanyQueryResponse getAllCompanyQueryResponse = await _mediator.Send(getAllCompanyQueryRequest);
             return Ok(getAllCompanyQueryResponse);
+        }
 
+        [HttpPost("add-company")]
+        public async Task<IActionResult> AddCompany([FromBody] AddCompanyCommandRequest addCompanyCommandRequest)
+        {
+            AddCompanyCommandResponse addCompanyCommandResponse = await _mediator.Send(addCompanyCommandRequest);
+            return Ok(addCompanyCommandResponse);
         }
     }
 }

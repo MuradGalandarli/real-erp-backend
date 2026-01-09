@@ -117,3 +117,35 @@ export function modalForBrand() {
         </div>
     </div>`
 }
+export function modalForCompany() {
+    return `
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Brand</h2>
+            <form id="companyForm">
+            <input type="hidden" id="formMode" value="add">
+
+                <label>Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                 <label>Email:</label>
+                <input type="text" id="email" name="email" required />
+
+                 <label>Address:</label>
+                <input type="text" id="address" name="address" required />
+
+                 <label>Phone:</label>
+                <input type="text" id="phone" name="phone" required />
+
+                 <label>Country:</label>
+                <input type="text" id="country" name="country" required />
+
+                 <label>City:</label>
+                <input type="text" id="city" name="city" required />
+              
+                <button type="submit" id="submit-btn">Save</button>
+            </form>
+            <button class="close-btn">X</button>
+        </div>
+    </div>`
+}

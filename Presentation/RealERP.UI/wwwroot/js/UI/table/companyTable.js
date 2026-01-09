@@ -1,5 +1,6 @@
 ﻿export function createCompanyTable() {
     return `
+    <button id="getAddCompanyModal">Add</button>
     <table>
     <tr>
     <td>Id</td>

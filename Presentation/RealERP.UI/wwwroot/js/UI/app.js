@@ -1,10 +1,10 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
-import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand } from "./components/modals/modal.js"
+import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand, modalForCompany } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync } from "../UI/pages/brand/brand.js"
-import { getAllCompany } from "../UI/pages/company/company.js"
+import { getAllCompany, addCompany } from "../UI/pages/company/company.js"
  
 const content = document.getElementById("Content");
 
@@ -44,6 +44,11 @@ document.getElementById("companyTableRender").addEventListener("click", async ()
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+
+    if (e.target.matches("#getAddCompanyModal")) {
+        openModal(modalForCompany())
+    }
 
     if (e.target.matches("#addBrnad")) {
         openModal(modalForBrand())
@@ -152,6 +157,13 @@ document.addEventListener("submit", async (e) => {
 
 
     const mode = document.getElementById("formMode").value;
+
+    if (e.target.matches("#companyForm")) {
+        if (mode == "add") {
+            await addCompany();
+            content.innerHTML = await getAllCompany(1, 10);
+        }
+    }
 
 
     if (e.target.matches("#brandForm")) {

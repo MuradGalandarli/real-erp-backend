@@ -22,5 +22,17 @@ export async function getAllCompany(page, size) {
     })
     table += `</table>`
     return table;
+}
 
+export async function addCompany() {
+
+    let companyDto = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        country: document.getElementById("country").value,
+        city: document.getElementById("city").value
+    }
+    await fetchCompany.add(companyDto);
 }
