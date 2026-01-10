@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
+using RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany;
 using RealERP.Application.Abstraction.Features.Query.Company.GetAllCompany;
+using RealERP.Application.Abstraction.Features.Query.Company.GetByIdCompany;
 
 namespace RealERP.UI.Controllers
 {
@@ -27,6 +29,20 @@ namespace RealERP.UI.Controllers
         {
             AddCompanyCommandResponse addCompanyCommandResponse = await _mediator.Send(addCompanyCommandRequest);
             return Ok(addCompanyCommandResponse);
+        }
+        [HttpGet("get-by-id-company")]
+        public async Task<IActionResult> GetByIdCompany([FromQuery]int id)
+        {
+            GetByIdCompanyQueryRequest getByIdCompanyQueryRequest = new() { Id = id };
+            GetByIdCompanyQueryResponse getByIdCompanyQueryResponse = await _mediator.Send(getByIdCompanyQueryRequest);
+            return Ok(getByIdCompanyQueryResponse);
+        }
+        [HttpPut("update-company")]
+        public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest updateCompanyCommandRequest)
+        {
+            UpdateCompanyCommandResponse updateCompanyCommandResponse = await _mediator.Send(updateCompanyCommandRequest);
+            return Ok(updateCompanyCommandResponse); 
+
         }
     }
 }

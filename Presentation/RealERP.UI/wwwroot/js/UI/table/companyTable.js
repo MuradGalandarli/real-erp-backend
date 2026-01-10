@@ -10,5 +10,7 @@
     <td>Phone</td>
     <td>Country</td>
     <td>City</td>
+    <th>Update</th>
+    <th>Delete</th>
     `
 }

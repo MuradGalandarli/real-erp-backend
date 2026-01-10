@@ -14,7 +14,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany
 
         public async Task<UpdateCompanyCommandResponse> Handle(UpdateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
-           bool status = await _companyService.UpdateCompany(request.Company, request.Id);
+           bool status = await _companyService.UpdateCompany(request.Company);
             return new()
             {
                 Status = status,

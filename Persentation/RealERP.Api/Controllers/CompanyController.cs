@@ -38,7 +38,7 @@ namespace RealERP.Api.Controllers
             DeleteCompanyCommandResponse deleteCompanyCommandResponse = await _mediator.Send(deleteCompanyCommandRequest);
             return Ok(deleteCompanyCommandResponse);
         }
-        [HttpGet("get-by-id-company")]
+        [HttpGet("get-id-company")]
         public async Task<IActionResult> GetByIdCompany([FromQuery] int id)
         {
             GetByIdCompanyQueryRequest request = new() { Id = id };

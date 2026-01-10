@@ -4,7 +4,7 @@ import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmpl
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync } from "../UI/pages/brand/brand.js"
-import { getAllCompany, addCompany } from "../UI/pages/company/company.js"
+import { getAllCompany, addCompany, getByIdCompany, updateCompany } from "../UI/pages/company/company.js"
  
 const content = document.getElementById("Content");
 
@@ -44,6 +44,13 @@ document.getElementById("companyTableRender").addEventListener("click", async ()
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+    if (e.target.matches("#getCompanyModal")) {
+        openModal(modalForCompany())
+        await getByIdCompany(e.target.dataset.id);
+        document.getElementById("formMode").value = "update";
+
+    }
 
 
     if (e.target.matches("#getAddCompanyModal")) {
@@ -161,6 +168,11 @@ document.addEventListener("submit", async (e) => {
     if (e.target.matches("#companyForm")) {
         if (mode == "add") {
             await addCompany();
+            content.innerHTML = await getAllCompany(1, 10);
+        }
+        else {
+            const id = document.querySelector("#submit-btn").dataset.id
+            await updateCompany(id);
             content.innerHTML = await getAllCompany(1, 10);
         }
     }

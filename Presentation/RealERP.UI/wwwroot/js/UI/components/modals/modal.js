@@ -121,7 +121,7 @@ export function modalForCompany() {
     return `
     <div class="modal-overlay">
         <div class="modal">
-            <h2>Brand</h2>
+            <h2>Company</h2>
             <form id="companyForm">
             <input type="hidden" id="formMode" value="add">
 

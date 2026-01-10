@@ -58,6 +58,7 @@ namespace RealERP.Persistence.Service
             List<Company> companies = await _unitOfWork.readCompanyRepository.GetAll().Skip((page - 1) * size).Take(size).ToListAsync();
             return companies.Select(x=> new CompanyDto
             {
+                Id = x.Id,
                 Address=x.Address,
                 City=x.City,    
                 Country=x.Country,
@@ -83,21 +84,23 @@ namespace RealERP.Persistence.Service
             };
         }
 
-        public async Task<bool> UpdateCompany(CompanyDto company, int id)
+        public async Task<bool> UpdateCompany(CompanyDto company)
         {
             try
             {
-                _unitOfWork.writeCompanyRepository.Update(new()
+                Company data = new()
                 {
-                    Id = id,
+                    Id = company.Id,
                     Address = company.Address,
                     City = company.City,
                     Name = company.Name,
                     Email = company.Email,
                     Phone = company.Phone,
                     Country = company.Country,
+                };
 
-                });
+                _unitOfWork.writeCompanyRepository.Update(data);
+               
                 await _unitOfWork.SaveChangesAsync();
             }
             catch (Exception ex)

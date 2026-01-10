@@ -7,5 +7,13 @@ export const fetchCompany = {
     },
     add: async (companyDto) => {
         return await apiRequest(`${API_URL}/add-company`, "POST", { companyDto: companyDto })
+    },
+    getById: async (id) => {
+        return await apiRequest(`${API_URL}/get-by-id-company?id=${id}`)
+    },
+    update: async (company) => {
+        return await apiRequest(`${API_URL}/update-company`, "PUT", { company: company })
     }
+
+
 }
