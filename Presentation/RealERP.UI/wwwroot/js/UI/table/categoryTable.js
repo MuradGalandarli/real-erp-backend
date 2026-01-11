@@ -7,6 +7,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Company</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>

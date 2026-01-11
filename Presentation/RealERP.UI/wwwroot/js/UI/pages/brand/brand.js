@@ -12,6 +12,7 @@ export async function getAllBrand(page, size) {
         <tr>
         <td>${++id}</td>
         <td>${brand.brandName}</td>
+        <td>${brand.company}</td>
          <td><button data-id=${brand.id} class="update-btn" id="getUpdateBrandModal">Update</button></td>
         <td><button data-id=${brand.id} id="deleteBrand" class="delete-btn" >Delete</button></td>
         </tr>

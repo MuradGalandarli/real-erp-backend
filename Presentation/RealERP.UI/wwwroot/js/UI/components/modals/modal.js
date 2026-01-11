@@ -6,13 +6,16 @@ export function modalForUser() {
         <div class="modal">
             <h2>User</h2>
             <form id="userForm">
-            <input type="hidden" Id="userFromMode" value="addUser"
+            <input type="hidden" Id="formMode" value="addUser"
 
                 <label>Name:</label>
                 <input type="text" id="surName" name="surname" required />
 
                  <label>Surname:</label>
                 <input type="text" id="name" name="name" required />
+
+                  <label>Company:</label>
+                <input type="text" id="company" name="company" required />
 
 
                  <div id="show" style="display:none;">
@@ -48,6 +51,10 @@ export function modalUpdateForEmployee() {
                 <label>DepartmentId:</label>
                 <input type="text" id="departmentId" name="departmentId" required />
 
+                <label>Company:</label>
+                <input type="text" id="company" name="company" required />
+
+
                <div id="show" style="display:block;">
     <label style="display:block">UserId:</label>
     <input type="text" id="userId" name="userId" style="width:335px;" />
@@ -72,6 +79,10 @@ export function modalForDepartment() {
                 <label>Name:</label>
                 <input type="text" id="name" name="name" required />
 
+                <label>Company:</label>
+                <input type="text" id="company" name="company" required />
+
+
                 <button type="submit" id="submit-btn">Save</button>
             </form>
             <button class="close-btn">X</button>
@@ -92,6 +103,10 @@ export function modalForCategory() {
                  <label>Description:</label>
                 <input type="text" id="description" name="description" required />
 
+                <label>Company:</label>
+                <input type="text" id="company" name="company" required />
+
+
                 <button type="submit" id="submit-btn">Save</button>
             </form>
             <button class="close-btn">X</button>
@@ -110,6 +125,10 @@ export function modalForBrand() {
 
                 <label>Name:</label>
                 <input type="text" id="name" name="name" required />
+
+                <label>Company:</label>
+                <input type="text" id="company" name="company" required />
+
               
                 <button type="submit" id="submit-btn">Save</button>
             </form>

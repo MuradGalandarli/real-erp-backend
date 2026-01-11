@@ -21,6 +21,7 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.CreateUser
                 Password = request.Password,
                 Surname = request.SurName,
                 Name = request.Name,
+                CompanyId = request.CompanyId
             },"User");
 
             return new()

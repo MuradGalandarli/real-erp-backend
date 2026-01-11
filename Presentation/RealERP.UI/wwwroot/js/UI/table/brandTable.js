@@ -6,6 +6,7 @@ export function brandTable() {
     <tr>
     <th>Id</th>
     <th>Name</th>
+    <th>Company</th>
     <th>Update</th>
     <th>Delete</th>
     </tr>

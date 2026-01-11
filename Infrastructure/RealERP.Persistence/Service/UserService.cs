@@ -10,7 +10,6 @@ using RealERP.Application.Roles;
 using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.Identity;
 using RealERP.Domain.Entities.User;
-using System.Reflection.Metadata.Ecma335;
 
 namespace RealERP.Persistence.Service
 {
@@ -56,6 +55,7 @@ namespace RealERP.Persistence.Service
                     Email = register.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),
                     UserName = register.Email,
+                    CompanyId = register.CompanyId,
                     Name = register.Name
                 };
                 var result = await _userManager.CreateAsync(user, register.Password);
@@ -118,6 +118,7 @@ namespace RealERP.Persistence.Service
                     Id = u.Id,
                     Name = u.Name,
                     Email = u.Email,
+                    CompanyId = u.CompanyId,
                     Surname = u.SurName,
                     TwoFactorEnabled = u.TwoFactorEnabled,
 
@@ -139,6 +140,7 @@ namespace RealERP.Persistence.Service
             return new()
             { Id = appUser.Id,
                 Email = appUser.Email,
+                CompanyId = appUser.CompanyId,
                 Name = appUser.Name,
                Surname = appUser.SurName
             };
@@ -187,16 +189,17 @@ namespace RealERP.Persistence.Service
             return false;
         }
 
-        public async Task<bool> UpdateUserAsync(RegisterDto register)
+        public async Task<bool> UpdateUserAsync(UserDto user)
         {
            
-            AppUser? user = await _unitOfWork.UserManager.FindByIdAsync(register.Id);
+            AppUser? appUser = await _unitOfWork.UserManager.FindByIdAsync(user.Id);
             if (user != null)
             {
-                user.Name = register.Name;
-                user.SurName = register.Surname;
+                appUser.Name = user.Name;
+                appUser.SurName = user.Surname;
+                appUser.CompanyId = user.CompanyId;
             
-                IdentityResult result = await _userManager.UpdateAsync(user);
+                IdentityResult result = await _userManager.UpdateAsync(appUser);
                 return result.Succeeded;
             }
             return false;

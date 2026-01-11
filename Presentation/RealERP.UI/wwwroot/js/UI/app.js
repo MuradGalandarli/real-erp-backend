@@ -147,7 +147,7 @@ document.addEventListener("click", async (e) => {
 
         openModal(modalForUser());
         await getByEmailUser(email)
-        document.getElementById("userFromMode").value = "userUpdate";
+        document.getElementById("formMode").value = "userUpdate";
 
     }
    
@@ -162,7 +162,7 @@ document.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-
+    debugger;
     const mode = document.getElementById("formMode").value;
 
     if (e.target.matches("#companyForm")) {
@@ -232,8 +232,9 @@ document.addEventListener("submit", async (e) => {
 
 
     if (e.target.id == "userForm") {
-        const userMode = document.getElementById("userFromMode").value
+        const userMode = document.getElementById("formMode").value
         if (userMode == "addUser") {
+            debugger;
             await addUser();
             content.innerHTML = await getAllUserTable()
         }

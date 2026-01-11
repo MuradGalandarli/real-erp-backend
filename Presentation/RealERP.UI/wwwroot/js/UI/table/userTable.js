@@ -12,6 +12,7 @@ export async function createUserTableHeader() {
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
+            <th>Company</th>
             <th>Update</th>
             <th>Delete</th> 
         </tr>

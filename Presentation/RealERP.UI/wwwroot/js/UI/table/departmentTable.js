@@ -6,6 +6,7 @@
     <tr>
     <th>Id</th>
     <th>Name</th>
+    <th>Company</th>
     <th>Update</th>
     <th>Sil</th>
     <tr>

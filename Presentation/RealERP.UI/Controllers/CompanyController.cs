@@ -17,7 +17,7 @@ namespace RealERP.UI.Controllers
         }
 
         [HttpGet("get-all-company")]
-        public async Task<IActionResult> GetAllCompany([FromQuery]int page, [FromQuery]int size)
+        public async Task<IActionResult> GetAllCompany([FromQuery] int page, [FromQuery] int size)
         {
             GetAllCompanyQueryRequest getAllCompanyQueryRequest = new() { Page = page, Size = size };
             GetAllCompanyQueryResponse getAllCompanyQueryResponse = await _mediator.Send(getAllCompanyQueryRequest);
@@ -31,7 +31,7 @@ namespace RealERP.UI.Controllers
             return Ok(addCompanyCommandResponse);
         }
         [HttpGet("get-by-id-company")]
-        public async Task<IActionResult> GetByIdCompany([FromQuery]int id)
+        public async Task<IActionResult> GetByIdCompany([FromQuery] int id)
         {
             GetByIdCompanyQueryRequest getByIdCompanyQueryRequest = new() { Id = id };
             GetByIdCompanyQueryResponse getByIdCompanyQueryResponse = await _mediator.Send(getByIdCompanyQueryRequest);
@@ -39,9 +39,9 @@ namespace RealERP.UI.Controllers
         }
         [HttpPut("update-company")]
         public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest updateCompanyCommandRequest)
-        {
+            {
             UpdateCompanyCommandResponse updateCompanyCommandResponse = await _mediator.Send(updateCompanyCommandRequest);
-            return Ok(updateCompanyCommandResponse); 
+            return Ok(updateCompanyCommandResponse);
 
         }
     }
