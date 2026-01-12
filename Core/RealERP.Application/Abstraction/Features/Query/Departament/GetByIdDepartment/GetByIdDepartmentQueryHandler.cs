@@ -16,7 +16,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Departament.GetByIdDepa
         public async Task<GetByIdDepartmentQueryResponse> Handle(GetByIdDepartmentQueryRequest request, CancellationToken cancellationToken)
         {
             DepartmentDto departmentDto = await _departamentService.GetByIdDepartmentAsync(request.Id);
-            return new() { Id = request.Id, Name = departmentDto.Name, };
+            return new() { Id = request.Id, Name = departmentDto.Name,CompanyId = departmentDto.CompanyId };
         }
     }
 }

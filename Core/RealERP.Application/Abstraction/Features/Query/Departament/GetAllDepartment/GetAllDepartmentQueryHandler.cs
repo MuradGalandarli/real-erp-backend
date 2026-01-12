@@ -19,6 +19,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Departament.GetAllDepar
             return departments.Select(d => new GetAllDepartmentQueryResponse() {
                 Id = d.Id,
             Name = d.Name,
+            CompanyId = d.CompanyId
             }).ToList();
             
         }

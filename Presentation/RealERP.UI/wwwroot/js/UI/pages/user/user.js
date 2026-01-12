@@ -44,7 +44,7 @@ export async function addUser() {
         password: document.getElementById("password").value,    
         companyId: document.getElementById("company").value
     }
-    debugger;
+
     return await fetchUsers.addUser(user);
 }
 
@@ -58,7 +58,6 @@ export async function getByEmailUser(email) {
 }
 
 export async function updateUser(id) {
-    debugger;
     const user = {
         "id": id,
         "surname": document.getElementById("surName").value,

@@ -39,8 +39,6 @@ document.getElementById("companyTableRender").addEventListener("click", async ()
     content.innerHTML = await getAllCompany(1, 10);
 })
 
-
-
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
@@ -49,9 +47,7 @@ document.addEventListener("click", async (e) => {
         openModal(modalForCompany())
         await getByIdCompany(e.target.dataset.id);
         document.getElementById("formMode").value = "update";
-
     }
-
 
     if (e.target.matches("#getAddCompanyModal")) {
         openModal(modalForCompany())
@@ -84,7 +80,6 @@ document.addEventListener("click", async (e) => {
         await getByIdCategory(id);
     }
 
-
     if (e.target.matches("#deleteUser")) {
         await deleteUserAsync(email);
         content.innerHTML = await getAllUserTable();
@@ -95,7 +90,6 @@ document.addEventListener("click", async (e) => {
         const id = e.target.dataset.id;
         await deleteDepartment(id)
         content.innerHTML = await getAllDepartmentAsync(1,10)
-
     }
 
     if (e.target.matches("#getAddDepartmentModal")) {
@@ -144,14 +138,11 @@ document.addEventListener("click", async (e) => {
     }
     if (e.target.matches("#getUpdateUserModal")) {
 
-
         openModal(modalForUser());
         await getByEmailUser(email)
         document.getElementById("formMode").value = "userUpdate";
-
     }
    
-
     if (e.target.classList.contains("close-btn")) {
         e.target.closest(".modal-overlay").remove();
     }
@@ -162,7 +153,6 @@ document.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    debugger;
     const mode = document.getElementById("formMode").value;
 
     if (e.target.matches("#companyForm")) {
@@ -234,7 +224,7 @@ document.addEventListener("submit", async (e) => {
     if (e.target.id == "userForm") {
         const userMode = document.getElementById("formMode").value
         if (userMode == "addUser") {
-            debugger;
+           
             await addUser();
             content.innerHTML = await getAllUserTable()
         }

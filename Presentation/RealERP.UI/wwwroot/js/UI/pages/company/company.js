@@ -54,8 +54,7 @@ export async function getByIdCompany(id) {
 }
 
 export async function updateCompany(id) {
-
-   
+        
     let company = {
         id :id,
         name: document.getElementById("name").value,
@@ -65,7 +64,5 @@ export async function updateCompany(id) {
         country: document.getElementById("country").value,
         city: document.getElementById("city").value
     }
-    debugger;
-     await fetchCompany.update(company);
-    
+     await fetchCompany.update(company); 
 }

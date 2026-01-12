@@ -22,7 +22,8 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> AddDepartmentAsync(DepartmentDto department)
         {
-            bool status = await _unitOfWork.writeDepartmentRepository.AddAsync(new() { Name = department.Name });
+            bool status = await _unitOfWork.writeDepartmentRepository.AddAsync(new() { Name = department.Name,
+            CompanyId = department.CompanyId});
             if (status)
                 await _unitOfWork.writeDepartmentRepository.SaveAsync();
             return status;
@@ -73,6 +74,7 @@ namespace RealERP.Persistence.Service
             IQueryable<Department> departments = _unitOfWork.readDepartmentRepository.GetAll().Skip((page - 1) * size).Take(size);
             return departments.Select(x => new DepartmentDto
             { Name = x.Name,
+            CompanyId = x.CompanyId,
                 Id = x.Id }).ToList();
         }
 
@@ -81,7 +83,7 @@ namespace RealERP.Persistence.Service
            Department department = await _unitOfWork.readDepartmentRepository.GetByIdAsync(id);
             if(department == null)
                 throw new NotFoundException($"Department with id {id} not found");
-            return new() { Id = department.Id, Name = department.Name };    
+            return new() { Id = department.Id, Name = department.Name , CompanyId = department.CompanyId};    
         }
 
         public async Task<bool> UpdateDepartmentAsync(DepartmentDto department)
@@ -90,6 +92,7 @@ namespace RealERP.Persistence.Service
             {
                 Id = department.Id,
                 Name = department.Name,
+                CompanyId = department.CompanyId,
             });
             if (status)
                await _unitOfWork.writeDepartmentRepository.SaveAsync();

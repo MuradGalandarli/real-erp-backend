@@ -16,7 +16,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Department.UpdateDepa
 
         public async Task<UpdateDepartmentCommandResponse> Handle(UpdateDepartmentCommandRequest request, CancellationToken cancellationToken)
         {
-           bool status = await _departmentService.UpdateDepartmentAsync(new() { Name = request.Name ,Id = request.Id});
+           bool status = await _departmentService.UpdateDepartmentAsync(new() { Name = request.Name ,Id = request.Id,CompanyId = request.CompanyId});
             return new()
             {
                 Status = status,

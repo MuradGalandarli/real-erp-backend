@@ -5,5 +5,6 @@ namespace RealERP.Application.Abstraction.Features.Command.Department.AddDepartm
     public class AddDepartmentCommandRequest:IRequest<AddDepartmentCommandResponse>
     {
         public string Name { get; set; }
+        public int CompanyId { get; set; }
     }
 }
