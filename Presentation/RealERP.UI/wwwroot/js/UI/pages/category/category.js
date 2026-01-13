@@ -13,6 +13,7 @@ export async function getAllCategory(page, size) {
         <td>${++id}</td>
         <td>${category.name}</td>
         <td>${category.description}</td>
+        <td>${category.companyId}</td>
         <td><button  class="update-btn" data-id="${category.id}" id="updateCategory">Update</button></td>
         <td><button class="delete-btn" data-id="${category.id}" id="deleteCategory">Delete</button></td>
         </tr>
@@ -26,9 +27,12 @@ export async function addCategory() {
   
     const name = document.getElementById("name").value;
     const description = document.getElementById("description").value;
+    const companyId = document.getElementById("company").value;
     let category = {
         "name": name,
-        "description": description
+        "description": description,
+        "companyId": companyId
+
     };
     await fetchCategory.add(category);
 }
@@ -43,6 +47,7 @@ export async function getByIdCategory(id) {
 
     document.getElementById("name").value = category.name;
     document.getElementById("description").value = category.description;
+    document.getElementById("company").value = category.companyId;
     document.querySelector("#submit-btn").dataset.id = id;
 }
 
@@ -50,7 +55,8 @@ export async function updateCategory(id) {
     const category = {
         "id": id,
         "name": document.getElementById("name").value,
-        "description": document.getElementById("description").value
+        "description": document.getElementById("description").value,
+        "companyId": document.getElementById("company").value
     }
     await fetchCategory.update(category);
 }

@@ -25,6 +25,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Category.GetById
                     Description = category.Description,
                     Id = request.Id,
                     Name = category.Name,
+                    CompanyId = category.CompanyId,
                 };
             }
             return new() { };

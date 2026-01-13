@@ -21,6 +21,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Category.UpdateCatego
                 Id = request.Id,
                 Description = request.Description,
                 Name = request.Name,
+                CompanyId = request.CompanyId,
             });
             return new()
             {
