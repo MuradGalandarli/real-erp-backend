@@ -23,6 +23,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Employee.GetByIdEmploye
                 FullName = employee.FullName,
                 Position = employee.Position,
                 UserId = employee.UserId,
+                CompanyId = employee.CompanyId,
             };
         }
     }

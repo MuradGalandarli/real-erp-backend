@@ -19,6 +19,7 @@ export async function getAllEmployeeAsync() {
         <td>${employee.position}</td>
         <td>${employee.departmentId}</td>
         <td>${employee.userId}</td>
+        <td>${employee.companyId}</td>
         <td><button data-user-id=${employee.id} class="update-btn" id="getUpdateEmployeModal">Update</button></td>
         <td><button data-id=${employee.id} id="deleteEmployee" class="delete-btn" >Delete</button></td>
         </tr> `
@@ -34,6 +35,7 @@ export async function getByIdEmployeeAsync(id) {
     document.querySelector("#fullName").value = data.fullName;
     document.querySelector("#position").value = data.position;
     document.querySelector("#departmentId").value = data.departmentId;
+    document.querySelector("#company").value = data.companyId;
     document.querySelector("#submit-btn").dataset.employeeid = id;
 }
 
@@ -43,6 +45,7 @@ export async function updateEmployeeAsync(id) {
         id:id,
         fullName: document.querySelector("#fullName").value,
         position: document.querySelector("#position").value,
+        companyId: document.querySelector("#company").value,
         departmentId: document.querySelector("#departmentId").value
     }
     await fetchEmployee.update(employee);
@@ -56,6 +59,7 @@ export async function addEmployee() {
         fullName: document.querySelector("#fullName").value,
         position: document.querySelector("#position").value,
         departmentId: document.querySelector("#departmentId").value,
+        companyId: document.querySelector("#company").value,
         userId: userIdValue === "" ? null : userIdValue
     };
     await fetchEmployee.add(employee);

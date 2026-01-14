@@ -9,5 +9,6 @@ namespace RealERP.Application.DTOs
         public string Position { get; set; }
         public int DepartmentId { get; set; }
         public string? UserId { get; set; }
+        public int? CompanyId { get; set; }
     }
 }

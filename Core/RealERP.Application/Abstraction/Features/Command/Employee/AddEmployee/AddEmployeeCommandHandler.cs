@@ -21,7 +21,8 @@ namespace RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee
                 DepartmentId = request.DepartmentId,
                 FullName = request.FullName,
                 Position = request.Position,
-                UserId = request.UserId 
+                UserId = request.UserId,
+                CompanyId = request.CompanyId,
             });
             return new()
             {

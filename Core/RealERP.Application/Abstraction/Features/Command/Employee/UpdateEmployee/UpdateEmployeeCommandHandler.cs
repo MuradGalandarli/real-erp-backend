@@ -23,6 +23,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Employee.UpdateEmploy
                 FullName = request.FullName,
                 Position = request.Position,
                 UserId = request.UserId,
+                CompanyId = request.CompanyId,
             });
             return new()
             {

@@ -8,5 +8,6 @@ namespace RealERP.Application.Abstraction.Features.Command.Employee.AddEmployee
         public string Position { get; set; }
         public int DepartmentId { get; set; }
         public string? UserId { get; set; }
+        public int? CompanyId { get; set; }
     }
 }

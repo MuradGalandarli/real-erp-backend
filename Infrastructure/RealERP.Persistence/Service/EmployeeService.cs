@@ -31,6 +31,7 @@ namespace RealERP.Persistence.Service
                         FullName = employee.FullName,
                         UserId = employee.UserId,
                         Position = employee.Position,
+                        CompanyId = employee.CompanyId
                     });
                     if (status)
                        
@@ -62,6 +63,7 @@ namespace RealERP.Persistence.Service
                 Id = e.Id,
                 UserId = e.UserId,
                 Position = e.Position,
+                CompanyId = e.CompanyId
             }).ToList();
         }
 
@@ -76,7 +78,8 @@ namespace RealERP.Persistence.Service
                 FullName = employee.FullName,
                 UserId = employee.UserId,
                 Position = employee.Position,
-                Id = employee.Id
+                Id = employee.Id,
+                CompanyId = employee.CompanyId
             };
 
         }
@@ -90,6 +93,7 @@ namespace RealERP.Persistence.Service
             employee.FullName = employeeDto.FullName;
             employee.DepartmentId = employeeDto.DepartmentId;
             employee.Position = employeeDto.Position;
+            employee.CompanyId = employeeDto.CompanyId;
 
             await _unitOfWork.writeEmployeeRepository.SaveAsync();
             return true;
