@@ -16,7 +16,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Brand.AddBrand
 
         public async Task<AddBrandCommandResponse> Handle(AddBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            bool status = await _brandService.AddBrnadAsync(new() { Name = request.BrandName });
+            bool status = await _brandService.AddBrnadAsync(new() { Name = request.BrandName, CompanyId = request.CompanyId });
             return new()
             {
                 Status = status,

@@ -6,5 +6,6 @@ namespace RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand
     {
         public int Id { get; set; }
         public string BrandName { get; set; }
+        public int CompanyId { get; set; }
     }
 }

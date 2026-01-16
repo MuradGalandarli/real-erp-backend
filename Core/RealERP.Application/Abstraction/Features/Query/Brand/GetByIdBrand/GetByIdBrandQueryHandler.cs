@@ -21,6 +21,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand
             {
                 Id = request.Id,
                 BrandName = brand.Name,
+                CompanyId = brand.CompanyId,
             };
         }
     }

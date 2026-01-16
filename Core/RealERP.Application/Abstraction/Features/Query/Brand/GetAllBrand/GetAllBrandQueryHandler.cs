@@ -19,7 +19,8 @@ namespace RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand
             return brands.Select(b=> new GetAllBrandQueryResponse()
             {
                 Id = b.Id,
-                BrandName = b.Name
+                BrandName = b.Name,
+                CompanyId = b.CompanyId,
             }).ToList();
         }
     }
