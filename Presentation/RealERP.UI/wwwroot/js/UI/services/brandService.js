@@ -10,5 +10,8 @@ export const fetchBrand = {
     },
     getById: async (id) => {
         return await apiRequest(`${API_URL}/get-by-id-brand?id=${id}`)
+    },
+    update: async (brnad) => {
+        return await apiRequest(`${API_URL}/update-brand`, "PUT", brnad)
     }
 } 

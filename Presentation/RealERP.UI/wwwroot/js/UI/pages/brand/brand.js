@@ -37,3 +37,15 @@ export async function getByIdBrandAsync(id) {
     document.getElementById("company").value = brand.companyId;
     document.querySelector("#submit-btn").dataset.id = id;
 }
+
+export async function updateBrand() {
+
+    const brand = {
+        id: document.querySelector("#submit-btn").dataset.id,
+        brandName: document.getElementById("name").value,
+        companyId: document.getElementById("company").value
+    }
+
+    await fetchBrand.update(brand);
+
+}

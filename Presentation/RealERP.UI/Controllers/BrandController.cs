@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Brand.AddBrand;
+using RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 
@@ -35,6 +36,12 @@ namespace RealERP.UI.Controllers
             GetByIdBrandQueryRequest getByIdBrandQueryRequest = new() { Id = id };
             GetByIdBrandQueryResponse getByIdBrandQueryResponse = await _mediator.Send(getByIdBrandQueryRequest);
             return Ok(getByIdBrandQueryResponse);
+        }
+        [HttpPut("update-brand")]
+        public async Task<IActionResult> UpdateBrand([FromBody] BrandUpdateCommandRequest brandUpdateCommandRequest)
+        {
+            BrandUpdateCommandResponse brandUpdateCommandResponse = await _mediator.Send(brandUpdateCommandRequest);
+            return Ok(brandUpdateCommandResponse);
         }
 
     }

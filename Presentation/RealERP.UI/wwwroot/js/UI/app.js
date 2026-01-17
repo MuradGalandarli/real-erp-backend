@@ -3,7 +3,7 @@ import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCateg
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
-import { getAllBrand, addBrandAsync, getByIdBrandAsync } from "../UI/pages/brand/brand.js"
+import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany } from "../UI/pages/company/company.js"
  
 const content = document.getElementById("Content");
@@ -154,6 +154,7 @@ document.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const mode = document.getElementById("formMode").value;
+    
 
     if (e.target.matches("#companyForm")) {
         if (mode == "add") {
@@ -172,6 +173,11 @@ document.addEventListener("submit", async (e) => {
         if (mode == "add") {
             await addBrandAsync();
             content.innerHTML = await getAllBrand(1,10);
+        }
+        if (mode == "update") {
+            await updateBrand();
+            content.innerHTML = await getAllBrand(1, 10);
+
         }
     }
 
