@@ -3,7 +3,7 @@ import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCateg
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
-import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand } from "../UI/pages/brand/brand.js"
+import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany } from "../UI/pages/company/company.js"
  
 const content = document.getElementById("Content");
@@ -42,6 +42,13 @@ document.getElementById("companyTableRender").addEventListener("click", async ()
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+    if (e.target.matches("#deleteBrand")) {
+        debugger;
+        await deleteBrand(e.target.dataset.id)
+        content.innerHTML = await getAllBrand(1, 10);
+    }
+
 
     if (e.target.matches("#getCompanyModal")) {
         openModal(modalForCompany())

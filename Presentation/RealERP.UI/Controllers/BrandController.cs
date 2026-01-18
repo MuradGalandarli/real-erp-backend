@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Command.Brand.AddBrand;
+using RealERP.Application.Abstraction.Features.Command.Brand.DeleteBrand;
 using RealERP.Application.Abstraction.Features.Command.Brand.UpdateBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
@@ -42,6 +43,14 @@ namespace RealERP.UI.Controllers
         {
             BrandUpdateCommandResponse brandUpdateCommandResponse = await _mediator.Send(brandUpdateCommandRequest);
             return Ok(brandUpdateCommandResponse);
+        }
+        [HttpDelete("delete-brand")]
+        public async Task<IActionResult> DeleteBrnad([FromQuery] int id)
+        {
+            BrandDeleteCommandRequest brandDeleteCommandRequest = new() {Id = id};
+            BrandDeleteCommandResponse brandDeleteCommandResponse = await _mediator.Send(brandDeleteCommandRequest);
+            return Ok(brandDeleteCommandResponse);
+
         }
 
     }

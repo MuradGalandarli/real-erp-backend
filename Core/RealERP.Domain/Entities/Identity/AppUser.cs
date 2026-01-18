@@ -1,8 +1,5 @@
-﻿
-
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 
 namespace RealERP.Domain.Entities.User
 {

@@ -13,5 +13,8 @@ export const fetchBrand = {
     },
     update: async (brnad) => {
         return await apiRequest(`${API_URL}/update-brand`, "PUT", brnad)
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-brand?id=${id}`,"DELETE")
     }
 } 

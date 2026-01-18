@@ -47,5 +47,7 @@ export async function updateBrand() {
     }
 
     await fetchBrand.update(brand);
-
+}
+export async function deleteBrand(id) {
+    await fetchBrand.delete(id);
 }
