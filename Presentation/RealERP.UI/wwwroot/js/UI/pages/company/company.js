@@ -66,3 +66,7 @@ export async function updateCompany(id) {
     }
      await fetchCompany.update(company); 
 }
+
+export async function deleteCompanyAsync(id) {
+    await fetchCompany.delete(id);
+}

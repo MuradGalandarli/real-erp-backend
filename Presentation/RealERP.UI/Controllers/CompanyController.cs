@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory;
 using RealERP.Application.Abstraction.Features.Command.Company.AddCompany;
+using RealERP.Application.Abstraction.Features.Command.Company.DeleteCompany;
 using RealERP.Application.Abstraction.Features.Command.Company.UpdateCompany;
 using RealERP.Application.Abstraction.Features.Query.Company.GetAllCompany;
 using RealERP.Application.Abstraction.Features.Query.Company.GetByIdCompany;
@@ -39,10 +41,17 @@ namespace RealERP.UI.Controllers
         }
         [HttpPut("update-company")]
         public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest updateCompanyCommandRequest)
-            {
+        {
             UpdateCompanyCommandResponse updateCompanyCommandResponse = await _mediator.Send(updateCompanyCommandRequest);
             return Ok(updateCompanyCommandResponse);
-
         }
+        [HttpDelete("delete-company")]
+        public async Task<IActionResult> DeleteCompany([FromQuery] int id)
+        {
+            DeleteCompanyCommandRequest deleteCompanyCommandRequest = new() { Id = id };
+            DeleteCompanyCommandResponse deleteCompanyCommandResponse = await _mediator.Send(deleteCompanyCommandRequest);
+            return Ok(deleteCompanyCommandResponse);
+        }
+
     }
 }

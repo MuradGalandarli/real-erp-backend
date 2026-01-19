@@ -13,6 +13,9 @@ export const fetchCompany = {
     },
     update: async (company) => {
         return await apiRequest(`${API_URL}/update-company`, "PUT", { company: company })
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-company?id=${id}`,"DELETE")
     }
 
 
