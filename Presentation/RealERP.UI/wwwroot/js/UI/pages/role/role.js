@@ -1,0 +1,22 @@
+﻿import { fetchRole } from "../../services/roleService.js"
+import { roleTable } from "../../table/roleTable.js"
+export async function getAllRole(page, size)
+{
+    const roles = await fetchRole.getAll(page, size)
+    let table = roleTable();
+    let id = 0;
+    roles.forEach(role => {
+      
+        table += `
+        <tr>
+        <td>${++id}</td>
+        <td>${role.name}</td>
+        <td><button data-id=${role.id} class="update-btn" id="getUpdateRoledModal">Update</button></td>
+        <td><button data-id=${role.id} id="deleteRole" class="delete-btn" >Delete</button></td>
+        </tr>
+        `
+    })
+    table += `</table>`
+    return table;
+
+}

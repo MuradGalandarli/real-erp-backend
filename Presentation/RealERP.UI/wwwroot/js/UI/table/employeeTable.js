@@ -11,7 +11,6 @@
             <th>Company</th>
             <th>Update</th>
             <th>Delete</th>
-           
         </tr>
     `;
 }

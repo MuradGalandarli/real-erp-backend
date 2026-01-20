@@ -5,7 +5,8 @@ import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDep
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
- 
+import { getAllRole } from "../UI/pages/role/role.js"
+
 const content = document.getElementById("Content");
 
 
@@ -37,6 +38,11 @@ document.getElementById("brandTableRender").addEventListener("click", async () =
 document.getElementById("companyTableRender").addEventListener("click", async () => {
 
     content.innerHTML = await getAllCompany(1, 10);
+})
+
+document.getElementById("roleTableRender").addEventListener("click", async () => {
+
+    content.innerHTML = await getAllRole(1, 10);
 })
 
 document.addEventListener("click", async (e) => {
