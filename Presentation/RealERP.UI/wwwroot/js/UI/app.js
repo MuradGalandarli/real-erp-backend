@@ -1,11 +1,11 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
-import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand, modalForCompany } from "./components/modals/modal.js"
+import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand, modalForCompany, modalForRole } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
-import { getAllRole } from "../UI/pages/role/role.js"
+import { getAllRole, getByIdRoleAsync } from "../UI/pages/role/role.js"
 
 const content = document.getElementById("Content");
 
@@ -48,6 +48,14 @@ document.getElementById("roleTableRender").addEventListener("click", async () =>
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+
+    if (e.target.matches("#getRoleModal")) {
+        openModal(modalForRole())
+        debugger;
+        await getByIdRoleAsync(e.target.dataset.id);
+        document.getElementById("formMode").value = "update";
+    }
 
     if (e.target.matches("#deleteCompany")) {
         await deleteCompanyAsync(e.target.dataset.id)

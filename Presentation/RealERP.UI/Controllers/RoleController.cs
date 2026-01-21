@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 using RealERP.Application.Abstraction.Features.Query.Role.GetAllRole;
+using RealERP.Application.Abstraction.Features.Query.Role.RoleGetById;
 
 namespace RealERP.UI.Controllers
 {
@@ -20,6 +22,12 @@ namespace RealERP.UI.Controllers
             List<GetAllRoleQueryResponse> getAllRoleQueryResponse = await _mediator.Send(getAllRoleQueryRequest);
             return Ok(getAllRoleQueryResponse);
         }
-
+        [HttpGet("get-by-id-role")]
+        public async Task<IActionResult> GetByIdRole([FromQuery] string id)
+        {
+            RoleGetByIdQueryRequest roleGetByIdQueryRequest = new() { Id = id };
+            RoleGetByIdQueryResponse roleGetByIdQueryResponse = await _mediator.Send(roleGetByIdQueryRequest);
+            return Ok(roleGetByIdQueryResponse);
+        }
     }
 }

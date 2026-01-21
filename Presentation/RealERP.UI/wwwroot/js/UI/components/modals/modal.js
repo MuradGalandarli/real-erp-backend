@@ -168,3 +168,20 @@ export function modalForCompany() {
         </div>
     </div>`
 }
+export function modalForRole() {
+    return `
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Role</h2>
+            <form id="roleForm">
+            <input type="hidden" id="formMode" value="add">
+
+                <label>Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <button type="submit" id="submit-btn">Save</button>
+            </form>
+            <button class="close-btn">X</button>
+        </div>
+    </div>`
+}

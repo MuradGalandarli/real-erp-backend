@@ -11,12 +11,17 @@ export async function getAllRole(page, size)
         <tr>
         <td>${++id}</td>
         <td>${role.name}</td>
-        <td><button data-id=${role.id} class="update-btn" id="getUpdateRoledModal">Update</button></td>
+        <td><button data-id=${role.id} class="update-btn" id="getRoleModal">Update</button></td>
         <td><button data-id=${role.id} id="deleteRole" class="delete-btn" >Delete</button></td>
         </tr>
         `
     })
     table += `</table>`
     return table;
+}
+
+export async function getByIdRoleAsync(id) {
+    const role = await fetchRole.getbyid(id);
+    document.getElementById("name").value = role.name;
 
 }
