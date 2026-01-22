@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 using RealERP.Application.Abstraction.Features.Query.Role.GetAllRole;
 using RealERP.Application.Abstraction.Features.Query.Role.RoleGetById;
@@ -29,5 +30,13 @@ namespace RealERP.UI.Controllers
             RoleGetByIdQueryResponse roleGetByIdQueryResponse = await _mediator.Send(roleGetByIdQueryRequest);
             return Ok(roleGetByIdQueryResponse);
         }
+        [HttpPut("update-role")]
+        public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleCommandRequest updateRoleCommandRequest)
+        {
+            UpdateRoleCommandResponse updateRoleCommandResponse = await _mediator.Send(updateRoleCommandRequest);
+            return Ok(updateRoleCommandResponse);
+        }
+
+        
     }
 }

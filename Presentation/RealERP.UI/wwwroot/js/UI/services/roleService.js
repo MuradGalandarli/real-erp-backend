@@ -7,6 +7,9 @@ export const fetchRole = {
     },
     getbyid: async (id) => {
         return await apiRequest(`${API_URL}/get-by-id-role?id=${id}`)
+    },
+    update: async (role) => {
+        return await apiRequest(`${API_URL}/update-role`, "PUT", role)
     }
 }
 

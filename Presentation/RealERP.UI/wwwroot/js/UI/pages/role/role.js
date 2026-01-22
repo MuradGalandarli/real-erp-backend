@@ -1,4 +1,5 @@
-﻿import { fetchRole } from "../../services/roleService.js"
+﻿import { apiRequest } from "../../core/api.js";
+import { fetchRole } from "../../services/roleService.js"
 import { roleTable } from "../../table/roleTable.js"
 export async function getAllRole(page, size)
 {
@@ -23,5 +24,13 @@ export async function getAllRole(page, size)
 export async function getByIdRoleAsync(id) {
     const role = await fetchRole.getbyid(id);
     document.getElementById("name").value = role.name;
+    document.querySelector("#submit-btn").dataset.id = id;
+}
+export async function updateRoleAsync(id) {
+    let role = {
 
+        id: document.querySelector("#submit-btn").dataset.id,
+        name: document.getElementById("name").value
+    };
+    await fetchRole.update(role);
 }

@@ -5,7 +5,7 @@ import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDep
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
-import { getAllRole, getByIdRoleAsync } from "../UI/pages/role/role.js"
+import { getAllRole, getByIdRoleAsync, updateRoleAsync } from "../UI/pages/role/role.js"
 
 const content = document.getElementById("Content");
 
@@ -52,7 +52,6 @@ document.addEventListener("click", async (e) => {
 
     if (e.target.matches("#getRoleModal")) {
         openModal(modalForRole())
-        debugger;
         await getByIdRoleAsync(e.target.dataset.id);
         document.getElementById("formMode").value = "update";
     }
@@ -180,7 +179,13 @@ document.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const mode = document.getElementById("formMode").value;
-    
+
+    if (e.target.matches("#roleForm")) {
+        if (mode == "update") {
+            await updateRoleAsync();
+            content.innerHTML = await getAllRole(1, 10);
+        }
+    }
 
     if (e.target.matches("#companyForm")) {
         if (mode == "add") {
