@@ -42,3 +42,7 @@ export async function addRoleAsync() {
     }
     await fetchRole.add(role);
 }
+
+export async function deleteRoleAsync(id) {
+    await fetchRole.delete(id)
+}

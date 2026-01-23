@@ -5,7 +5,7 @@ import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDep
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
-import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync } from "../UI/pages/role/role.js"
+import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
 
 const content = document.getElementById("Content");
 
@@ -49,6 +49,10 @@ document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
 
+    if (e.target.matches("#deleteRole")) {
+        await deleteRoleAsync(e.target.dataset.id);
+        content.innerHTML = await getAllRole(1, 10);
+    }
 
     if (e.target.matches("#getRoleModal")) {
         openModal(modalForRole())

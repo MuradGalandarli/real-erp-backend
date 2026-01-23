@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory;
 using RealERP.Application.Abstraction.Features.Command.Role.CreateRole;
+using RealERP.Application.Abstraction.Features.Command.Role.DeleteRole;
 using RealERP.Application.Abstraction.Features.Command.Role.UpdateRole;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetByIdBrand;
 using RealERP.Application.Abstraction.Features.Query.Role.GetAllRole;
@@ -43,6 +45,13 @@ namespace RealERP.UI.Controllers
         {
             CreateRoleCommandResponse createRoleCommandResponse = await _mediator.Send(createRoleCommandRequest);
             return Ok(createRoleCommandResponse);
+        }
+        [HttpDelete("delete-role")]
+        public async Task<IActionResult> DeleteRole([FromQuery]string id)
+        {
+            DeleteRoleCommandRequest deleteRoleCommandRequest = new() { Id = id };
+            DeleteRoleCommandResponse deleteRoleCommandResponse = await _mediator.Send(deleteRoleCommandRequest);
+            return Ok(deleteRoleCommandResponse);
         }
 
         

@@ -13,6 +13,9 @@ export const fetchRole = {
     },
     add: async (role) => {
         return await apiRequest(`${API_URL}/add-role`,"POST",role)
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-role?id=${id}`,"DELETE")
     }
 }
 
