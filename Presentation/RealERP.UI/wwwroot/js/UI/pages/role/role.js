@@ -26,6 +26,7 @@ export async function getByIdRoleAsync(id) {
     document.getElementById("name").value = role.name;
     document.querySelector("#submit-btn").dataset.id = id;
 }
+
 export async function updateRoleAsync(id) {
     let role = {
 
@@ -33,4 +34,11 @@ export async function updateRoleAsync(id) {
         name: document.getElementById("name").value
     };
     await fetchRole.update(role);
+}
+
+export async function addRoleAsync() {
+    let role = {
+        name: document.getElementById("name").value
+    }
+    await fetchRole.add(role);
 }

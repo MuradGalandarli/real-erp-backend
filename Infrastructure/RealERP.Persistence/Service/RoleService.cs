@@ -73,7 +73,7 @@ namespace RealERP.Persistence.Service
                 return false;
 
             existingRole.Name = role.Name;
-            existingRole.NormalizedName = role.Name.ToUpper();
+            existingRole.NormalizedName = role.Name.ToUpper();  
 
             IdentityResult identityResult = await _roleManager.UpdateAsync(existingRole);
 

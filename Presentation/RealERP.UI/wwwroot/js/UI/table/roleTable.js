@@ -1,5 +1,6 @@
 ﻿export function roleTable() {
     return `
+    <button id="addRole">Add</button>
     <table>
     <tr>
     <th>Id</th>

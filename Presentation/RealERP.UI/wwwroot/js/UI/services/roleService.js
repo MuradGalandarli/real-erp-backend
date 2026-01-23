@@ -10,6 +10,9 @@ export const fetchRole = {
     },
     update: async (role) => {
         return await apiRequest(`${API_URL}/update-role`, "PUT", role)
+    },
+    add: async (role) => {
+        return await apiRequest(`${API_URL}/add-role`,"POST",role)
     }
 }
 
