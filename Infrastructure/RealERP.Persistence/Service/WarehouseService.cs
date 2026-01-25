@@ -45,6 +45,7 @@ namespace RealERP.Persistence.Service
                 Id = w.Id,
                 Location = w.Location,
                 Name = w.Name,
+                CompanyId = w.CompanyId,
             }).ToList();
         }
 
@@ -61,6 +62,7 @@ namespace RealERP.Persistence.Service
                 Id = warehouse.Id,
                 Location = warehouse.Location,
                 Name = warehouse.Name,
+                CompanyId = warehouse.CompanyId,
             };
         }
 

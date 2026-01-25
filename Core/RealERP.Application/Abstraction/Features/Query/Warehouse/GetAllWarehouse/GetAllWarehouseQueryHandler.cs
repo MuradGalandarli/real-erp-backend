@@ -24,7 +24,8 @@ namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehou
                 Description = w.Description,
                 Id = w.Id,
                 Location = w.Location,
-                Name = w.Name
+                Name = w.Name,
+                CompanyId = w.CompanyId,
             }).ToList();
 
         } 
