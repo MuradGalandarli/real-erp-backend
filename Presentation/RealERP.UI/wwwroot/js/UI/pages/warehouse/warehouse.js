@@ -5,7 +5,6 @@ export async function GetAllWarehouse(page, size) {
     
     
     let varehouses = await fetchWarehouse.getAll(page, size);
-    debugger;
     let table = createWarehouseTable();
     let id = 0;
     varehouses.forEach(warehouse => {
@@ -24,4 +23,13 @@ export async function GetAllWarehouse(page, size) {
     })
     table += `</table>`
     return table;
+}
+
+export async function getByIdWarehouseAsync(id) {
+    const warehouse = await fetchWarehouse.getbyId(id);
+    debugger;
+    document.getElementById("name").value = warehouse.name
+    document.getElementById("description").value = warehouse.description
+    document.getElementById("location").value = warehouse.location
+    document.getElementById("company").value = warehouse.companyId
 }

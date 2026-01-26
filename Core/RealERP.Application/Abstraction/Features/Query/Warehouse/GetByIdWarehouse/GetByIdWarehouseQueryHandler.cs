@@ -24,7 +24,8 @@ namespace RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWareho
                 Id = warehouseResponseDto.Id,
                 Description = warehouseResponseDto.Description,
                 Location = warehouseResponseDto.Location,
-                Name = warehouseResponseDto.Name
+                Name = warehouseResponseDto.Name,
+                CompanyId = warehouseResponseDto.CompanyId
             };
         }
     }

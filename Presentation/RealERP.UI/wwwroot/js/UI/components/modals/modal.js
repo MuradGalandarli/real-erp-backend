@@ -185,3 +185,30 @@ export function modalForRole() {
         </div>
     </div>`
 }
+
+export function modalForWarehouse() {
+    return `
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Company</h2>
+            <form id="companyForm">
+            <input type="hidden" id="formMode" value="add">
+
+                <label>Name</label>
+                <input type="text" id="name" name="name" required />
+
+                 <label>Description:</label>
+                <input type="text" id="description" name="description" required />
+
+                 <label>Location</label>
+                <input type="text" id="location" name="location" required />
+
+                 <label>Company</label>
+                <input type="text" id="company" name="company" required />
+
+                <button type="submit" id="submit-btn">Save</button>
+            </form>
+            <button class="close-btn">X</button>
+        </div>
+    </div>`
+}

@@ -4,5 +4,9 @@ import { API_URL } from "../core/config.js"
 export const fetchWarehouse = {
     getAll: async (page, size) => {
         return apiRequest(`${API_URL}/get-all-warehouse?page=${page}&size=${size}`);
+    },
+    getbyId: async (id) => {
+        return apiRequest(`${API_URL}/get-by-id-warehouse?id=${id}`)
     }
+
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse;
+using RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse;
 
 namespace RealERP.UI.Controllers
 {
@@ -20,6 +21,13 @@ namespace RealERP.UI.Controllers
             GetAllWarehouseQueryRequest getAllWarehouseQueryRequest = new() { Page = page, Size = size };
             List<GetAllWarehouseQueryResponse> getAllWarehouseQueryResponse = await _mediator.Send(getAllWarehouseQueryRequest);
             return Ok(getAllWarehouseQueryResponse);
+        }
+        [HttpGet("get-by-id-warehouse")]
+        public async Task<IActionResult> GetByIdWarehouse([FromQuery] int id)
+        {
+            GetByIdWarehouseQueryRequest getByIdWarehouseQueryRequest = new() { Id = id };
+            GetByIdWarehouseQueryResponse getByIdWarehouseQueryResponse = await _mediator.Send(getByIdWarehouseQueryRequest);
+            return Ok(getByIdWarehouseQueryResponse);
         }
     }
 }
