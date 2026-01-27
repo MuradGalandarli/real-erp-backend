@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetByIdWarehouse;
@@ -28,6 +29,12 @@ namespace RealERP.UI.Controllers
             GetByIdWarehouseQueryRequest getByIdWarehouseQueryRequest = new() { Id = id };
             GetByIdWarehouseQueryResponse getByIdWarehouseQueryResponse = await _mediator.Send(getByIdWarehouseQueryRequest);
             return Ok(getByIdWarehouseQueryResponse);
+        }
+        [HttpPut("update-warehouse")]
+        public async Task<IActionResult> UpdateWarehouse([FromBody]UpdateWarehouseCommandRequest updateWarehouseCommandRequest)
+        {
+            UpdateWarehouseCommandResponse updateWarehouseCommandResponse = await _mediator.Send(updateWarehouseCommandRequest);
+            return Ok(updateWarehouseCommandResponse);
         }
     }
 }

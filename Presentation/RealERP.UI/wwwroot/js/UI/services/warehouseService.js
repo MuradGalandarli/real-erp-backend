@@ -7,6 +7,9 @@ export const fetchWarehouse = {
     },
     getbyId: async (id) => {
         return apiRequest(`${API_URL}/get-by-id-warehouse?id=${id}`)
+    },
+    update: async (warehouse) => {
+        return apiRequest(`${API_URL}/update-warehouse`, "PUT", warehouse)
     }
 
 }

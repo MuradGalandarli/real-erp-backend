@@ -27,9 +27,23 @@ export async function GetAllWarehouse(page, size) {
 
 export async function getByIdWarehouseAsync(id) {
     const warehouse = await fetchWarehouse.getbyId(id);
-    debugger;
     document.getElementById("name").value = warehouse.name
     document.getElementById("description").value = warehouse.description
     document.getElementById("location").value = warehouse.location
     document.getElementById("company").value = warehouse.companyId
+    document.querySelector("#submit-btn").value = id;
+}
+
+export async function updateWarehouseAsync() {
+
+    debugger;
+    let warehouse =
+    {
+        id: document.querySelector("#submit-btn").value,
+        name: document.getElementById("name").value,
+        description: document.getElementById("description").value = warehouse.description,
+        location: document.getElementById("location").value,
+        companyId: document.getElementById("company").value
+    }
+    await fetchWarehouse.update(warehouse);
 }

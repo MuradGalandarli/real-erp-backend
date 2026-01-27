@@ -6,7 +6,7 @@ import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCat
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
-import { GetAllWarehouse, getByIdWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
+import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
 
 const content = document.getElementById("Content");
 
@@ -55,7 +55,6 @@ document.addEventListener("click", async (e) => {
     const email = e.target.dataset.email
 
     if (e.target.matches("#getUpdateWarehouseModal")) {
-        debugger;
         openModal(modalForWarehouse())
         await getByIdWarehouseAsync(e.target.dataset.id);
         document.getElementById("formMode").value = "update";
@@ -198,6 +197,14 @@ document.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const mode = document.getElementById("formMode").value;
+
+    if (e.target.matches("#warehouseForm")) {
+        if (mode == "update") {
+            await updateWarehouseAsync();
+            content.innerHTML = await GetAllWarehouse(1, 10);
+        }
+            
+    }
 
     if (e.target.matches("#roleForm")) {
         if (mode == "update") {

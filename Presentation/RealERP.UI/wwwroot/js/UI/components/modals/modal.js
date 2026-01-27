@@ -191,7 +191,7 @@ export function modalForWarehouse() {
     <div class="modal-overlay">
         <div class="modal">
             <h2>Company</h2>
-            <form id="companyForm">
+            <form id="warehouseForm">
             <input type="hidden" id="formMode" value="add">
 
                 <label>Name</label>
