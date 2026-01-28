@@ -6,7 +6,7 @@ import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCat
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
-import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
+import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
 
 const content = document.getElementById("Content");
 
@@ -65,6 +65,9 @@ document.addEventListener("click", async (e) => {
         content.innerHTML = await getAllRole(1, 10);
     }
 
+    if (e.target.matches("#addWarehouse")) {
+        openModal(modalForWarehouse())
+    }
     if (e.target.matches("#getRoleModal")) {
         openModal(modalForRole())
         await getByIdRoleAsync(e.target.dataset.id);
@@ -201,6 +204,11 @@ document.addEventListener("submit", async (e) => {
     if (e.target.matches("#warehouseForm")) {
         if (mode == "update") {
             await updateWarehouseAsync();
+            content.innerHTML = await GetAllWarehouse(1, 10);
+        }
+        else {
+            debugger;
+            await addWarehouseAsync();
             content.innerHTML = await GetAllWarehouse(1, 10);
         }
             

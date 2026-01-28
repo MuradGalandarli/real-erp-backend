@@ -36,14 +36,24 @@ export async function getByIdWarehouseAsync(id) {
 
 export async function updateWarehouseAsync() {
 
-    debugger;
     let warehouse =
     {
         id: document.querySelector("#submit-btn").value,
         name: document.getElementById("name").value,
-        description: document.getElementById("description").value = warehouse.description,
+        description: document.getElementById("description").value,
         location: document.getElementById("location").value,
         companyId: document.getElementById("company").value
     }
     await fetchWarehouse.update(warehouse);
+}
+export async function addWarehouseAsync() {
+
+    let warehouse =
+    {
+        name: document.getElementById("name").value,
+        description: document.getElementById("description").value,
+        location: document.getElementById("location").value,
+        companyId: document.getElementById("company").value
+    }
+    await fetchWarehouse.add(warehouse);
 }

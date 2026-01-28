@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse;
@@ -35,6 +36,12 @@ namespace RealERP.UI.Controllers
         {
             UpdateWarehouseCommandResponse updateWarehouseCommandResponse = await _mediator.Send(updateWarehouseCommandRequest);
             return Ok(updateWarehouseCommandResponse);
+        }
+        [HttpPost("add-warehouse")]
+        public async Task<IActionResult> AddWarehouse([FromBody] AddWarehouseCommandRequest addWarehouseCommandRequest)
+        {
+            AddWarehouseCommandResponse addWarehouseCommandResponse = await _mediator.Send(addWarehouseCommandRequest);
+            return Ok(addWarehouseCommandResponse);
         }
     }
 }

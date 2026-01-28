@@ -10,6 +10,9 @@ export const fetchWarehouse = {
     },
     update: async (warehouse) => {
         return apiRequest(`${API_URL}/update-warehouse`, "PUT", warehouse)
+    },
+    add: async (warehouse) => {
+        return apiRequest(`${API_URL}/add-warehouse`, "POST", warehouse)
     }
 
 }

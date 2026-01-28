@@ -20,6 +20,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAd
                 Description = request.Description,
                 Location = request.Location,
                 Name = request.Name,
+                CompanyId = request.CompanyId
             });
             return new()
             {
