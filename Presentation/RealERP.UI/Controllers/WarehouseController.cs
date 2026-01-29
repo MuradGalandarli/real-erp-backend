@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Category.DeleteCategory;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseAdd;
+using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseDelete;
 using RealERP.Application.Abstraction.Features.Command.Warehouse.WarehouseUpdate;
 using RealERP.Application.Abstraction.Features.Query.Brand.GetAllBrand;
 using RealERP.Application.Abstraction.Features.Query.Warehouse.GetAllWarehouse;
@@ -42,6 +44,13 @@ namespace RealERP.UI.Controllers
         {
             AddWarehouseCommandResponse addWarehouseCommandResponse = await _mediator.Send(addWarehouseCommandRequest);
             return Ok(addWarehouseCommandResponse);
+        }
+        [HttpDelete("warehouse-delete")]
+        public async Task<IActionResult> DeleteWarehouse([FromQuery] int id)
+        {
+            WarehouseDeleteCommandRequest warehouseDeleteCommandRequest = new() { Id = id };
+            WarehouseDeleteCommandResponse warehouseDeleteCommandResponse = await _mediator.Send(warehouseDeleteCommandRequest);
+            return Ok(warehouseDeleteCommandResponse);
         }
     }
 }

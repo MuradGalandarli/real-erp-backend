@@ -17,7 +17,7 @@ export async function GetAllWarehouse(page, size) {
         <td>${warehouse.location}</td>
         <td>${warehouse.companyId}</td>
         <td><button data-id=${warehouse.id} class="update-btn" id="getUpdateWarehouseModal">Update</button></td>
-        <td><button data-id=${warehouse.id} id="deleteBrand" class="delete-btn" >Delete</button></td>
+        <td><button data-id=${warehouse.id} id="deleteWarehouse" class="delete-btn" >Delete</button></td>
         </tr>
         `
     })
@@ -56,4 +56,7 @@ export async function addWarehouseAsync() {
         companyId: document.getElementById("company").value
     }
     await fetchWarehouse.add(warehouse);
+}
+export async function deleteWarehouseAsync(id) {
+    await fetchWarehouse.delete(id)
 }

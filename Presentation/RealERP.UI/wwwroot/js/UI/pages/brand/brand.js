@@ -1,4 +1,5 @@
 ﻿import { fetchBrand } from "../../services/brandService.js"
+import { fetchWarehouse } from "../../services/warehouseService.js";
 import { brandTable } from "../../table/brandTable.js"
 
 export async function getAllBrand(page, size) {
@@ -51,3 +52,4 @@ export async function updateBrand() {
 export async function deleteBrand(id) {
     await fetchBrand.delete(id);
 }
+

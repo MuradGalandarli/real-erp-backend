@@ -6,7 +6,7 @@ import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCat
 import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand } from "../UI/pages/brand/brand.js"
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
-import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
+import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync, deleteWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
 
 const content = document.getElementById("Content");
 
@@ -53,6 +53,11 @@ document.getElementById("warehouseTableRender").addEventListener("click", async 
 document.addEventListener("click", async (e) => {
     const id = e.target.dataset.userId;
     const email = e.target.dataset.email
+
+    if (e.target.matches("#deleteWarehouse")) {
+        await deleteWarehouseAsync(e.target.dataset.id);
+        content.innerHTML = await GetAllWarehouse(1, 10);
+    }
 
     if (e.target.matches("#getUpdateWarehouseModal")) {
         openModal(modalForWarehouse())

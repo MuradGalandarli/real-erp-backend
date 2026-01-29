@@ -13,6 +13,9 @@ export const fetchWarehouse = {
     },
     add: async (warehouse) => {
         return apiRequest(`${API_URL}/add-warehouse`, "POST", warehouse)
+    },
+    delete: async (id) => {
+        return apiRequest(`${API_URL}/warehouse-delete?id=${id}`,"DELETE")
     }
 
 }
