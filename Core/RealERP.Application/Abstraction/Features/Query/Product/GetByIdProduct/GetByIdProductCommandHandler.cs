@@ -25,6 +25,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct
                 CategoryId = productDto.CategoryId,
                 Description = productDto.Description,
                 Name = productDto.Name,
+                CompanyId = productDto.CompanyId,
             };
         }
     }

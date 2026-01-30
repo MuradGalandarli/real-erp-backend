@@ -12,9 +12,11 @@ namespace RealERP.Persistence.Service
         private readonly IWriteProductRepository _writeProductRepository;
         private readonly IReadProductRepository _readProductRepository;
 
-        public ProductService(IWriteProductRepository writeProductRepository)
+
+        public ProductService(IWriteProductRepository writeProductRepository, IReadProductRepository readProductRepository)
         {
             _writeProductRepository = writeProductRepository;
+            _readProductRepository = readProductRepository;
         }
 
         public async Task<bool> AddProductAsync(ProductDto productDto)
@@ -25,6 +27,7 @@ namespace RealERP.Persistence.Service
                 BrandId = productDto.BrandId,
                 CategoryId = productDto.CategoryId,
                 Description = productDto.Description,
+                CompanyId = productDto.CompanyId,
             });
             if (status)
                await _writeProductRepository.SaveAsync();
@@ -45,13 +48,16 @@ namespace RealERP.Persistence.Service
         public List<ProductDto> GetAllProduct(int page, int size)
         {
            IQueryable<Product> products = _readProductRepository.GetAll().Skip((page - 1) * size).Take(size);
+            if(products == null)
+                return new List<ProductDto>();
             return products.Select(p => new ProductDto()
             {
                 Name = p.Name,
                 BrandId = p.BrandId,
                 CategoryId = p.CategoryId,
                 Description = p.Description,
-                Id = p.Id
+                Id = p.Id,
+                CompanyId = p.CompanyId
             }).ToList();
 
         }
@@ -70,6 +76,7 @@ namespace RealERP.Persistence.Service
                 Description = product.Description,
                 Id = product.Id,
                 Name = product.Name,
+                CompanyId = product.Id
             };
         }
 
@@ -82,6 +89,7 @@ namespace RealERP.Persistence.Service
                 BrandId = productDto.BrandId,
                 CategoryId = productDto.CategoryId,
                 Description = productDto.Description,
+                CompanyId= productDto.CompanyId,
                 
             });
             if(status)

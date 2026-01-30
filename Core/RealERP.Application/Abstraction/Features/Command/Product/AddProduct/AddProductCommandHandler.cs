@@ -22,6 +22,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Product.AddProduct
                 CategoryId = request.CategoryId,
                 Description = request.Description,
                 Name = request.Name,
+                CompanyId = request.CompanyId,
             });
             return new()
             {

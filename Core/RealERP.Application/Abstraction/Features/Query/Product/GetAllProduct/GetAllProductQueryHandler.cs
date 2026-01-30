@@ -25,6 +25,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct
                 Description = p.Description,
                 Id = p.Id,
                 Name = p.Name,
+                CompanyId = p.CompanyId,
             }).ToList();
         }
     }
