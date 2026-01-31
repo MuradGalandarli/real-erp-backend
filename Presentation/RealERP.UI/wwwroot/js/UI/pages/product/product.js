@@ -1,4 +1,5 @@
-﻿import { fetchProduct } from "../../services/productService.js"
+﻿import { apiRequest } from "../../core/api.js";
+import { fetchProduct } from "../../services/productService.js"
 import { createProductTable } from "../../table/productTable.js"
 
 export async function getAllProductAsync(page,size) {
@@ -24,4 +25,16 @@ export async function getAllProductAsync(page,size) {
     table += `</table>`
     return table;
 
+}
+
+export async function getByIdProductAsync(id) {
+
+    const product = await fetchProduct.getById(id);
+    debugger;
+    document.getElementById("name").value = product.name
+    document.getElementById("description").value = product.description
+    document.getElementById("category").value = product.categoryId
+    document.getElementById("company").value = product.companyId
+    document.getElementById("brand").value = product.brandId
+    document.querySelector("#submit-btn").value = id;
 }

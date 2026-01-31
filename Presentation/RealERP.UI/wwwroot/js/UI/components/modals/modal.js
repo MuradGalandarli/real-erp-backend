@@ -190,7 +190,7 @@ export function modalForWarehouse() {
     return `
     <div class="modal-overlay">
         <div class="modal">
-            <h2>Company</h2>
+            <h2>Warehouse</h2>
             <form id="warehouseForm">
             <input type="hidden" id="formMode" value="add">
 
@@ -212,3 +212,34 @@ export function modalForWarehouse() {
         </div>
     </div>`
 }
+
+export function modalForProduct() {
+    return `
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Product</h2>
+            <form id="productForm">
+            <input type="hidden" id="formMode" value="add">
+
+                <label>Name</label>
+                <input type="text" id="name" name="name" required />
+
+                 <label>Description:</label>
+                <input type="text" id="description" name="description" required />
+
+                 <label>Category</label>
+                <input type="text" id="category" name="category" required />
+
+                 <label>Company</label>
+                <input type="text" id="company" name="company" required />
+
+                 <label>Brad</label>
+                <input type="text" id="brand" name="brand" required />
+
+                <button type="submit" id="submit-btn">Save</button>
+            </form>
+            <button class="close-btn">X</button>
+        </div>
+    </div>`
+}
+ 

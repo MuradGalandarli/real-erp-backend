@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct;
+using RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct;
 
 namespace RealERP.UI.Controllers
 {
@@ -19,6 +20,13 @@ namespace RealERP.UI.Controllers
             GetAllProductQueryRequest getAllProductQueryRequest = new() { Page = page, Size = size };
             List<GetAllProductQueryResponse> getAllProductQueryResponses = await _mediator.Send(getAllProductQueryRequest);
             return Ok(getAllProductQueryResponses);
+        }
+        [HttpGet("get-by-id-product")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            GetByIdProductCommandRequest getByIdProductCommandRequest = new() { Id = id };
+            GetByIdProductCommandResponse getByIdProductCommandResponse = await _mediator.Send(getByIdProductCommandRequest);
+            return Ok(getByIdProductCommandResponse);
         }
 
 

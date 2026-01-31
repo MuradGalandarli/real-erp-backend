@@ -1,5 +1,5 @@
 ﻿import { getAllUserTable, addUser, getByEmailUser, updateUser, deleteUserAsync } from "../UI/pages/user/user.js"
-import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand, modalForCompany, modalForRole, modalForWarehouse } from "./components/modals/modal.js"
+import { modalForUser, modalUpdateForEmployee, modalForDepartment, modalForCategory, modalForBrand, modalForCompany, modalForRole, modalForWarehouse, modalForProduct } from "./components/modals/modal.js"
 import { getAllEmployeeAsync, getByIdEmployeeAsync, updateEmployeeAsync, addEmployee, deleteEmployee } from "../UI/pages/employee/employee.js"
 import { getAllDepartmentAsync, addDepartmentAsync, getByIdDepartment, updateDepartmentAsync, deleteDepartment } from "../UI/pages/department/department.js"
 import { getAllCategory, addCategory, deleteCategory, getByIdCategory, updateCategory } from "../UI/pages/category/category.js"
@@ -7,7 +7,7 @@ import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
 import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync, deleteWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
-import { getAllProductAsync } from "../UI/pages/product/product.js"
+import { getAllProductAsync, getByIdProductAsync } from "../UI/pages/product/product.js"
 
 const content = document.getElementById("Content");
 
@@ -64,6 +64,12 @@ document.addEventListener("click", async (e) => {
         content.innerHTML = await GetAllWarehouse(1, 10);
     }
 
+    if (e.target.matches("#getUpdateProductModal")) {
+        openModal(modalForProduct())
+        await getByIdProductAsync(e.target.dataset.id);
+        document.getElementById("formMode").value = "update";
+    }
+     
     if (e.target.matches("#getUpdateWarehouseModal")) {
         openModal(modalForWarehouse())
         await getByIdWarehouseAsync(e.target.dataset.id);

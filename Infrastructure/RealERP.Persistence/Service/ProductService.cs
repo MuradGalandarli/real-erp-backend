@@ -61,7 +61,7 @@ namespace RealERP.Persistence.Service
             }).ToList();
 
         }
-
+        
         public async Task<ProductDto> GetByIdProduct(int id)
         {
           Product product = await _readProductRepository.GetByIdAsync(id);
@@ -76,7 +76,7 @@ namespace RealERP.Persistence.Service
                 Description = product.Description,
                 Id = product.Id,
                 Name = product.Name,
-                CompanyId = product.Id
+                CompanyId = product.CompanyId
             };
         }
 
