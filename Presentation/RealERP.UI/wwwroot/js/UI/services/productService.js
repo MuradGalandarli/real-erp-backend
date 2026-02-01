@@ -7,5 +7,8 @@ export const fetchProduct = {
     },
     getById: async (id) => {
         return await apiRequest(`${API_URL}/get-by-id-product?id=${id}`)
+    },
+    update: async (product) => {
+        return await apiRequest(`${API_URL}/update-product`, "PUT", product)
     }
 }

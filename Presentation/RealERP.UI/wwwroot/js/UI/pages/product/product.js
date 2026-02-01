@@ -30,11 +30,23 @@ export async function getAllProductAsync(page,size) {
 export async function getByIdProductAsync(id) {
 
     const product = await fetchProduct.getById(id);
-    debugger;
+
     document.getElementById("name").value = product.name
     document.getElementById("description").value = product.description
     document.getElementById("category").value = product.categoryId
     document.getElementById("company").value = product.companyId
     document.getElementById("brand").value = product.brandId
     document.querySelector("#submit-btn").value = id;
+}
+
+export async function updateProductAsync() {
+    let product = {
+        name: document.getElementById("name").value,
+        description: document.getElementById("description").value,
+        categoryId: document.getElementById("category").value,
+        companyId: document.getElementById("company").value,
+        brandId: document.getElementById("brand").value,
+        id: document.querySelector("#submit-btn").value
+    }
+    await fetchProduct.update(product);
 }

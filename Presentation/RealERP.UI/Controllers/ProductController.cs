@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct;
 using RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct;
 using RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct;
 
@@ -28,7 +29,12 @@ namespace RealERP.UI.Controllers
             GetByIdProductCommandResponse getByIdProductCommandResponse = await _mediator.Send(getByIdProductCommandRequest);
             return Ok(getByIdProductCommandResponse);
         }
-
+        [HttpPut("update-product")]
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommandRequest updateProductCommandRequest)
+        {
+            UpdateProductCommandResponse updateProductCommandResponse = await _mediator.Send(updateProductCommandRequest);
+            return Ok(updateProductCommandResponse);
+        }
 
     }
 }

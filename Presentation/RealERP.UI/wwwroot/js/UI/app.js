@@ -7,7 +7,7 @@ import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
 import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync, deleteWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
-import { getAllProductAsync, getByIdProductAsync } from "../UI/pages/product/product.js"
+import { getAllProductAsync, getByIdProductAsync, updateProductAsync } from "../UI/pages/product/product.js"
 
 const content = document.getElementById("Content");
 
@@ -216,6 +216,13 @@ document.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const mode = document.getElementById("formMode").value;
+
+    if (e.target.matches("#productForm")) {
+        if (mode == "update") {
+            await updateProductAsync();
+            content.innerHTML = await getAllProductAsync(1, 10);
+        }
+    }
 
     if (e.target.matches("#warehouseForm")) {
         if (mode == "update") {
