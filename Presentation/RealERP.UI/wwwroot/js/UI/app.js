@@ -7,7 +7,7 @@ import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
 import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync, deleteWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
-import { getAllProductAsync, getByIdProductAsync, updateProductAsync } from "../UI/pages/product/product.js"
+import { getAllProductAsync, getByIdProductAsync, updateProductAsync, addProductAsync } from "../UI/pages/product/product.js"
 
 const content = document.getElementById("Content");
 
@@ -68,6 +68,10 @@ document.addEventListener("click", async (e) => {
         openModal(modalForProduct())
         await getByIdProductAsync(e.target.dataset.id);
         document.getElementById("formMode").value = "update";
+    }
+    if (e.target.matches("#getAddProductModal")) {
+        openModal(modalForProduct())
+       
     }
      
     if (e.target.matches("#getUpdateWarehouseModal")) {
@@ -220,6 +224,10 @@ document.addEventListener("submit", async (e) => {
     if (e.target.matches("#productForm")) {
         if (mode == "update") {
             await updateProductAsync();
+            content.innerHTML = await getAllProductAsync(1, 10);
+        }
+        else {
+            await addProductAsync();
             content.innerHTML = await getAllProductAsync(1, 10);
         }
     }

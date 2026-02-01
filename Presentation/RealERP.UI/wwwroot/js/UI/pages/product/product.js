@@ -16,7 +16,7 @@ export async function getAllProductAsync(page,size) {
         <td>${product.categoryId}</td>
         <td>${product.brandId}</td>
         <td>${product.companyId}</td>
-           <td><button data-id=${product.id} class="update-btn" id="getUpdateProductModal">Update</button></td>
+        <td><button data-id=${product.id} class="update-btn" id="getUpdateProductModal">Update</button></td>
         <td><button data-id=${product.id} id="deleteProduct" class="delete-btn">Delete</button></td>
         </tr>
         `
@@ -49,4 +49,15 @@ export async function updateProductAsync() {
         id: document.querySelector("#submit-btn").value
     }
     await fetchProduct.update(product);
+}
+export async function addProductAsync() {
+    debugger;
+    let product = {
+        name: document.getElementById("name").value,
+        description: document.getElementById("description").value,
+        categoryId: document.getElementById("category").value,
+        companyId: document.getElementById("company").value,
+        brandId: document.getElementById("brand").value,   
+    }
+    await fetchProduct.add(product);
 }

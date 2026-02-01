@@ -10,5 +10,8 @@ export const fetchProduct = {
     },
     update: async (product) => {
         return await apiRequest(`${API_URL}/update-product`, "PUT", product)
+    },
+    add: async (product) => {
+        return await apiRequest(`${API_URL}/add-product`, "POST", product)
     }
 }

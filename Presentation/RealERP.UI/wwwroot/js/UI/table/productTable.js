@@ -1,6 +1,7 @@
 ﻿
 export function createProductTable() {
     return `
+    <button id="getAddProductModal">Add</button>
     <table>
     <tr>
     <th>id</th>
