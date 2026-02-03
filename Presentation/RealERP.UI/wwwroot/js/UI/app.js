@@ -7,7 +7,7 @@ import { getAllBrand, addBrandAsync, getByIdBrandAsync, updateBrand, deleteBrand
 import { getAllCompany, addCompany, getByIdCompany, updateCompany, deleteCompanyAsync } from "../UI/pages/company/company.js"
 import { getAllRole, getByIdRoleAsync, updateRoleAsync, addRoleAsync, deleteRoleAsync } from "../UI/pages/role/role.js"
 import { GetAllWarehouse, getByIdWarehouseAsync, updateWarehouseAsync, addWarehouseAsync, deleteWarehouseAsync } from "../../js/UI/pages/warehouse/warehouse.js"
-import { getAllProductAsync, getByIdProductAsync, updateProductAsync, addProductAsync } from "../UI/pages/product/product.js"
+import { getAllProductAsync, getByIdProductAsync, updateProductAsync, addProductAsync, deleteProductAsync } from "../UI/pages/product/product.js"
 
 const content = document.getElementById("Content");
 
@@ -62,6 +62,10 @@ document.addEventListener("click", async (e) => {
     if (e.target.matches("#deleteWarehouse")) {
         await deleteWarehouseAsync(e.target.dataset.id);
         content.innerHTML = await GetAllWarehouse(1, 10);
+    }
+    if (e.target.matches("#deleteProduct")) {
+        await deleteProductAsync(e.target.dataset.id);
+        content.innerHTML = await getAllProductAsync(1, 10);
     }
 
     if (e.target.matches("#getUpdateProductModal")) {

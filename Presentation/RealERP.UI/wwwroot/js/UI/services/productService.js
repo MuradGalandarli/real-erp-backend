@@ -13,5 +13,8 @@ export const fetchProduct = {
     },
     add: async (product) => {
         return await apiRequest(`${API_URL}/add-product`, "POST", product)
+    },
+    delete: async (id) => {
+        return await apiRequest(`${API_URL}/delete-product?id=${id}`,"DELETE")   
     }
 }

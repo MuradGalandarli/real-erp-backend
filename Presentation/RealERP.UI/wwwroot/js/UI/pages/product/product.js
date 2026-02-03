@@ -61,3 +61,6 @@ export async function addProductAsync() {
     }
     await fetchProduct.add(product);
 }
+export async function deleteProductAsync(id) {
+    await fetchProduct.delete(id);
+}
