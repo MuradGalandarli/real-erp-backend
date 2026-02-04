@@ -47,13 +47,8 @@ namespace RealERP.Persistence.Service
             Company companies = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
             if (companies == null)
                 throw new NotFoundException($"There are not this {id} company");
-            
-            if(companies.Departments != null)
-            foreach(var department in companies.Departments)
-            {
-                _unitOfWork.writeDepartmentRepository.Delete(department.Id);
-            }
-            _unitOfWork.writeCompanyRepository.Delete(id);
+
+            companies.IsDeleted = true;
             await _unitOfWork.SaveChangesAsync();
             return true;
 

@@ -14,6 +14,7 @@ namespace RealERP.Domain.Entities
         public string? Address { get; set; }
         public string? Country { get; set; }
         public string? City { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<AppUser> Users { get; set; }
         public ICollection<Product> Products { get; set; }

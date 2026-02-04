@@ -22,7 +22,11 @@ namespace RealERP.Persistence.Context
         public DbSet<Endpoint> Endpoints { get; set; }
         public DbSet<Company> Companies { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Company>().HasQueryFilter(c => !c.IsDeleted);
+        }
 
-     
     }
 }
