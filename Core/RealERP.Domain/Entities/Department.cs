@@ -11,5 +11,6 @@ namespace RealERP.Domain.Entities
         [ForeignKey(nameof(CompanyId))]
         public Company Company { get; set; }
         public int CompanyId { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

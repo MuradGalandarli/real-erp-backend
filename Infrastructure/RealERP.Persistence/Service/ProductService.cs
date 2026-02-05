@@ -36,13 +36,13 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> DeleteProductAsync(int id)
         {
-           bool status = _writeProductRepository.Delete(id);
-            if (!status)
-            {
+           Product product = await _readProductRepository.GetByIdAsync(id);
+            if (product == null)
                 throw new NotFoundException($"Product with id {id} not found");
-            }
+
+            product.IsDeleted = true;
             await _writeProductRepository.SaveAsync();
-            return status;
+            return true;
         }
 
         public List<ProductDto> GetAllProduct(int page, int size)

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
+using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities;
 using RealERP.Persistence.Repositories.CategoryRepository;
 
@@ -44,6 +45,9 @@ namespace RealERP.Persistence.Service
             //bool status = _unitOfWork.categoryWriteRepository.Delete(id);
             IQueryable<Category> category = _unitOfWork.categoryReadRepository.GetWhere(x => x.Id == id).
                  Include(x => x.Products);
+            if(category == null)
+                throw new NotFoundException($"Category with id {id} not found");
+
             await _unitOfWork.BeginTransactionAsync();
             try
             {
@@ -51,10 +55,9 @@ namespace RealERP.Persistence.Service
                 {
                     foreach (var product in item.Products)
                     {
-                        _unitOfWork.writeProductRepository.Delete(product.Id);
-                        
+                        product.IsDeleted = true;    
                     }
-                    _unitOfWork.categoryWriteRepository.Delete(id);
+                    item.IsDeleted = true;
                 }
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitAsync();

@@ -45,13 +45,14 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> DeleteEmployee(int id)
         {
-            bool removed = _unitOfWork.writeEmployeeRepository.Delete(id);
-            if (removed)
-            {
-                await _unitOfWork.SaveChangesAsync();
+            Employee employee = await _unitOfWork.readEmployeeRepository.GetByIdAsync(id);
+            if (employee == null)
+                throw new NotFoundException($"Employee with id {id} not found");
+            
+            employee.IsDeleted = true;  
+            await _unitOfWork.SaveChangesAsync();
                 return true;
-            }
-            return false; 
+            
         }
 
         public List<EmployeeDto> GetAllEmployee(int page, int size)

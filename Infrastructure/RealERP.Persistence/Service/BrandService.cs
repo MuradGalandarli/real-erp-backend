@@ -18,8 +18,6 @@ namespace RealERP.Persistence.Service
             _writeBrandRepository = writeBrandRepository;
         }
 
-
-
         public async Task<bool> AddBrnadAsync(Brand brand)
         {
             bool status = await _writeBrandRepository.AddAsync(brand);
@@ -31,10 +29,13 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> DeleteBrandAsync(int id)
         {
-            bool status = _writeBrandRepository.Delete(id);
-            if (status)
+            Brand brand = await _readBrandRepository.GetByIdAsync(id);
+            if (brand == null)
+                throw new NotFoundException($"Brand with id {id} not found");
+
+            brand.IsDeleted = true;
             await _writeBrandRepository.SaveAsync();
-            return status;
+            return true;
         }
 
         public List<Brand> GetAllBrand(int page, int size)

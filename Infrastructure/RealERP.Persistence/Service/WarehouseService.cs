@@ -27,13 +27,13 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> DeleteWarehouseAsync(int id)
         {
-           bool status = _warehouseRepository.Delete(id);
-           if(!status)
-            {
+           Warehouse? warehouse = await _readWarehouseRepository.Table.FirstOrDefaultAsync(x => x.Id == id);
+           if(warehouse == null)
                 throw new NotFoundException($"Warehouse with id {id} not found");
-            }
+            
+           warehouse.IsDeleted = true;
             await _warehouseRepository.SaveAsync();
-            return status;
+            return true;
         }
 
         public List<WarehouseDto> GetAllWarehouse(int page, int size)

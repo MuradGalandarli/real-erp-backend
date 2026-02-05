@@ -5,6 +5,7 @@ using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities;
+using RealERP.Domain.Entities.User;
 
 
 namespace RealERP.Persistence.Service
@@ -24,6 +25,12 @@ namespace RealERP.Persistence.Service
         {
             try
             {
+                bool exists = await _unitOfWork.readCompanyRepository.Table
+      .AnyAsync(x => x.Name == company.Name && !x.IsDeleted);
+
+                if (exists)
+                    throw new BadRequestException("Company name already exists");
+
                 await _unitOfWork.writeCompanyRepository.AddAsync(new()
                 {
                     Address = company.Address,
@@ -43,11 +50,53 @@ namespace RealERP.Persistence.Service
             return true;
         }
         public async Task<bool> DeleteCompany(int id)
-        {
-            Company companies = await _unitOfWork.readCompanyRepository.GetByIdAsync(id);
+        { 
+
+        Company? companies = await _unitOfWork.readCompanyRepository.Table.
+                Include(department=> department.Departments).
+                Include(e=>e.Employees).
+                Include(p=>p.Products).
+                Include(w=>w.Warehouses).
+                Include(d=>d.Departments).
+                Include(b=>b.Brands).
+                Include(c=>c.Categories).
+                Include(u=>u.Users).
+                FirstOrDefaultAsync(c=>c.Id == id);
+
             if (companies == null)
                 throw new NotFoundException($"There are not this {id} company");
 
+            foreach (AppUser company in companies.Users) {
+            company.IsDeleted = true;
+            }
+            foreach (Department department in companies.Departments)
+            {
+                department.IsDeleted = true;
+            }
+            foreach (Employee employee in companies.Employees)
+            {
+                employee.IsDeleted = true;
+            }
+            foreach (Product product in companies.Products)
+            {
+                product.IsDeleted = true;
+            }
+            foreach (Warehouse warehouse in companies.Warehouses)
+            {
+               warehouse.IsDeleted = true;
+            }
+            foreach (Brand brand in companies.Brands)
+            {
+                brand.IsDeleted = true;
+            }
+            foreach (Category category in companies.Categories)
+            {
+                category.IsDeleted = true;
+            }
+            foreach (AppUser appUser in companies.Users)
+            {
+                appUser.IsDeleted = true;
+            }
             companies.IsDeleted = true;
             await _unitOfWork.SaveChangesAsync();
             return true;

@@ -12,5 +12,6 @@ namespace RealERP.Domain.Entities
         public Company Company { get; set; }
         public int CompanyId { get; set; }
         public ICollection<Product> Products { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

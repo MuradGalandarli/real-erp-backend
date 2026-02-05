@@ -40,18 +40,19 @@ namespace RealERP.Persistence.Service
             await _unitOfWork.BeginTransactionAsync();
             try
             {
-               bool statusDepartment = _unitOfWork.writeDepartmentRepository.Delete(department.Id);
-                if (department.Employees != null && statusDepartment)
+               //bool statusDepartment = _unitOfWork.writeDepartmentRepository.Delete(department.Id);
+               department.IsDeleted = true;
+                if (department.Employees != null)
                 {
                     foreach (var employee in department.Employees)
                     {
-                        bool statusEmployee = _unitOfWork.writeEmployeeRepository.Delete(employee.Id);
-                        if(employee.User != null && statusEmployee)
+                        employee.IsDeleted = true;
+                        if(employee.User != null)
                         {
                            AppUser? user = await _unitOfWork.UserManager.FindByIdAsync(employee.User.Id);
                             if(user != null)
                             {
-                               await _unitOfWork.UserManager.DeleteAsync(user);
+                               user.IsDeleted = true;
                             }
                         }
                     }

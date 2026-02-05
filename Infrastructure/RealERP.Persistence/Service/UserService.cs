@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Identity.Client;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
@@ -87,14 +88,17 @@ namespace RealERP.Persistence.Service
             await _unitOfWork.BeginTransactionAsync();
             try
             {
-                IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
+                //IdentityResult identityResult = await _userManager.DeleteAsync(appUser);
+                appUser.IsDeleted = true;
                 if (appUser.Employee != null)
                 {
-                    _unitOfWork.writeEmployeeRepository.Delete(appUser.Employee.Id);
-                    await _unitOfWork.SaveChangesAsync();
+                  Employee employee = await _unitOfWork.readEmployeeRepository.GetByIdAsync(appUser.Employee.Id);
+                    employee.IsDeleted = true; 
+                  await _unitOfWork.SaveChangesAsync();
                 }
                 await _unitOfWork.CommitAsync();
-                return identityResult.Succeeded;
+                await _unitOfWork.SaveChangesAsync();
+                return true;
             }
             catch
             {

@@ -10,6 +10,7 @@ namespace RealERP.Domain.Entities
         public string Position { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public string? UserId { get; set; }
         public AppUser? User { get; set; }
         [ForeignKey(nameof(CompanyId))]

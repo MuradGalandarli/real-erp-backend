@@ -26,6 +26,15 @@ namespace RealERP.Persistence.Context
         {
             base.OnModelCreating(builder);
             builder.Entity<Company>().HasQueryFilter(c => !c.IsDeleted);
+            builder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
+            builder.Entity<Brand>().HasQueryFilter(b => !b.IsDeleted);
+            builder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
+            builder.Entity<Warehouse>().HasQueryFilter(w => !w.IsDeleted);
+            builder.Entity<Department>().HasQueryFilter(w => !w.IsDeleted);
+            builder.Entity<Employee>().HasQueryFilter(w => !w.IsDeleted);
+            builder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
+
+            builder.Entity<Company>().HasIndex(c => c.Name).IsUnique();    
         }
 
     }
