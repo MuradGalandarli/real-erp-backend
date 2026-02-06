@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.BrandRepository;
@@ -20,6 +21,9 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> AddBrnadAsync(Brand brand)
         {
+            bool exists = await _readBrandRepository.Table.AnyAsync(b => b.Name == brand.Name && !b.IsDeleted);
+            if (exists)
+                throw new BadRequestException("Brand name already exists");
             bool status = await _writeBrandRepository.AddAsync(brand);
             if (status)
                 await _writeBrandRepository.SaveAsync();
