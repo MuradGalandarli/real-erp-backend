@@ -36,7 +36,7 @@ namespace RealERP.Persistence.Service
         public async Task<TokenDto> LoginAsync(LoginDto login,int lifeTime,int refreshTokenLifeTime)
         {
             var user = await _userManager.FindByNameAsync(login.Username);
-            if (user != null && await _userManager.CheckPasswordAsync(user, login.Password))
+            if (user != null && await _userManager.CheckPasswordAsync(user, login.Password) && !user.IsDeleted)
             {
                 var token = await GetToken(user, lifeTime);
                 //DateTime accessAndRefreshTokenEndTime = token.ValidTo.AddMinutes(refreshTokenLifeTime);
@@ -60,7 +60,7 @@ namespace RealERP.Persistence.Service
         public async Task<TokenDto> UpdateRefreshToken(string refreshToken, int accessTokenDate, int refreshTokenLifeTime)
         {
             AppUser? user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
-            if(user != null && DateTime.UtcNow < user.RefreshTokenEndDate)
+            if(user != null && DateTime.UtcNow < user.RefreshTokenEndDate && user.IsDeleted == false)
             {
                 var token = await GetToken(user, accessTokenDate);
                 user.RefreshToken = CreateRefreshToken();
@@ -72,8 +72,6 @@ namespace RealERP.Persistence.Service
                     Expiration = token.ValidTo,
                     RefreshToken = user.RefreshToken,
                     Token = new JwtSecurityTokenHandler().WriteToken(token)
-
-
                 };
             }
             throw new NotFoundException("There is not user");

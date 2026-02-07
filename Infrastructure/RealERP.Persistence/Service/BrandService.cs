@@ -38,6 +38,10 @@ namespace RealERP.Persistence.Service
                 throw new NotFoundException($"Brand with id {id} not found");
 
             brand.IsDeleted = true;
+            foreach(Product product in brand.Products)
+            {
+                product.IsDeleted = true;  
+            }
             await _writeBrandRepository.SaveAsync();
             return true;
         }
