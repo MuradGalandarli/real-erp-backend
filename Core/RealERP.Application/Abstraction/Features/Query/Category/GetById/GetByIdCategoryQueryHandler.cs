@@ -26,6 +26,12 @@ namespace RealERP.Application.Abstraction.Features.Query.Category.GetById
                     Id = request.Id,
                     Name = category.Name,
                     CompanyId = category.CompanyId,
+                    Children = category.Children.Select(c => new Domain.Entities.Category()
+                    {
+                        Id = c.Id,
+                        Name = c.Name
+                    }).ToList() ?? new()
+
                 };
             }
             return new() { };

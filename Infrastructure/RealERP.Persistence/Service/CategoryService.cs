@@ -1,10 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Exceptions;
 using RealERP.Domain.Entities;
-using RealERP.Persistence.Repositories.CategoryRepository;
 
 namespace RealERP.Persistence.Service
 {
@@ -19,8 +19,8 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> AddCategoryAsync(Category category)
         {
-           bool status = await _unitOfWork.categoryWriteRepository.AddAsync(category);
-            await  _unitOfWork.categoryWriteRepository.SaveAsync();
+            bool status = await _unitOfWork.categoryWriteRepository.AddAsync(category);
+            await _unitOfWork.categoryWriteRepository.SaveAsync();
             return status;
         }
 
@@ -29,38 +29,40 @@ namespace RealERP.Persistence.Service
         {
             bool status = _unitOfWork.categoryWriteRepository.Update(category);
             if (status)
-               await _unitOfWork.categoryWriteRepository.SaveAsync();
+                await _unitOfWork.categoryWriteRepository.SaveAsync();
             return status;
         }
 
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            Category category = await _unitOfWork.categoryReadRepository.GetByIdAsync(id);
+            Category? category = await _unitOfWork.categoryReadRepository.GetWhere(c=>c.Id == id).
+                Include(p=>p.Children).FirstOrDefaultAsync();
             return category;
         }
 
         public async Task<bool> DeleteCategoryAsync(int id)
         {
-
-            //bool status = _unitOfWork.categoryWriteRepository.Delete(id);
-            IQueryable<Category> category = _unitOfWork.categoryReadRepository.GetWhere(x => x.Id == id).
-                 Include(x => x.Products);
-            if(category == null)
+            Category? category = await _unitOfWork.categoryReadRepository.GetWhere(x => x.Id == id).
+                Include(c => c.Children).
+                 Include(x => x.Products).FirstOrDefaultAsync();
+            if (category == null)
                 throw new NotFoundException($"Category with id {id} not found");
 
             await _unitOfWork.BeginTransactionAsync();
             try
             {
-                foreach (var item in category)
+                foreach (var item in category.Children)
                 {
-                    foreach (var product in item.Products)
-                    {
-                        product.IsDeleted = true;    
-                    }
                     item.IsDeleted = true;
                 }
-                await _unitOfWork.SaveChangesAsync();
+                foreach (var product in category.Products)
+                {
+                    product.IsDeleted = true;
+                }
+                category.IsDeleted = true;
+
                 await _unitOfWork.CommitAsync();
+                await _unitOfWork.SaveChangesAsync();
             }
             catch
             {
@@ -72,7 +74,7 @@ namespace RealERP.Persistence.Service
 
         public List<Category> GetAllCategory(int page, int size)
         {
-            IQueryable<Category> categories  = _unitOfWork.categoryReadRepository.GetAll().Skip((page-1)*size).Take(size);
+            IQueryable<Category> categories = _unitOfWork.categoryReadRepository.GetAll().Skip((page - 1) * size).Take(size);
             return categories.ToList();
         }
     }

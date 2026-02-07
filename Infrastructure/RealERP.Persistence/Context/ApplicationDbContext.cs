@@ -35,7 +35,7 @@ namespace RealERP.Persistence.Context
             builder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
 
             builder.Entity<Company>().HasIndex(c => c.Name).IsUnique();   
-            builder.Entity<Brand>().HasIndex(c => c.Name).IsUnique();
+            builder.Entity<Brand>().HasIndex(c => c.Name).IsUnique();   
         }
 
     }

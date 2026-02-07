@@ -14,7 +14,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Category.AddCategory
 
         public async Task<AddCategoryCommandResponse> Handle(AddCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            bool status = await _categoryService.AddCategoryAsync(new() { Name = request.Name, Description = request.Description,CompanyId = request.CompanyId });
+            bool status = await _categoryService.AddCategoryAsync(new() { Name = request.Name, Description = request.Description,CompanyId = request.CompanyId, ParentId = request.ParentId});
 return new()
 {
     Status = status
