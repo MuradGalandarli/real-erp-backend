@@ -1,6 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
+﻿using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Exceptions;
@@ -19,7 +17,19 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> AddCategoryAsync(Category category)
         {
-            bool status = await _unitOfWork.categoryWriteRepository.AddAsync(category);
+            int lastOrderId = await _unitOfWork.categoryReadRepository.
+                GetWhere(c => c.ParentId == null).MaxAsync(x => (int?)x.OrderIndex) ?? 0;
+
+            Category _category = new()
+            {
+                Name = category.Name,
+                OrderIndex = lastOrderId + 1,
+                ParentId = category.ParentId,
+                CompanyId = category.CompanyId,
+                Description = category.Description,
+            };
+
+            bool status = await _unitOfWork.categoryWriteRepository.AddAsync(_category);
             await _unitOfWork.categoryWriteRepository.SaveAsync();
             return status;
         }
@@ -35,8 +45,8 @@ namespace RealERP.Persistence.Service
 
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            Category? category = await _unitOfWork.categoryReadRepository.GetWhere(c=>c.Id == id).
-                Include(p=>p.Children).FirstOrDefaultAsync();
+            Category? category = await _unitOfWork.categoryReadRepository.GetWhere(c => c.Id == id).
+                Include(p => p.Children).FirstOrDefaultAsync();
             return category;
         }
 
@@ -44,7 +54,8 @@ namespace RealERP.Persistence.Service
         {
             Category? category = await _unitOfWork.categoryReadRepository.GetWhere(x => x.Id == id).
                 Include(c => c.Children).
-                 Include(x => x.Products).FirstOrDefaultAsync();
+                 Include(x => x.Products).
+                 Include(x => x.Children).FirstOrDefaultAsync();
             if (category == null)
                 throw new NotFoundException($"Category with id {id} not found");
 
@@ -74,7 +85,9 @@ namespace RealERP.Persistence.Service
 
         public List<Category> GetAllCategory(int page, int size)
         {
-            IQueryable<Category> categories = _unitOfWork.categoryReadRepository.GetAll().Skip((page - 1) * size).Take(size);
+            IQueryable<Category> categories = _unitOfWork.categoryReadRepository.GetAll().Skip((page - 1) * size).Take(size).
+            OrderBy(x=>x.OrderIndex);
+
             return categories.ToList();
         }
     }

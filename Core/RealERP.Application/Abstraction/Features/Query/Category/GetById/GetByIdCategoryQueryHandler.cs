@@ -26,6 +26,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Category.GetById
                     Id = request.Id,
                     Name = category.Name,
                     CompanyId = category.CompanyId,
+                    OrderIndex = category.OrderIndex,
                     Children = category.Children.Select(c => new Domain.Entities.Category()
                     {
                         Id = c.Id,

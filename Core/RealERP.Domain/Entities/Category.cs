@@ -13,6 +13,7 @@ namespace RealERP.Domain.Entities
         public int CompanyId { get; set; }
         public int? ParentId { get; set; }
         public Category? Parent { get; set; }
+        public int? OrderIndex { get; set; }
         public ICollection<Product> Products { get; set; }
         public ICollection<Category> Children { get; set; }
         public bool IsDeleted { get; set; } = false;

@@ -24,6 +24,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Category.GetAllCategory
                 Name = x.Name,
                 CompanyId = x.CompanyId,
                 ParentId = x.ParentId,
+                OrderIndex = x.OrderIndex,
             }).ToList();
 
             
