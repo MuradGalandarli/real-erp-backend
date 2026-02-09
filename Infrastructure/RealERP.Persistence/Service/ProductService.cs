@@ -1,9 +1,11 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
+using System.Numerics;
 
 namespace RealERP.Persistence.Service
 {
@@ -18,9 +20,23 @@ namespace RealERP.Persistence.Service
             _writeProductRepository = writeProductRepository;
             _readProductRepository = readProductRepository;
         }
+        //        Product price <= 0 ola bilməz
 
+        //Product yalnız active Brand və Category ilə yaradıla bilər
+
+        //Product name Company daxilində unikal olsun
+
+        //Product soft delete olunduqda stock əməliyyatları dayansın
+        //Send your CV and portfolio to hr @startechco.az e-mail address. Please include “Backend Developer (C#)” in the email subject line.
         public async Task<bool> AddProductAsync(ProductDto productDto)
         {
+            bool exists = await _readProductRepository.Table.
+                AnyAsync(p => p.Name == productDto.Name &&
+                p.CompanyId == productDto.CompanyId &&
+                !p.IsDeleted);
+            if (exists)
+                throw new BadRequestException("This add-on is now available.");
+
             bool status = await _writeProductRepository.AddAsync(new()
             {
                 Name = productDto.Name,

@@ -7,9 +7,9 @@ using RealERP.Domain.Entities.User;
 
 namespace RealERP.Persistence.Context
 {
-    public class ApplicationDbContext:IdentityDbContext<AppUser,AppRole,string>
+    public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -34,8 +34,9 @@ namespace RealERP.Persistence.Context
             builder.Entity<Employee>().HasQueryFilter(w => !w.IsDeleted);
             builder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
 
-            builder.Entity<Company>().HasIndex(c => c.Name).IsUnique();   
-            builder.Entity<Brand>().HasIndex(c => c.Name).IsUnique();   
+            builder.Entity<Company>().HasIndex(c => c.Name).IsUnique();
+            builder.Entity<Brand>().HasIndex(c => c.Name).IsUnique();
+            builder.Entity<Product>().HasIndex(p => new { p.Name, p.CompanyId }).IsUnique().HasFilter("[IsDeleted] = 0"); ;
         }
 
     }
