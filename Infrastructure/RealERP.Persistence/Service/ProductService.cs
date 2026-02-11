@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
+using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.ProductRepository;
@@ -13,21 +14,17 @@ namespace RealERP.Persistence.Service
     {
         private readonly IWriteProductRepository _writeProductRepository;
         private readonly IReadProductRepository _readProductRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
 
-        public ProductService(IWriteProductRepository writeProductRepository, IReadProductRepository readProductRepository)
+
+        public ProductService(IWriteProductRepository writeProductRepository, IReadProductRepository readProductRepository, IUnitOfWork unitOfWork)
         {
             _writeProductRepository = writeProductRepository;
             _readProductRepository = readProductRepository;
+            _unitOfWork = unitOfWork;
         }
-        //        Product price <= 0 ola bilməz
 
-        //Product yalnız active Brand və Category ilə yaradıla bilər
-
-        //Product name Company daxilində unikal olsun
-
-        //Product soft delete olunduqda stock əməliyyatları dayansın
-        //Send your CV and portfolio to hr @startechco.az e-mail address. Please include “Backend Developer (C#)” in the email subject line.
         public async Task<bool> AddProductAsync(ProductDto productDto)
         {
             bool exists = await _readProductRepository.Table.
@@ -37,16 +34,36 @@ namespace RealERP.Persistence.Service
             if (exists)
                 throw new BadRequestException("This add-on is now available.");
 
-            bool status = await _writeProductRepository.AddAsync(new()
+
+            Product product = new Product()
             {
                 Name = productDto.Name,
                 BrandId = productDto.BrandId,
                 CategoryId = productDto.CategoryId,
                 Description = productDto.Description,
                 CompanyId = productDto.CompanyId,
-            });
+            };
+
+            bool status = await _writeProductRepository.AddAsync(product);
+
             if (status)
-               await _writeProductRepository.SaveAsync();
+                await _writeProductRepository.SaveAsync();
+
+            foreach (var image in productDto.Images)
+            {
+                var url = await _unitOfWork.imageStorageService.UploadAsync(image);
+                await _unitOfWork.writeProductImageRepository.AddAsync(new()
+                {
+                    ImageUrl = url,
+                    IsDeleted = false,
+                    ProductId =product.Id 
+                });
+               
+            }
+            await _unitOfWork.SaveChangesAsync();
+           
+
+           
             return status;
         }
 

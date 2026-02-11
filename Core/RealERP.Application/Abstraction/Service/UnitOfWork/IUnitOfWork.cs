@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using RealERP.Application.Repositories.CompanyRepository;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
+using RealERP.Application.Repositories.ProductImageRepository;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
 using RealERP.Domain.Entities.User;
@@ -24,6 +25,9 @@ namespace RealERP.Application.Abstraction.Service.UnitOfWork
         IWriteProductRepository writeProductRepository { get; }
         IWriteCompanyRepository writeCompanyRepository { get; }
         IReadCompanyRepository readCompanyRepository { get; }
+        IReadProductImageRepository readProductImageRepository { get; }
+        IWriteProductImageRepository writeProductImageRepository { get; }
+        IImageStorageService imageStorageService { get; }
 
         Task BeginTransactionAsync();
         Task CommitAsync();

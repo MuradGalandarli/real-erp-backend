@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
+using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.Repositories.CompanyRepository;
 using RealERP.Application.Repositories.DepartmentRepository;
 using RealERP.Application.Repositories.EmployeeRepository;
+using RealERP.Application.Repositories.ProductImageRepository;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities.User;
 using RealERP.Persistence.Context;
@@ -39,6 +41,12 @@ namespace RealERP.Persistence.Service.UnitOfWork
 
         public IReadCompanyRepository readCompanyRepository { get; }
 
+        public IReadProductImageRepository readProductImageRepository { get; }
+
+        public IWriteProductImageRepository writeProductImageRepository { get; }
+
+        public IImageStorageService imageStorageService { get; }
+
         public UnitOfWork(UserManager<AppUser> userManager,
             ApplicationDbContext applicationDbContext,
              IReadEmployeeRepository readEmployeeRepository,
@@ -50,7 +58,10 @@ namespace RealERP.Persistence.Service.UnitOfWork
              IReadProductRepository readProductRepository,
              IWriteProductRepository writeProductRepository,
              IReadCompanyRepository readCompanyRepository,
-             IWriteCompanyRepository writeCompanyRepository)
+             IWriteCompanyRepository writeCompanyRepository,
+             IReadProductImageRepository readProductImageRepository,
+             IWriteProductImageRepository writeProductImageRepository,
+             IImageStorageService imageStorageService)
         {
             UserManager = userManager;
             _applicationDbContext = applicationDbContext;
@@ -64,6 +75,9 @@ namespace RealERP.Persistence.Service.UnitOfWork
             this.writeProductRepository = writeProductRepository;
             this.readCompanyRepository = readCompanyRepository;
             this.writeCompanyRepository = writeCompanyRepository;
+            this.readProductImageRepository = readProductImageRepository;
+            this.writeProductImageRepository = writeProductImageRepository;
+            this.imageStorageService = imageStorageService;
         }
 
         public async Task BeginTransactionAsync()

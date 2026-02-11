@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RealERP.Application.DTOs
 {
-    public class ProductDto
+    public class RequestProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }

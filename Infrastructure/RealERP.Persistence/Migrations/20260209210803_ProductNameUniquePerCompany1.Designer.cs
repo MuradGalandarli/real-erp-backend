@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealERP.Persistence.Context;
 
@@ -11,9 +12,11 @@ using RealERP.Persistence.Context;
 namespace RealERP.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260209210803_ProductNameUniquePerCompany1")]
+    partial class ProductNameUniquePerCompany1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -437,34 +440,6 @@ namespace RealERP.Persistence.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("RealERP.Domain.Entities.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductImages");
-                });
-
             modelBuilder.Entity("RealERP.Domain.Entities.User.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -775,17 +750,6 @@ namespace RealERP.Persistence.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("RealERP.Domain.Entities.ProductImage", b =>
-                {
-                    b.HasOne("RealERP.Domain.Entities.Product", "Product")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("RealERP.Domain.Entities.User.AppUser", b =>
                 {
                     b.HasOne("RealERP.Domain.Entities.Company", "Company")
@@ -862,8 +826,6 @@ namespace RealERP.Persistence.Migrations
 
             modelBuilder.Entity("RealERP.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("ProductImages");
-
                     b.Navigation("WarehouseProducts");
                 });
 

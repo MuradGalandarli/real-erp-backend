@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Azure.Core;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
@@ -22,7 +23,7 @@ namespace RealERP.Api.Controllers
         }
 
         [HttpPost("add-product")]
-        public async Task<IActionResult> AddProduct([FromBody] AddProductCommandRequest addProductCommandRequest)
+        public async Task<IActionResult> AddProduct([FromForm] AddProductCommandRequest addProductCommandRequest)
         {
             AddProductCommandResponse addProductCommandResponse = await _mediator.Send(addProductCommandRequest);
             return Ok(addProductCommandResponse);
