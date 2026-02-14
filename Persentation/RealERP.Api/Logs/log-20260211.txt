@@ -1,0 +1,117 @@
+2026-02-11 12:44:06.628 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 12:44:47.087 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 12:44:47.434 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 12:45:56.039 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 12:45:58.151 +04:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-11 12:45:58.174 +04:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-11 12:45:58.176 +04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-02-11 12:45:58.177 +04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-02-11 12:45:58.198 +04:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-02-11 12:45:58.211 +04:00 [INF] Applying migration '20260211084451_AddPublicId'.
+2026-02-11 12:45:58.316 +04:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [ProductImages] ADD [PublicId] nvarchar(max) NOT NULL DEFAULT N'';
+2026-02-11 12:45:58.321 +04:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260211084451_AddPublicId', N'8.0.1');
+2026-02-11 13:06:26.564 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 13:06:27.454 +04:00 [INF] Now listening on: https://localhost:7148
+2026-02-11 13:06:27.454 +04:00 [INF] Now listening on: http://localhost:5116
+2026-02-11 13:06:27.621 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 13:06:27.622 +04:00 [INF] Hosting environment: Development
+2026-02-11 13:06:27.622 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2026-02-11 13:06:29.049 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2026-02-11 13:06:29.925 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 13:06:29.930 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2026-02-11 13:06:29.976 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 48.886ms
+2026-02-11 13:06:29.977 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 939.4599ms
+2026-02-11 13:06:30.220 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 289.6425ms
+2026-02-11 13:06:30.429 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2026-02-11 13:06:30.667 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 239.4034ms
+2026-02-11 13:07:51.326 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2026-02-11 13:07:51.388 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 62.7234ms
+2026-02-11 13:07:51.399 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2026-02-11 13:07:51.399 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 13:07:51.401 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 2.3744ms
+2026-02-11 13:07:51.428 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.4786ms
+2026-02-11 13:07:51.465 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2026-02-11 13:07:51.643 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 178.2208ms
+2026-02-11 13:08:45.920 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7148/api/Product/add-product - multipart/form-data; boundary=----WebKitFormBoundarys35onO7htka7UT9k 71079
+2026-02-11 13:08:45.989 +04:00 [INF] CORS policy execution successful.
+2026-02-11 13:08:48.210 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.ProductController.AddProduct (RealERP.Api)'
+2026-02-11 13:08:48.801 +04:00 [INF] Route matched with {action = "AddProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProduct(RealERP.Application.Abstraction.Features.Command.Product.AddProduct.AddProductCommandRequest) on controller RealERP.Api.Controllers.ProductController (RealERP.Api).
+2026-02-11 13:08:51.170 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 13:08:54.039 +04:00 [INF] Executed DbCommand (398ms) [Parameters=[@__productDto_Name_0='?' (Size = 450), @__productDto_CompanyId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]
+        WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[Name] = @__productDto_Name_0 AND [p].[CompanyId] = @__productDto_CompanyId_1 AND [p].[IsDeleted] = CAST(0 AS bit)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-02-11 13:08:54.842 +04:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = Boolean), @p5='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([BrandId], [CategoryId], [CompanyId], [Description], [IsDeleted], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-02-11 13:09:22.816 +04:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProductImages] ([ImageUrl], [IsDeleted], [IsMain], [ProductId], [PublicId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-02-11 13:09:22.838 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Product.AddProduct.AddProductCommandResponse'.
+2026-02-11 13:09:22.859 +04:00 [INF] Executed action RealERP.Api.Controllers.ProductController.AddProduct (RealERP.Api) in 34048.6447ms
+2026-02-11 13:09:22.860 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.ProductController.AddProduct (RealERP.Api)'
+2026-02-11 13:09:22.882 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7148/api/Product/add-product - 200 null application/json; charset=utf-8 36961.3287ms
+2026-02-11 13:34:16.107 +04:00 [INF] User profile is available. Using 'C:\Users\LENOVO\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-11 13:34:16.803 +04:00 [INF] Now listening on: https://localhost:7148
+2026-02-11 13:34:16.803 +04:00 [INF] Now listening on: http://localhost:5116
+2026-02-11 13:34:17.027 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-11 13:34:17.028 +04:00 [INF] Hosting environment: Development
+2026-02-11 13:34:17.028 +04:00 [INF] Content root path: D:\GitHub test\real-erp-backend\Persentation\RealERP.Api
+2026-02-11 13:34:17.549 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/index.html - null null
+2026-02-11 13:34:18.234 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-11 13:34:18.235 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/_vs/browserLink - null null
+2026-02-11 13:34:18.245 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/index.html - 200 null text/html;charset=utf-8 707.8615ms
+2026-02-11 13:34:18.246 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 12.3403ms
+2026-02-11 13:34:18.335 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/_vs/browserLink - 200 null text/javascript; charset=UTF-8 101.0766ms
+2026-02-11 13:34:18.377 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - null null
+2026-02-11 13:34:18.554 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7148/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 177.118ms
+2026-02-11 13:37:21.604 +04:00 [INF] Request starting HTTP/2 DELETE https://localhost:7148/api/Product/delete-product?id=12 - null null
+2026-02-11 13:37:21.627 +04:00 [INF] CORS policy execution successful.
+2026-02-11 13:37:21.825 +04:00 [INF] Executing endpoint 'RealERP.Api.Controllers.ProductController.DeleteProduct (RealERP.Api)'
+2026-02-11 13:37:22.436 +04:00 [INF] Route matched with {action = "DeleteProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller RealERP.Api.Controllers.ProductController (RealERP.Api).
+2026-02-11 13:37:24.407 +04:00 [WRN] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductImage'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-02-11 13:37:27.219 +04:00 [INF] Executed DbCommand (182ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[BrandId], [t].[CategoryId], [t].[CompanyId], [t].[Description], [t].[IsDeleted], [t].[Name], [p0].[Id], [p0].[ImageUrl], [p0].[IsDeleted], [p0].[IsMain], [p0].[ProductId], [p0].[PublicId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[BrandId], [p].[CategoryId], [p].[CompanyId], [p].[Description], [p].[IsDeleted], [p].[Name]
+    FROM [Products] AS [p]
+    WHERE [p].[IsDeleted] = CAST(0 AS bit) AND [p].[Id] = @__id_0
+) AS [t]
+LEFT JOIN [ProductImages] AS [p0] ON [t].[Id] = [p0].[ProductId]
+ORDER BY [t].[Id]
+2026-02-11 13:37:27.938 +04:00 [INF] Executed DbCommand (25ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Products] SET [IsDeleted] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-02-11 13:37:29.684 +04:00 [INF] Executed DbCommand (13ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [ProductImages] SET [IsDeleted] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-02-11 13:37:29.708 +04:00 [INF] Executing OkObjectResult, writing value of type 'RealERP.Application.Abstraction.Features.Command.Product.DeleteProduct.DeleteProductCommandResponse'.
+2026-02-11 13:37:29.725 +04:00 [INF] Executed action RealERP.Api.Controllers.ProductController.DeleteProduct (RealERP.Api) in 7280.9146ms
+2026-02-11 13:37:29.726 +04:00 [INF] Executed endpoint 'RealERP.Api.Controllers.ProductController.DeleteProduct (RealERP.Api)'
+2026-02-11 13:37:29.741 +04:00 [INF] Request finished HTTP/2 DELETE https://localhost:7148/api/Product/delete-product?id=12 - 200 null application/json; charset=utf-8 8136.5674ms

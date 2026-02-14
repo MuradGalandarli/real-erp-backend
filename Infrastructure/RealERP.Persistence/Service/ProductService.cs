@@ -51,12 +51,14 @@ namespace RealERP.Persistence.Service
 
             foreach (var image in productDto.Images)
             {
-                var url = await _unitOfWork.imageStorageService.UploadAsync(image);
+                var result = await _unitOfWork.imageStorageService.UploadAsync(image);
                 await _unitOfWork.writeProductImageRepository.AddAsync(new()
                 {
-                    ImageUrl = url,
+                    ImageUrl = result.Item1,
                     IsDeleted = false,
-                    ProductId =product.Id 
+                    ProductId =product.Id ,
+                    PublicId = result.Item2
+                    
                 });
                
             }
@@ -69,12 +71,21 @@ namespace RealERP.Persistence.Service
 
         public async Task<bool> DeleteProductAsync(int id)
         {
-           Product product = await _readProductRepository.GetByIdAsync(id);
+            Product? product = await _readProductRepository.GetWhere(p => p.Id == id).
+                 Include(i => i.ProductImages).FirstOrDefaultAsync();
             if (product == null)
                 throw new NotFoundException($"Product with id {id} not found");
 
             product.IsDeleted = true;
-            await _writeProductRepository.SaveAsync();
+            await _unitOfWork.SaveChangesAsync();
+
+            foreach(var image in product.ProductImages)
+            {
+                bool status = await _unitOfWork.imageStorageService.DeleteAsync(image.PublicId);
+                if (status)
+                    image.IsDeleted = true;
+            }
+            await _unitOfWork.SaveChangesAsync();
             return true;
         }
 

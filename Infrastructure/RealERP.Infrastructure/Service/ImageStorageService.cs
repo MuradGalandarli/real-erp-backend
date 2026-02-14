@@ -2,6 +2,7 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RealERP.Application.Abstraction.Service;
 using System.Runtime.InteropServices;
@@ -23,12 +24,18 @@ namespace RealERP.Infrastructure.Service
             _cloudinary = new Cloudinary(account);
         }
 
-        public Task DeleteAsync(string publicId)
+        public async Task<bool> DeleteAsync(string publicId)
         {
-            throw new NotImplementedException();
+            var deletionParams = new DeletionParams(publicId);
+            var result = await _cloudinary.DestroyAsync(deletionParams);
+
+            if (result.Result != "ok")
+                return false;
+
+            return true;
         }
 
-        public async Task<string> UploadAsync(IFormFile formFile)
+        public async Task<(string,string)> UploadAsync(IFormFile formFile)
         {
 
             if (formFile == null || formFile.Length == 0)
@@ -43,8 +50,8 @@ namespace RealERP.Infrastructure.Service
             };
 
             var result = await _cloudinary.UploadAsync(uploadParams);
-
-            return result.SecureUrl.ToString();
+           
+            return (result.SecureUrl.ToString(),result.PublicId);
         }
     }
 }
