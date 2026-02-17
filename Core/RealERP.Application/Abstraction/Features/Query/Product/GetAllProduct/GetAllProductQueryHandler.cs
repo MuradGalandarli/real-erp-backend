@@ -17,7 +17,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct
 
         public async Task<List<GetAllProductQueryResponse>> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
         {
-           List<ProductDto> productDtos = _productService.GetAllProduct(request.Page, request.Size);
+           List<ProductRequestDto> productDtos = _productService.GetAllProduct(request.Page, request.Size);
             return productDtos.Select(p => new GetAllProductQueryResponse()
             {
                 BrandId = p.BrandId,
@@ -26,6 +26,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetAllProduct
                 Id = p.Id,
                 Name = p.Name,
                 CompanyId = p.CompanyId,
+                ProductImages = p.ProductImages
             }).ToList();
         }
     }

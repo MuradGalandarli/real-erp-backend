@@ -22,7 +22,7 @@ namespace RealERP.Api.Controllers
         }
 
         [HttpPost("creaate-user")]
-        public async Task<IActionResult> CreateUser(CreateUserCommnadRequest createUserCommnadRequest)
+        public async Task<IActionResult> CreateUser([FromBody]CreateUserCommnadRequest createUserCommnadRequest)
         {
            CreateUserCommandResponse createUserCommandResponse = await _mediator.Send(createUserCommnadRequest);
             return Ok(createUserCommandResponse);

@@ -17,7 +17,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct
 
         public async Task<GetByIdProductCommandResponse> Handle(GetByIdProductCommandRequest request, CancellationToken cancellationToken)
         {
-            ProductDto productDto = await _productService.GetByIdProduct(request.Id);
+            ProductRequestDto productDto = await _productService.GetByIdProduct(request.Id);
             return new()
             {
                 Id = productDto.Id,
@@ -26,6 +26,7 @@ namespace RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct
                 Description = productDto.Description,
                 Name = productDto.Name,
                 CompanyId = productDto.CompanyId,
+                ProductImages = productDto.ProductImages,
             };
         }
     }

@@ -1,12 +1,11 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Abstraction.Service.UnitOfWork;
 using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
-using System.Numerics;
+using System.Security.Principal;
 
 namespace RealERP.Persistence.Service
 {
@@ -15,8 +14,6 @@ namespace RealERP.Persistence.Service
         private readonly IWriteProductRepository _writeProductRepository;
         private readonly IReadProductRepository _readProductRepository;
         private readonly IUnitOfWork _unitOfWork;
-
-
 
         public ProductService(IWriteProductRepository writeProductRepository, IReadProductRepository readProductRepository, IUnitOfWork unitOfWork)
         {
@@ -64,8 +61,6 @@ namespace RealERP.Persistence.Service
             }
             await _unitOfWork.SaveChangesAsync();
            
-
-           
             return status;
         }
 
@@ -89,26 +84,35 @@ namespace RealERP.Persistence.Service
             return true;
         }
 
-        public List<ProductDto> GetAllProduct(int page, int size)
+        public List<ProductRequestDto> GetAllProduct(int page, int size)
         {
-           IQueryable<Product> products = _readProductRepository.GetAll().Skip((page - 1) * size).Take(size);
-            if(products == null)
-                return new List<ProductDto>();
-            return products.Select(p => new ProductDto()
-            {
-                Name = p.Name,
-                BrandId = p.BrandId,
-                CategoryId = p.CategoryId,
-                Description = p.Description,
-                Id = p.Id,
-                CompanyId = p.CompanyId
-            }).ToList();
+            IQueryable<Product> products = _readProductRepository.GetAll()
+                 .Include(i => i.ProductImages)
+                .Skip((page - 1) * size).Take(size);
 
+            if (products == null)
+               return new();
+
+           return products.Select(p => new ProductRequestDto()
+            {
+               Name = p.Name,
+               BrandId = p.BrandId,
+               CategoryId = p.CategoryId,
+               Description = p.Description,
+               Id = p.Id,
+               CompanyId = p.CompanyId,
+               ProductImages = p.ProductImages.ToList(),
+           }).ToList();
+            
         }
         
-        public async Task<ProductDto> GetByIdProduct(int id)
+        public async Task<ProductRequestDto> GetByIdProduct(int id)
         {
-          Product product = await _readProductRepository.GetByIdAsync(id);
+          Product? product = await _readProductRepository.
+                GetWhere(x=>x.Id == id).
+                Include(i => i.ProductImages).
+                FirstOrDefaultAsync();
+
             if (product == null)
             {
                 throw new NotFoundException($"Product with id {id} not found");
@@ -120,7 +124,8 @@ namespace RealERP.Persistence.Service
                 Description = product.Description,
                 Id = product.Id,
                 Name = product.Name,
-                CompanyId = product.CompanyId
+                CompanyId = product.CompanyId,
+                ProductImages = product.ProductImages.ToList(),
             };
         }
 

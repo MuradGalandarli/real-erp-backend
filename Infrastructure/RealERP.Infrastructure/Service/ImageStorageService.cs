@@ -2,10 +2,8 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RealERP.Application.Abstraction.Service;
-using System.Runtime.InteropServices;
 
 namespace RealERP.Infrastructure.Service
 {

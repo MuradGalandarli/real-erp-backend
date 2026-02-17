@@ -1,4 +1,6 @@
-﻿namespace RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct
+﻿using RealERP.Domain.Entities;
+
+namespace RealERP.Application.Abstraction.Features.Query.Product.GetByIdProduct
 {
     public class GetByIdProductCommandResponse
     {
@@ -8,5 +10,6 @@
         public int BrandId { get; set; }
         public int? CategoryId { get; set; }
         public int? CompanyId { get; set; }
+        public List<ProductImage> ProductImages { get; set; }
     }
 }
