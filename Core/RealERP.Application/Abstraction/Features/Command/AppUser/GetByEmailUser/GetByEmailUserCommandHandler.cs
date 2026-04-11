@@ -23,7 +23,8 @@ namespace RealERP.Application.Abstraction.Features.Command.AppUser.GetByEmailUse
                 Email = userDto.Email,
                 UserId = userDto.Id,
                 Name = userDto.Name,
-                Surname = userDto.Surname
+                Surname = userDto.Surname,
+                CompanyId = userDto.CompanyId
             };
         }
     }

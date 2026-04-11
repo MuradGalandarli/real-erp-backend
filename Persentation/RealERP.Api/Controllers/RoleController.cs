@@ -45,7 +45,7 @@ namespace RealERP.Api.Controllers
             List<GetAllRoleQueryResponse> getAllRoleQueryResponse = await _mediator.Send(getAllRoleQueryRequest);
             return Ok(getAllRoleQueryResponse);
         }
-        [HttpGet("delete-role")]
+        [HttpDelete("delete-role")]
         public async Task<IActionResult> DeleteRole([FromQuery] string id)
         {
             DeleteRoleCommandRequest deleteRoleCommandRequest = new() { Id = id };

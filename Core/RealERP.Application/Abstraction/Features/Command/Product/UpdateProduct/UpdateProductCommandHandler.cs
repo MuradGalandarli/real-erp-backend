@@ -1,6 +1,4 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using RealERP.Application.Abstraction.Service;
 
 namespace RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct
@@ -24,7 +22,10 @@ namespace RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct
                 Id = request.Id,
                 Name = request.Name ,
                 CompanyId = request.CompanyId,
+                DeletedImageIds = request.DeletedImageIds,
+                Images = request.Images,
             });
+
             return new()
             {
                 Status = status,

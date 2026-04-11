@@ -23,7 +23,7 @@ namespace RealERP.Api.Controllers
             _mediator = mediator;
         }
         [HttpPost("add-employee")]
-        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstans.Employee,Definition ="Add item to employee",ActionType =ActionType.Writing)]
+        //[AuthorizeDefinition(Menu = AuthorizeDefinitionConstans.Employee,Definition ="Add item to employee",ActionType =ActionType.Writing)]
         public async Task<IActionResult> AddEmployee([FromBody] AddEmployeeCommandRequest addEmployeeCommandRequest)
         {
             AddEmployeeCommandResponse addEmployeeCommandResponse = await _mediator.Send(addEmployeeCommandRequest);

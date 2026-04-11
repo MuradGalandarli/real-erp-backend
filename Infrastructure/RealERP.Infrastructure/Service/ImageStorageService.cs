@@ -33,7 +33,7 @@ namespace RealERP.Infrastructure.Service
             return true;
         }
 
-        public async Task<(string,string)> UploadAsync(IFormFile formFile)
+        public async Task<(string imageUrl,string publicId)> UploadAsync(IFormFile formFile)
         {
 
             if (formFile == null || formFile.Length == 0)

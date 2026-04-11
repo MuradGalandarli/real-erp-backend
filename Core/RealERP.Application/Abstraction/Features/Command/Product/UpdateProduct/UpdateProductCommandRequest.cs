@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct
 {
@@ -10,5 +11,7 @@ namespace RealERP.Application.Abstraction.Features.Command.Product.UpdateProduct
         public int BrandId { get; set; }
         public int CategoryId { get; set; }
         public int CompanyId { get; set; }
+        public List<IFormFile> Images { get; set; } = new();
+        public List<int> DeletedImageIds { get; set; } = new();
     }
 }

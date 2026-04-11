@@ -27,24 +27,28 @@ export async function getAllBrand(page, size) {
 export async function addBrandAsync() {
 
     let brand = {
-        brandName: document.getElementById("name").value,
-        companyId: document.getElementById("company").value
+        brandName: $("#name").val(),
+        companyId: $("#company").val()
     }
+
     await fetchBrand.add(brand);
 }
 export async function getByIdBrandAsync(id) {
+
     const brand = await fetchBrand.getById(id);
-    document.getElementById("name").value = brand.brandName;
-    document.getElementById("company").value = brand.companyId;
-    document.querySelector("#submit-btn").dataset.id = id;
+    $("#name").val(brand.brandName);
+    $("#company").val(brand.companyId);
+    $("#submit-btn").data("id", id);
+    $("#submit-btn").data("id", id);
+    $("#submit-btn").data("id", id);
 }
 
 export async function updateBrand() {
 
     const brand = {
-        id: document.querySelector("#submit-btn").dataset.id,
-        brandName: document.getElementById("name").value,
-        companyId: document.getElementById("company").value
+        id: $("#submit-btn").data("id"),
+        brandName: $("#name").val(),
+        companyId: $("#company").val()
     }
 
     await fetchBrand.update(brand);

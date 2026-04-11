@@ -33,7 +33,7 @@ namespace RealERP.Api.Controllers
             return Ok(updateCompanyCommandResponse);
         }
         [HttpDelete("delete-company")]
-        public async Task<IActionResult> DeleteCompany([FromBody] DeleteCompanyCommandRequest deleteCompanyCommandRequest)
+        public async Task<IActionResult> DeleteCompany([FromQuery] DeleteCompanyCommandRequest deleteCompanyCommandRequest)
         {
             DeleteCompanyCommandResponse deleteCompanyCommandResponse = await _mediator.Send(deleteCompanyCommandRequest);
             return Ok(deleteCompanyCommandResponse);
@@ -45,7 +45,7 @@ namespace RealERP.Api.Controllers
             GetByIdCompanyQueryResponse getByIdCompanyQueryResponse = await _mediator.Send(request);
             return Ok(getByIdCompanyQueryResponse);
         }
-        [HttpPost("get-all-company")]
+        [HttpGet("get-all-company")]
         public async Task<IActionResult> GetAllCompany([FromQuery] int page, [FromQuery]int size)
         {
             GetAllCompanyQueryRequest request = new() { Page = page, Size = size };

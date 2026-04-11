@@ -5,7 +5,7 @@ using RealERP.Application.DTOs;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.ProductRepository;
 using RealERP.Domain.Entities;
-using System.Security.Principal;
+using RealERP.Persistence.Migrations;
 
 namespace RealERP.Persistence.Service
 {
@@ -48,19 +48,25 @@ namespace RealERP.Persistence.Service
 
             foreach (var image in productDto.Images)
             {
+                bool mainImage = false;
+                if (productDto.Images[0] is not null)
+                {
+                    mainImage = true;
+                }
                 var result = await _unitOfWork.imageStorageService.UploadAsync(image);
                 await _unitOfWork.writeProductImageRepository.AddAsync(new()
                 {
                     ImageUrl = result.Item1,
                     IsDeleted = false,
-                    ProductId =product.Id ,
-                    PublicId = result.Item2
-                    
-                });
-               
+                    ProductId = product.Id,
+                    PublicId = result.Item2,
+                     IsMain = mainImage
+            });
+              
+
             }
             await _unitOfWork.SaveChangesAsync();
-           
+
             return status;
         }
 
@@ -74,7 +80,7 @@ namespace RealERP.Persistence.Service
             product.IsDeleted = true;
             await _unitOfWork.SaveChangesAsync();
 
-            foreach(var image in product.ProductImages)
+            foreach (var image in product.ProductImages)
             {
                 bool status = await _unitOfWork.imageStorageService.DeleteAsync(image.PublicId);
                 if (status)
@@ -91,27 +97,27 @@ namespace RealERP.Persistence.Service
                 .Skip((page - 1) * size).Take(size);
 
             if (products == null)
-               return new();
+                return new();
 
-           return products.Select(p => new ProductRequestDto()
+            return products.Select(p => new ProductRequestDto()
             {
-               Name = p.Name,
-               BrandId = p.BrandId,
-               CategoryId = p.CategoryId,
-               Description = p.Description,
-               Id = p.Id,
-               CompanyId = p.CompanyId,
-               ProductImages = p.ProductImages.ToList(),
-           }).ToList();
-            
+                Name = p.Name,
+                BrandId = p.BrandId,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                Id = p.Id,
+                CompanyId = p.CompanyId,
+                ProductImages = p.ProductImages.ToList(),
+            }).ToList();
+
         }
-        
+
         public async Task<ProductRequestDto> GetByIdProduct(int id)
         {
-          Product? product = await _readProductRepository.
-                GetWhere(x=>x.Id == id).
-                Include(i => i.ProductImages).
-                FirstOrDefaultAsync();
+            Product? product = await _readProductRepository.
+                  GetWhere(x => x.Id == id).
+                  Include(i => i.ProductImages).
+                  FirstOrDefaultAsync();
 
             if (product == null)
             {
@@ -129,20 +135,42 @@ namespace RealERP.Persistence.Service
             };
         }
 
-        public async Task<bool> UpdateProductAsync(ProductDto productDto)
+        public async Task<bool> UpdateProductAsync(UpdateProductDto productDto)
         {
-           bool status = _writeProductRepository.Update(new()
+            ProductRequestDto product = await GetByIdProduct(productDto.Id);
+
+            List<Domain.Entities.ProductImage> removeProductImage = product.ProductImages.Where(i => productDto.DeletedImageIds.Contains(i.Id)).ToList();
+
+            foreach (var image in removeProductImage)
+            {
+                image.IsDeleted = true;
+                await _unitOfWork.imageStorageService.DeleteAsync(image.PublicId);
+            }
+
+            foreach (var image in productDto.Images)
+            {
+             (string imageUrl, string publicId) informImage = await _unitOfWork.imageStorageService.UploadAsync(image);
+                await _unitOfWork.writeProductImageRepository.AddAsync(new()
+                {
+                    ImageUrl = informImage.imageUrl,
+                    IsDeleted = false,
+                    PublicId = informImage.publicId.ToString(),
+                    ProductId = product.Id
+                });
+            }
+
+            bool status = _writeProductRepository.Update(new()
             {
                 Id = productDto.Id,
                 Name = productDto.Name,
                 BrandId = productDto.BrandId,
                 CategoryId = productDto.CategoryId,
                 Description = productDto.Description,
-                CompanyId= productDto.CompanyId,
-                
+                CompanyId = productDto.CompanyId,
+
             });
-            if(status)
-           await _writeProductRepository.SaveAsync();
+            if (status)
+                await _writeProductRepository.SaveAsync();
 
             return status;
         }

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RealERP.Application.Abstraction.Service;
 using RealERP.Application.Exceptions;
 using RealERP.Application.Repositories.BrandRepository;
@@ -17,7 +18,7 @@ namespace RealERP.Persistence.Service
         {
             _readBrandRepository = readBrandRepository;
             _writeBrandRepository = writeBrandRepository;
-        }
+        }   
 
         public async Task<bool> AddBrnadAsync(Brand brand)
         {
@@ -38,9 +39,12 @@ namespace RealERP.Persistence.Service
                 throw new NotFoundException($"Brand with id {id} not found");
 
             brand.IsDeleted = true;
-            foreach(Product product in brand.Products)
+            if (brand.Products?.Any() ?? false)
             {
-                product.IsDeleted = true;  
+                foreach (Product product in brand.Products)
+                {
+                    product.IsDeleted = true;
+                }
             }
             await _writeBrandRepository.SaveAsync();
             return true;
