@@ -1,6 +1,4 @@
-﻿
-
-using RealERP.Application.Repositories.BrandRepository;
+﻿using RealERP.Application.Repositories.BrandRepository;
 using RealERP.Domain.Entities;
 using RealERP.Persistence.Context;
 

@@ -5,8 +5,8 @@ import { apiRequest } from "../../core/api.js";
 export async function getAllCategory(page, size) {
     let table = createCategoryTable();
     const data = await fetchCategory.getAll(page, size);
-    
-    let id=0;
+
+    let id = 0;
     data.forEach(category => {
         table += `
         <tr>
@@ -20,14 +20,14 @@ export async function getAllCategory(page, size) {
         `
     })
 
-    return table += `</table>` 
+    return table += `</table>`
 }
 
 export async function addCategory() {
-  
-    const name = document.getElementById("name").value;
-    const description = document.getElementById("description").value;
-    const companyId = document.getElementById("company").value;
+
+    const name = $("#name").val();
+    const description = $("#description").val();
+    const companyId = $("#company").val();
     let category = {
         "name": name,
         "description": description,
@@ -45,18 +45,18 @@ export async function deleteCategory(id) {
 export async function getByIdCategory(id) {
     const category = await fetchCategory.getById(id);
 
-    document.getElementById("name").value = category.name;
-    document.getElementById("description").value = category.description;
-    document.getElementById("company").value = category.companyId;
-    document.querySelector("#submit-btn").dataset.id = id;
+    $("#name").val(category.name);
+    $("#description").val(category.description);
+    $("#company").val(category.companyId);
+    $("#submit-btn").data("id", id);
 }
 
 export async function updateCategory(id) {
     const category = {
         "id": id,
-        "name": document.getElementById("name").value,
-        "description": document.getElementById("description").value,
-        "companyId": document.getElementById("company").value
+        "name": $("#name").val(),
+        "description": $("#description").val(),
+        "companyId": $("#company").val()
     }
     await fetchCategory.update(category);
 }
