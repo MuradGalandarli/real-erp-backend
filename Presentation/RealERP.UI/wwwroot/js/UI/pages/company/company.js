@@ -30,13 +30,15 @@ export async function getAllCompany(page, size) {
 export async function addCompany() {
 
     let companyDto = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        address: document.getElementById("address").value,
-        phone: document.getElementById("phone").value,
-        country: document.getElementById("country").value,
-        city: document.getElementById("city").value
+        name: $("#name").val(),
+        email: $("#email").val(),
+        address: $("#address").val(),
+        phone: $("#phone").val(),
+        country: $("#country").val(),
+        city: $("#city").val()
     }
+    debugger;
+
     await fetchCompany.add(companyDto);
 }
 
@@ -44,27 +46,27 @@ export async function getByIdCompany(id) {
 
     const company = await fetchCompany.getById(id);
 
-    document.getElementById("name").value = company.company.name,
-        document.getElementById("email").value = company.company.email,
-        document.getElementById("address").value = company.company.address,
-        document.getElementById("phone").value = company.company.phone,
-        document.getElementById("country").value = company.company.country,
-        document.getElementById("city").value = company.company.city
+    $("#name").val(company.company.name),
+        $("#email").val(company.company.email),
+        $("#address").val(company.company.address),
+        $("#phone").val(company.company.phone),
+        $("#country").val(company.company.country),
+        $("#city").val(company.company.city)
     document.querySelector("#submit-btn").dataset.id = id;
 }
 
 export async function updateCompany(id) {
-        
+
     let company = {
-        id :id,
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        address: document.getElementById("address").value,
-        phone: document.getElementById("phone").value,
-        country: document.getElementById("country").value,
-        city: document.getElementById("city").value
+        id: id,
+        name: $("#name").val(),
+        email: $("#email").val(),
+        address: $("#address").val(),
+        phone: $("#phone").val(),
+        country: $("#country").val(),
+        city: $("#city").val()
     }
-     await fetchCompany.update(company); 
+    await fetchCompany.update(company);
 }
 
 export async function deleteCompanyAsync(id) {
